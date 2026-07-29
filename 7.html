@@ -89,9 +89,15 @@
     </style>
 
     <!-- Header -->
-    <header>
-      <nav class="flex gap-2 bg-[#010737] py-4 px-10 text-white text-xs">
-        <a class="flex gap-2" href="#inicio" aria-label="HASTECH 24/7 - Inicio">
+    <header class="w-full">
+      <nav
+        class="flex items-center gap-2 bg-[#010737] py-4 px-10 text-white text-xs w-full"
+      >
+        <a
+          class="flex gap-2 mr-auto ml-0"
+          href="#inicio"
+          aria-label="HASTECH 24/7 - Inicio"
+        >
           <img
             class="h-10 w-10"
             src="https://tool.perseo.ec/wp-content/uploads/2026/07/HASTECH-ICO-blanco.webp"
@@ -108,37 +114,38 @@
             <span class="my-auto">24/7</span>
           </span>
         </a>
-        <a href="#">Inicio</a>
-        <a href="#">Planes WEB</a>
-        <a href="#">Planes PC</a>
-        <a href="#">Planes Facturito</a>
-        <a href="#">Firmas</a>
-        <a href="#">Recursos Gratuitos</a>
-        <a href="#">Capacitaciones</a>
-        <a href="#">Servicio Técnico</a>
-        <a href="#">Blog</a>
-        <a
-          href="#"
-          class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
-        >
-          <i class="icon" data-icon="whatsapp"></i>
-        </a>
-        <a
-          href="#"
-          class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
-          ><i class="icon" data-icon="cart"></i
-        ></a>
-        <a
-          href="#"
-          class="flex border-white border rounded-full py-2 px-4 hover:text-[#010737] hover:bg-white text-white"
-          ><i class="icon" data-icon="play"></i><span>Demo en Vivo</span></a
-        >
-        <a
-          href="#"
-          class="flex border-cyan-500 border rounded-full py-2 px-4 text-cyan-500 hover:text-[#010737] hover:bg-cyan-500"
-          ><i class="icon mr-1" data-icon="arrowRight"></i
-          ><span>Ingresar al sistema</span></a
-        >
+        <div class="flex gap-5 mx-auto">
+          <a href="#">Productos</a>
+          <a href="#">Precios</a>
+          <a href="#">Recursos</a>
+          <a href="#">Soporte</a>
+          <a href="#">Nosotros</a>
+          <a href="#">Contacto</a>
+        </div>
+        <div class="flex gap-2">
+          <a
+            href="#"
+            class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
+          >
+            <i class="icon" data-icon="whatsapp"></i>
+          </a>
+          <a
+            href="#"
+            class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
+            ><i class="icon" data-icon="cart"></i
+          ></a>
+          <a
+            href="#"
+            class="flex border-white border rounded-full py-2 px-4 hover:text-[#010737] hover:bg-white text-white"
+            ><i class="icon" data-icon="play"></i><span>Demo en Vivo</span></a
+          >
+          <a
+            href="#"
+            class="flex border-cyan-500 border rounded-full py-2 px-4 text-cyan-500 hover:text-[#010737] hover:bg-cyan-500"
+            ><i class="icon mr-1" data-icon="arrowRight"></i
+            ><span>Ingresar al sistema</span></a
+          >
+        </div>
       </nav>
     </header>
 
@@ -170,13 +177,13 @@
       <nav
         class="w-fit mx-auto bg-white p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100"
       >
-        <button
-          id="nav-options-1"
-          class="bg-blue-700 text-white py-2 px-4 flex m-auto rounded-full"
-        >
+        <button id="nav-options-1" class="py-2 px-4 flex m-auto">
           <i class="icon mr-1" data-icon="case"></i><span>Soy Empresa</span>
         </button>
-        <button id="nav-options-2" class="py-2 px-4 flex m-auto">
+        <button
+          id="nav-options-2"
+          class="py-2 px-4 flex m-auto bg-blue-700 text-white rounded-full"
+        >
           <i class="icon mr-1" data-icon="user"></i><span>Soy Contador</span>
         </button>
         <button id="nav-options-3" class="py-2 px-4 flex m-auto">
@@ -210,72 +217,22 @@
 
     <!-- Tarjetas -->
     <section>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-fit mx-auto mt-5">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 w-fit mx-auto mt-5"
+      >
         <div class="bg-transparent p-2">
           <div
             class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
           >
             <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-purple-700 bg-gradient-to-b from-purple-100 to-purple-300"
+              class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
             >
-              <i class="icon mr-1" data-icon="doc"></i>
+              <i class="icon  text-2xl" data-icon="user"></i>
             </div>
             <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Prueba</span
-            >
-            <span class="font-bold text-xl text-purple-700 mx-auto"
-              >15 días gratis!</span
-            >
-            <button
-              class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
-            >
-              PROBAR AHORA
-            </button>
-            <hr class="border-gray-300" />
-            <info class="info" data-info="prueba"></info>
-          </div>
-        </div>
-
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Facturación</span
+              >Soy Contador Servicios</span
             >
             <span class="font-bold text-3xl text-black mx-auto">$17.99</span>
-            <span class="text-slate-500 font-semibold text-xs mx-auto"
-              >Más Iva / Mensual</span
-            >
-            <button
-              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
-            >
-              <i class="icon" data-icon="cart"></i>
-              <span class="text-md">Agregar al carrito</span>
-            </button>
-
-            <info class="info" data-info="facturacion"> hiii</info>
-          </div>
-        </div>
-
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Servicios</span
-            >
-            <span class="font-bold text-3xl text-black mx-auto">$29.99</span>
             <span class="text-slate-500 font-semibold text-xs mx-auto"
               >Más Iva / Mensual</span
             >
@@ -294,14 +251,14 @@
           <div class="card h-full shadow-lg shadow-indigo-300">
             <div class="flex flex-col gap-1">
               <div
-                class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-br from-blue-600 via-purple-700 to-fuchsia-500 "
+                class="mx-auto w-10 h-10 p-2 rounded-full  bg-gradient-to-br from-blue-600 via-purple-700 to-fuchsia-500 "
               >
-                <i class="icon text-white" data-icon="doc"></i>
+                <i class="icon text-white text-2xl" data-icon="user"></i>
               </div>
               <span class="font-semibold text-lg mx-auto text-slate-900"
-                >Comercial</span
+                >Soy Contador Comercial</span
               >
-              <span class="font-bold text-3xl text-black mx-auto">$41.99</span>
+              <span class="font-bold text-3xl text-black mx-auto">$25.99</span>
               <span class="text-slate-500 font-semibold text-xs mx-auto"
                 >Más Iva / Mensual</span
               >
@@ -320,7 +277,7 @@
           >
             <i class="icon text-white" data-icon="star"></i>
             <span class="text-xs text-white font-semibold pt-[0.16rem]"
-              >MÁS VENDIDO</span
+              >MÁS COMPLETO</span
             >
           </div>
         </div>
@@ -400,96 +357,71 @@
           {
             item: "Facturación electrónica ilimitada",
             descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
+            planes: ["servicios", "comercial"],
           },
           {
             item: "Consulta automática solo con CI/RUC",
             descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "1 usuario simultáneo",
-            descripcion: "",
-            planes: ["prueba"],
+            planes: ["servicios", "comercial"],
           },
           {
             item: "Usuarios ilimitados",
             descripcion: "1",
-            planes: ["facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "Establecimientos / bodegas ilimitadas",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "comercial"],
-          },
-          {
-            item: "App PerseoMóvil",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "E-commerce gratis (enlazada al sistema)",
-            descripcion: "1",
-            planes: ["prueba"],
-          },
-          {
-            item: "E-commerce (enlazada al sistema)",
-            descripcion: "1",
-            planes: ["comercial"],
-          },
-          {
-            item: "Productos, Compras e Inventarios",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "comercial"],
-          },
-          {
-            item: "Contabilidad Integrada",
-            descripcion: "1",
-            planes: ["prueba", "servicios", "comercial"],
+            planes: ["servicios", "comercial"],
           },
           {
             item: "Integración contable",
             descripcion: "1",
-            planes: ["prueba", "comercial"],
-          },
-          {
-            item: "Integración contable para tu declaración y balances",
-            descripcion: "1",
-            planes: ["servicios"],
+            planes: ["servicios", "comercial"],
           },
           {
             item: "Nómina ilimitada",
             descripcion: "1",
-            planes: ["prueba", "servicios", "comercial"],
+            planes: ["servicios", "comercial"],
+          },
+          {
+            item: "Contabilidad Integrada",
+            descripcion: "1",
+            planes: ["servicios", "comercial"],
+          },
+          {
+            item: "App PerseoMóvil",
+            descripcion: "1",
+            planes: ["servicios", "comercial"],
           },
           {
             item: "+30 Gráficos Gerenciales",
             descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
+            planes: ["servicios", "comercial"],
           },
           {
             item: "API para desarrolladores",
             descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "Producción e Importaciones",
-            descripcion: "1",
-            planes: ["prueba", "comercial"],
+            planes: ["servicios", "comercial"],
           },
           {
             item: "Cuentas por Cobrar y Pagar",
             descripcion: "1",
-            planes: ["facturacion", "servicios"],
+            planes: ["servicios"],
           },
           {
-            item: "Restaurantes + App de Restaurantes",
-            descripcion: "",
-            planes: ["facturacion"],
+            item: "Productos, Compras e Inventarios",
+            descripcion: "1",
+            planes: ["comercial"],
+          },
+          {
+            item: "Establecimientos / bodegas ilimitadas",
+            descripcion: "1",
+            planes: ["comercial"],
+          },
+          {
+            item: "Producción e Importaciones",
+            descripcion: "1",
+            planes: ["comercial"],
           },
           {
             item: "Reembolso de gastos",
-            descripcion: "",
+            descripcion: "1",
             planes: ["comercial"],
           },
         ];
