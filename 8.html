@@ -36,7 +36,7 @@
 
       .card {
         position: relative;
-        background: #ffffff;
+        background: #fff3ea;
         border-radius: 20px;
         padding: 24px;
       }
@@ -50,14 +50,14 @@
 
         background: conic-gradient(
           from var(--angle),
-          #1d6cff,
-          #8338ec,
-          #8338ec,
-          #ff00b3,
-          #ff00b3,
-          #ff6ff8,
-          #ff6ff8,
-          #1d6cff
+          #ff0054,
+          #FFBD00,
+          #FFBD00,
+          #FF8104,
+          #FF8104,
+          #ff5400,
+          #ff5400,
+          #ff0054
         );
 
         -webkit-mask:
@@ -89,15 +89,9 @@
     </style>
 
     <!-- Header -->
-    <header class="w-full">
-      <nav
-        class="flex items-center gap-2 bg-[#010737] py-4 px-10 text-white text-xs w-full"
-      >
-        <a
-          class="flex gap-2 mr-auto ml-0"
-          href="#inicio"
-          aria-label="HASTECH 24/7 - Inicio"
-        >
+    <header>
+      <nav class="flex gap-2 bg-[#010737] py-4 px-10 text-white text-xs">
+        <a class="flex gap-2" href="#inicio" aria-label="HASTECH 24/7 - Inicio">
           <img
             class="h-10 w-10"
             src="https://tool.perseo.ec/wp-content/uploads/2026/07/HASTECH-ICO-blanco.webp"
@@ -114,62 +108,58 @@
             <span class="my-auto">24/7</span>
           </span>
         </a>
-        <div class="flex gap-5 mx-auto">
-          <a href="#">Productos</a>
-          <a href="#">Precios</a>
-          <a href="#">Recursos</a>
-          <a href="#">Soporte</a>
-          <a href="#">Nosotros</a>
-          <a href="#">Contacto</a>
-        </div>
-        <div class="flex gap-2">
-          <a
-            href="#"
-            class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
-          >
-            <i class="icon" data-icon="whatsapp"></i>
-          </a>
-          <a
-            href="#"
-            class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
-            ><i class="icon" data-icon="cart"></i
-          ></a>
-          <a
-            href="#"
-            class="flex border-white border rounded-full py-2 px-4 hover:text-[#010737] hover:bg-white text-white"
-            ><i class="icon" data-icon="play"></i><span>Demo en Vivo</span></a
-          >
-          <a
-            href="#"
-            class="flex border-cyan-500 border rounded-full py-2 px-4 text-cyan-500 hover:text-[#010737] hover:bg-cyan-500"
-            ><i class="icon mr-1" data-icon="arrowRight"></i
-            ><span>Ingresar al sistema</span></a
-          >
-        </div>
+        <a href="#">Inicio</a>
+        <a href="#">Planes WEB</a>
+        <a href="#">Planes PC</a>
+        <a href="#">Planes Facturito</a>
+        <a href="#">Firmas</a>
+        <a href="#">Recursos Gratuitos</a>
+        <a href="#">Capacitaciones</a>
+        <a href="#">Servicio Técnico</a>
+        <a href="#">Blog</a>
+        <a
+          href="#"
+          class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
+        >
+          <i class="icon" data-icon="whatsapp"></i>
+        </a>
+        <a
+          href="#"
+          class="border-white border rounded-full p-2 hover:text-[#010737] hover:bg-white text-white"
+          ><i class="icon" data-icon="cart"></i
+        ></a>
+        <a
+          href="#"
+          class="flex border-white border rounded-full py-2 px-4 hover:text-[#010737] hover:bg-white text-white"
+          ><i class="icon" data-icon="play"></i><span>Demo en Vivo</span></a
+        >
+        <a
+          href="#"
+          class="flex border-orange-500 border rounded-full py-2 px-4 text-orange-500 hover:text-[#010737] hover:bg-orange-500"
+          ><i class="icon mr-1" data-icon="arrowRight"></i
+          ><span>Ingresar al sistema</span></a
+        >
       </nav>
     </header>
 
     <!-- Título -->
-    <section class="mt-5">
+    <section class="py-5  bg-gradient-to-r from-orange-700 via-orange-600 to-orange-500">
       <div class="text-xl flex mx-auto w-fit gap-1">
-        <span class="text-slate-800 font-semibold">HASTECH</span>
+        <span class="text-white font-semibold">HASTECH</span>
         <h1
-          class="font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent w-fit"
+          class="font-bold bg-gradient-to-r from-slate-300 to-slate-200 bg-clip-text text-transparent w-fit"
         >
           24/7
         </h1>
       </div>
       <div class="text-6xl flex mx-auto w-fit gap-3">
-        <span class="text-slate-800 font-bold">PLANES</span>
-        <h1
-          class="font-bold bg-gradient-to-r from-blue-700 via-purple-700 to-fuchsia-500 bg-clip-text text-transparent w-fit"
-        >
-          PERSEO WEB
-        </h1>
+        <span class="text-white font-bold">PLANES PERSEO PC</span>
       </div>
-      <div class="mx-auto w-fit font-semibold text-lg text-slate-500">
-        El plan ideal para cada etapa de tu negocio
+      <div class="mx-auto w-fit font-semibold text-lg text-orange-100">
+        Información detallada sobre nuestro sistema de gestión empresarial
       </div>
+
+      <div class="border rounded-full border-white p-2 mx-auto w-fit text-xs text-white font-semibold mt-3">Validez: 31-12-2025</div>
 
       <!-- Nav1 -->
     </section>
@@ -177,39 +167,30 @@
       <nav
         class="w-fit mx-auto bg-white p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100"
       >
-        <button id="nav-options-1" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="case"></i><span>Soy Empresa</span>
-        </button>
         <button
-          id="nav-options-2"
-          class="py-2 px-4 flex m-auto bg-blue-700 text-white rounded-full"
+          id="nav-options-1"
+          class="bg-slate-800 text-white py-2 px-4 flex m-auto rounded-full"
         >
-          <i class="icon mr-1" data-icon="user"></i><span>Soy Contador</span>
+          <!-- <i class="icon mr-1" data-icon="case"></i> -->
+          <span>Suscripción</span>
         </button>
-        <button id="nav-options-3" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="calculator"></i
-          ><span>Contafácil</span>
+        <button id="nav-options-2" class="py-2 px-4 flex m-auto">
+          <!-- <i class="icon mr-1" data-icon="user"> -->
+
+          </i><span>Compra</span>
         </button>
-        <button id="nav-options-4" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="chart"></i><span>Comparación</span>
-        </button>
-        <button id="nav-options-5" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="shield"></i><span>Beneficios</span>
-        </button>
-        <button id="nav-options-6" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="cube"></i><span>Adicionales</span>
-        </button>
+        
       </nav>
       <nav
         class="w-fit mx-auto bg-white p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100 mt-5"
       >
         <button
           id="nav-plan-1"
-          class="bg-blue-700 text-white rounded-full py-2 px-4 flex m-auto"
+          class="py-2 px-4 flex m-auto"
         >
           <span>Mensual</span>
         </button>
-        <button id="nav-plan-2" class="py-2 px-4 flex m-auto">
+        <button id="nav-plan-2" class="py-2 px-4 bg-slate-800 text-white rounded-full  flex m-auto">
           <span>Anual</span>
         </button>
       </nav>
@@ -217,9 +198,9 @@
 
     <!-- Tarjetas -->
     <section>
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 w-fit mx-auto mt-5"
-      >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-fit mx-auto mt-5">
+
+
         <div class="bg-transparent p-2">
           <div
             class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
@@ -227,12 +208,12 @@
             <div
               class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
             >
-              <i class="icon  text-2xl" data-icon="user"></i>
+              <i class="icon mr-1" data-icon="doc"></i>
             </div>
             <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Soy Contador Servicios</span
+              >Facturación</span
             >
-            <span class="font-bold text-3xl text-black mx-auto">$17.99</span>
+            <span class="font-bold text-3xl text-black mx-auto">$310</span>
             <span class="text-slate-500 font-semibold text-xs mx-auto"
               >Más Iva / Mensual</span
             >
@@ -243,27 +224,54 @@
               <span class="text-md">Agregar al carrito</span>
             </button>
 
-            <info class="info" data-info="servicios"> hiii</info>
+            <info class="info" data-info="facturacion"> hiii</info>
+          </div>
+        </div>
+
+        <div class="bg-transparent p-2">
+          <div
+            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
+          >
+            <div
+              class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
+            >
+              <i class="icon mr-1" data-icon="doc"></i>
+            </div>
+            <span class="font-semibold text-lg mx-auto text-slate-900"
+              >Control</span
+            >
+            <span class="font-bold text-3xl text-black mx-auto">$560</span>
+            <span class="text-slate-500 font-semibold text-xs mx-auto"
+              >Más Iva / Mensual</span
+            >
+            <button
+              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
+            >
+              <i class="icon" data-icon="cart"></i>
+              <span class="text-md">Agregar al carrito</span>
+            </button>
+
+            <info class="info" data-info="control"> hiii</info>
           </div>
         </div>
 
         <div class="bg-transparent relative p-2">
-          <div class="card h-full shadow-lg shadow-indigo-300">
-            <div class="flex flex-col gap-1">
+          <div class="card h-full shadow-lg shadow-orange-300">
+            <div class="flex flex-col gap-1 ">
               <div
-                class="mx-auto w-10 h-10 p-2 rounded-full  bg-gradient-to-br from-blue-600 via-purple-700 to-fuchsia-500 "
+                class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-b from-orange-400 to-orange-600 "
               >
-                <i class="icon text-white text-2xl" data-icon="user"></i>
+                <i class="icon text-white" data-icon="doc"></i>
               </div>
               <span class="font-semibold text-lg mx-auto text-slate-900"
-                >Soy Contador Comercial</span
+                >Comercial</span
               >
-              <span class="font-bold text-3xl text-black mx-auto">$25.99</span>
+              <span class="font-bold text-3xl text-black mx-auto">$660</span>
               <span class="text-slate-500 font-semibold text-xs mx-auto"
                 >Más Iva / Mensual</span
               >
               <button
-                class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
+                class="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
               >
                 <i class="icon" data-icon="cart"></i>
                 <span class="text-md">Agregar al carrito</span>
@@ -273,11 +281,11 @@
             </div>
           </div>
           <div
-            class="rounded-full px-3 py-2 bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+            class="rounded-full px-3 py-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
           >
             <i class="icon text-white" data-icon="star"></i>
             <span class="text-xs text-white font-semibold pt-[0.16rem]"
-              >MÁS COMPLETO</span
+              >MÁS VENDIDO</span
             >
           </div>
         </div>
@@ -338,7 +346,7 @@
         play: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">play</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986z"/></svg>`,
         star: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">star-16-solid</title><path fill="currentColor" fill-rule="evenodd" d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75" clip-rule="evenodd"/></svg>`,
         doc: `<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><title xmlns="">document-text</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9"/></svg>`,
-        check: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">check-16-solid</title><path fill="currentColor" fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353l4.493-6.74a.75.75 0 0 1 1.04-.207" clip-rule="evenodd"/></svg>`,
+        check: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">check-16-solid</title><path fill="currentColor" fill-rule="evenodd"  d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353l4.493-6.74a.75.75 0 0 1 1.04-.207" clip-rule="evenodd"/></svg>`,
         info: `<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><title xmlns="">question-mark-circle</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.172-1.025 3.071-1.025 4.243 0c1.171 1.025 1.171 2.687 0 3.712q-.308.268-.67.442c-.746.361-1.452.999-1.452 1.827v.75M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9 5.25h.008v.008H12z"/></svg>`,
         case: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">briefcase</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18c-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48 48 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A24 24 0 0 1 12 15.75a24 24 0 0 1-7.577-1.22a2 2 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48 48 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a49 49 0 0 0-7.5 0M12 12.75h.008v.008H12z"/></svg>`,
         user: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">user</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 6a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.9 17.9 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632"/></svg>`,
@@ -353,92 +361,91 @@
 
       document.querySelectorAll(".info").forEach((info) => {
         const name = info.dataset.info;
-        const items = [
-          {
-            item: "Facturación electrónica ilimitada",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "Consulta automática solo con CI/RUC",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "Usuarios ilimitados",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "Integración contable",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "Nómina ilimitada",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "Contabilidad Integrada",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "App PerseoMóvil",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "+30 Gráficos Gerenciales",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "API para desarrolladores",
-            descripcion: "1",
-            planes: ["servicios", "comercial"],
-          },
-          {
-            item: "Cuentas por Cobrar y Pagar",
-            descripcion: "1",
-            planes: ["servicios"],
-          },
-          {
-            item: "Productos, Compras e Inventarios",
-            descripcion: "1",
-            planes: ["comercial"],
-          },
-          {
-            item: "Establecimientos / bodegas ilimitadas",
-            descripcion: "1",
-            planes: ["comercial"],
-          },
-          {
-            item: "Producción e Importaciones",
-            descripcion: "1",
-            planes: ["comercial"],
-          },
-          {
-            item: "Reembolso de gastos",
-            descripcion: "1",
-            planes: ["comercial"],
-          },
-        ];
+       const items = [
+  {
+    item: "Sistema Multiempresa ilimitado",
+    descripcion: "1",
+    planes: ["facturacion", "control", "comercial"]
+  },
+  {
+    item: "Facturación electrónica ilimitada",
+    descripcion: "1",
+    planes: ["facturacion", "control", "comercial"]
+  },
+  {
+    item: "Consulta automática solo con CI/RUC",
+    descripcion: "1",
+    planes: ["facturacion", "control", "comercial"]
+  },
+  {
+    item: "App móvil para gestionar en cualquier lugar",
+    descripcion: "1",
+    planes: ["facturacion", "control", "comercial"]
+  },
+  {
+    item: "Usuarios del sistema ilimitados",
+    descripcion: "1",
+    planes: ["facturacion", "control", "comercial"]
+  },
+  {
+    item: "2 Licencias del sistema instalado",
+    descripcion: "1",
+    planes: ["facturacion"]
+  },
+  {
+    item: "3 Licencias del sistema instalado en tu pc",
+    descripcion: "1",
+    planes: ["control"]
+  },
+  {
+    item: "4 Licencias del sistema instalado en tu pc",
+    descripcion: "1",
+    planes: ["comercial"]
+  },
+  {
+    item: "Tableros de control \"dashboards\" y 30 reportes financieros",
+    descripcion: "1",
+    planes: ["facturacion"]
+  },
+  {
+    item: "Tableros de control \"dashboards\" y 50 reportes financieros",
+    descripcion: "1",
+    planes: ["control"]
+  },
+  {
+    item: "Tableros de control \"dashboards\" y 60 reportes financieros",
+    descripcion: "1",
+    planes: ["comercial"]
+  },
+  {
+    item: "Multibodega para transferencia de productos",
+    descripcion: "1",
+    planes: ["control", "comercial"]
+  },
+  {
+    item: "Nómina ilimitada",
+    descripcion: "1",
+    planes: ["comercial"]
+  },
+  {
+    item: "Contabilidad integrada",
+    descripcion: "1",
+    planes: ["comercial"]
+  }
+];
 
-        const planes = {
-          prueba: items.filter((x) => x.planes.includes("prueba")),
-          facturacion: items.filter((x) => x.planes.includes("facturacion")),
-          servicios: items.filter((x) => x.planes.includes("servicios")),
-          comercial: items.filter((x) => x.planes.includes("comercial")),
-        };
+       const planes = {
+  facturacion: items.filter(x => x.planes.includes("facturacion")),
+  control: items.filter(x => x.planes.includes("control")),
+  comercial: items.filter(x => x.planes.includes("comercial"))
+};
 
         if (planes[name]) {
           const infoHTML = planes[name]
             .map(
               ({ item, descripcion }) => `
             <div class="flex gap-1 items-center w-fit mr-auto text-xs font-semibold text-slate-700">
-                <i class="icon text-purple-900" data-icon="check"></i>
+                <i class="icon text-orange-600" data-icon="check"></i>
                 <span>${item}</span>
                 ${descripcion ? '<i class="icon text-slate-600" data-icon="info"></i>' : ""}
             </div>
