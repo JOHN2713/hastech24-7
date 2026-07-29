@@ -90,9 +90,23 @@
 
     <!-- Header -->
     <header>
-      <nav class="flex gap-2 bg-[#010737] py-4 px-10 text-white">
-        <a href="#">
-          <img src="" alt="Logo" />
+      <nav class="flex gap-2 bg-[#010737] py-4 px-10 text-white text-xs">
+        <a class="flex gap-2" href="#inicio" aria-label="HASTECH 24/7 - Inicio">
+          <img
+            class="h-10 w-10"
+            src="https://tool.perseo.ec/wp-content/uploads/2026/07/HASTECH-ICO-blanco.webp"
+            alt="HASTECH Logo"
+            class="hs-logo-mark"
+          />
+
+          <span class="font-bold text-2xl my-auto"> HASTECH </span>
+          <span class="text-sm font-semibold h-full my-auto">
+            <span
+              class="border rounded-full my-auto px-2 py-1 border-dashed h-min w-5"
+              >↗</span
+            >
+            <span class="my-auto">24/7</span>
+          </span>
         </a>
         <a href="#">Inicio</a>
         <a href="#">Planes WEB</a>
@@ -160,28 +174,23 @@
           id="nav-options-1"
           class="bg-blue-700 text-white py-2 px-4 flex m-auto rounded-full"
         >
-          <i class="icon mr-1" data-icon="arrowRight"></i
-          ><span>Soy Empresa</span>
+          <i class="icon mr-1" data-icon="case"></i><span>Soy Empresa</span>
         </button>
         <button id="nav-options-2" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="arrowRight"></i
-          ><span>Soy Contador</span>
+          <i class="icon mr-1" data-icon="user"></i><span>Soy Contador</span>
         </button>
         <button id="nav-options-3" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="arrowRight"></i
+          <i class="icon mr-1" data-icon="calculator"></i
           ><span>Contafácil</span>
         </button>
         <button id="nav-options-4" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="arrowRight"></i
-          ><span>Comparación</span>
+          <i class="icon mr-1" data-icon="chart"></i><span>Comparación</span>
         </button>
         <button id="nav-options-5" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="arrowRight"></i
-          ><span>Beneficios</span>
+          <i class="icon mr-1" data-icon="shield"></i><span>Beneficios</span>
         </button>
         <button id="nav-options-6" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="arrowRight"></i
-          ><span>Adicionales</span>
+          <i class="icon mr-1" data-icon="cube"></i><span>Adicionales</span>
         </button>
       </nav>
       <nav
@@ -201,10 +210,10 @@
 
     <!-- Tarjetas -->
     <section>
-      <div class="flex gap-3 w-fit mx-auto mt-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-fit mx-auto mt-5">
         <div class="bg-transparent p-2">
           <div
-            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2"
+            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
           >
             <div
               class="mx-auto w-10 h-10 p-2 bg-purple-200 rounded-full text-purple-700"
@@ -218,7 +227,7 @@
               >15 días gratis!</span
             >
             <button
-              class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold  mx-auto"
+              class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
             >
               PROBAR AHORA
             </button>
@@ -229,7 +238,7 @@
 
         <div class="bg-transparent p-2">
           <div
-            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2"
+            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
           >
             <div
               class="mx-auto w-10 h-10 p-2 bg-blue-200 rounded-full text-blue-900"
@@ -237,26 +246,26 @@
               <i class="icon mr-1" data-icon="doc"></i>
             </div>
             <span class="font-semibold text-lg mx-auto text-slate-900"
-                >Facturación</span
-              >
-              <span class="font-bold text-3xl text-black mx-auto">$17.99</span>
-              <span class="text-slate-500 font-semibold text-xs mx-auto"
-                >Más Iva / Mensual</span
-              >
-              <button
-                class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
-              >
-                <i class="icon" data-icon="cart"></i>
-                <span class="text-md">Agregar al carrito</span>
-              </button>
+              >Facturación</span
+            >
+            <span class="font-bold text-3xl text-black mx-auto">$17.99</span>
+            <span class="text-slate-500 font-semibold text-xs mx-auto"
+              >Más Iva / Mensual</span
+            >
+            <button
+              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
+            >
+              <i class="icon" data-icon="cart"></i>
+              <span class="text-md">Agregar al carrito</span>
+            </button>
 
-              <info class="info" data-info="facturacion"> hiii</info>
+            <info class="info" data-info="facturacion"> hiii</info>
           </div>
         </div>
 
         <div class="bg-transparent p-2">
           <div
-            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2"
+            class="bg-white p-3 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
           >
             <div
               class="mx-auto w-10 h-10 p-2 bg-blue-200 rounded-full text-blue-900"
@@ -264,20 +273,20 @@
               <i class="icon mr-1" data-icon="doc"></i>
             </div>
             <span class="font-semibold text-lg mx-auto text-slate-900"
-                >Facturación</span
-              >
-              <span class="font-bold text-3xl text-black mx-auto">$29.99</span>
-              <span class="text-slate-500 font-semibold text-xs mx-auto"
-                >Más Iva / Mensual</span
-              >
-              <button
-                class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
-              >
-                <i class="icon" data-icon="cart"></i>
-                <span class="text-md">Agregar al carrito</span>
-              </button>
+              >Facturación</span
+            >
+            <span class="font-bold text-3xl text-black mx-auto">$29.99</span>
+            <span class="text-slate-500 font-semibold text-xs mx-auto"
+              >Más Iva / Mensual</span
+            >
+            <button
+              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
+            >
+              <i class="icon" data-icon="cart"></i>
+              <span class="text-md">Agregar al carrito</span>
+            </button>
 
-              <info class="info" data-info="facturacion"> hiii</info>
+            <info class="info" data-info="facturacion"> hiii</info>
           </div>
         </div>
 
@@ -297,7 +306,7 @@
                 >Más Iva / Mensual</span
               >
               <button
-                class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1  mx-auto"
+                class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto"
               >
                 <i class="icon" data-icon="cart"></i>
                 <span class="text-md">Agregar al carrito</span>
@@ -324,7 +333,7 @@
         class="bg-white rounded-xl py-4 px-10 w-fit flex mx-auto shadow-md shadow-indigo-100 mt-5 text-indigo-900 flex gap-10"
       >
         <div class="flex gap-2">
-          <i class="icon" data-icon="arrowRight"></i>
+          <i class="icon text-4xl" data-icon="shield"></i>
           <div class="flex flex-col">
             <span class="font-bold text-md">100% Seguro</span>
             <span class="text-slate-700 font-semibold text-sm"
@@ -334,7 +343,7 @@
         </div>
         <div class="w-px h-15 bg-gray-300"></div>
         <div class="flex gap-2">
-          <i class="icon" data-icon="arrowRight"></i>
+          <i class="icon text-4xl" data-icon="cloud"></i>
           <div class="flex flex-col">
             <span class="font-bold text-md">En la Nube</span>
             <span class="text-slate-700 font-semibold text-sm"
@@ -344,7 +353,7 @@
         </div>
         <div class="w-px h-15 bg-gray-300"></div>
         <div class="flex gap-2">
-          <i class="icon" data-icon="arrowRight"></i>
+          <i class="icon text-4xl" data-icon="headset"></i>
           <div class="flex flex-col">
             <span class="font-bold text-md">Soporte 24/7</span>
             <span class="text-slate-700 font-semibold text-sm"
@@ -354,7 +363,7 @@
         </div>
         <div class="w-px h-15 bg-gray-300"></div>
         <div class="flex gap-2">
-          <i class="icon" data-icon="arrowRight"></i>
+          <i class="icon text-4xl" data-icon="rocket"></i>
           <div class="flex flex-col">
             <span class="font-bold text-md">Siempre Actualizado</span>
             <span class="text-slate-700 font-semibold text-sm"
@@ -374,6 +383,15 @@
         doc: `<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><title xmlns="">document-text</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9"/></svg>`,
         check: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">check-16-solid</title><path fill="currentColor" fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353l4.493-6.74a.75.75 0 0 1 1.04-.207" clip-rule="evenodd"/></svg>`,
         info: `<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><title xmlns="">question-mark-circle</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.172-1.025 3.071-1.025 4.243 0c1.171 1.025 1.171 2.687 0 3.712q-.308.268-.67.442c-.746.361-1.452.999-1.452 1.827v.75M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9 5.25h.008v.008H12z"/></svg>`,
+        case: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">briefcase</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18c-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48 48 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A24 24 0 0 1 12 15.75a24 24 0 0 1-7.577-1.22a2 2 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48 48 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a49 49 0 0 0-7.5 0M12 12.75h.008v.008H12z"/></svg>`,
+        user: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">user</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 6a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.9 17.9 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632"/></svg>`,
+        calculator: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">calculator</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25zm0 2.25h.008v.008H8.25zm0 2.25h.008v.008H8.25zm0 2.25h.008v.008H8.25zm2.498-6.75h.007v.008h-.007zm0 2.25h.007v.008h-.007zm0 2.25h.007v.008h-.007zm0 2.25h.007v.008h-.007zm2.504-6.75h.008v.008h-.008zm0 2.25h.008v.008h-.008zm0 2.25h.008v.008h-.008zm0 2.25h.008v.008h-.008zm2.498-6.75h.008v.008h-.008zm0 2.25h.008v.008h-.008zM8.25 6h7.5v2.25h-7.5zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A49 49 0 0 0 12 2.25"/></svg>`,
+        chart: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">chart-bar-square</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25"/></svg>`,
+        shield: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">shield-check</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15L15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6A12 12 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623c5.176-1.332 9-6.03 9-11.622c0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285"/></svg>`,
+        cube: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">cube</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>`,
+        cloud: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">cloud-arrow-down</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 0 1-1.41-8.775a5.25 5.25 0 0 1 10.233-2.33a3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5z"/></svg>`,
+        rocket: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">rocket-launch</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.59 14.37q.159.666.16 1.38a6 6 0 0 1-6 6v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.9 14.9 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.9 14.9 0 0 0-2.58 5.84m2.699 2.7q-.155.032-.311.06a15 15 0 0 1-2.448-2.448l.06-.312m-2.24 2.39a4.49 4.49 0 0 0-1.757 4.306q.341.054.696.054a4.5 4.5 0 0 0 3.61-1.812M16.5 9a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0"/></svg>`,
+        headset: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">headset</title><path fill="currentColor" d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/></svg>`,
       };
 
       document.querySelectorAll(".info").forEach((info) => {
@@ -381,12 +399,12 @@
         const items = [
           {
             item: "Facturación electrónica ilimitada",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "facturacion", "servicios", "comercial"],
           },
           {
             item: "Consulta automática solo con CI/RUC",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "facturacion", "servicios", "comercial"],
           },
           {
@@ -396,72 +414,72 @@
           },
           {
             item: "Usuarios ilimitados",
-            descripcion: "",
+            descripcion: "1",
             planes: ["facturacion", "servicios", "comercial"],
           },
           {
             item: "Establecimientos / bodegas ilimitadas",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "facturacion", "comercial"],
           },
           {
             item: "App PerseoMóvil",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "facturacion", "servicios", "comercial"],
           },
           {
             item: "E-commerce gratis (enlazada al sistema)",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba"],
           },
           {
             item: "E-commerce (enlazada al sistema)",
-            descripcion: "",
+            descripcion: "1",
             planes: ["comercial"],
           },
           {
             item: "Productos, Compras e Inventarios",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "facturacion", "comercial"],
           },
           {
             item: "Contabilidad Integrada",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "servicios", "comercial"],
           },
           {
             item: "Integración contable",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "comercial"],
           },
           {
             item: "Integración contable para tu declaración y balances",
-            descripcion: "",
+            descripcion: "1",
             planes: ["servicios"],
           },
           {
             item: "Nómina ilimitada",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "servicios", "comercial"],
           },
           {
             item: "+30 Gráficos Gerenciales",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "facturacion", "servicios", "comercial"],
           },
           {
             item: "API para desarrolladores",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "facturacion", "servicios", "comercial"],
           },
           {
             item: "Producción e Importaciones",
-            descripcion: "",
+            descripcion: "1",
             planes: ["prueba", "comercial"],
           },
           {
             item: "Cuentas por Cobrar y Pagar",
-            descripcion: "",
+            descripcion: "1",
             planes: ["facturacion", "servicios"],
           },
           {
