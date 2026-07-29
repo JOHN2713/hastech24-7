@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#03162f">
+  <title>HASTECH 24/7 | Sistema contable</title>
+
+  <!-- Tipografía solicitada -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --hs-navy-950: #020d20;
+      --hs-navy-900: #03162f;
+      --hs-navy-850: #071d3b;
+      --hs-blue: #0b84e8;
+      --hs-cyan: #25b7ef;
+      --hs-purple: #7d45d7;
+      --hs-magenta: #a820ad;
+      --hs-magenta-2: #c532bd;
+      --hs-white: #ffffff;
+      --hs-muted: #cbd6e8;
+      --hs-border: rgba(255,255,255,.16);
+      --hs-shadow: 0 20px 60px rgba(0, 8, 30, .35);
+      --hs-container: 1640px;
+      --hs-header-height: 92px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background: #fff;
+      color: var(--hs-white);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hs-shell {
+      position: relative;
+      isolation: isolate;
+      background: #fff;
+    }
+
+    .hs-container {
+      width: min(calc(100% - 64px), var(--hs-container));
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+    .hs-hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 760px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 76% 42%, rgba(25, 128, 255, .08), transparent 30%),
+        radial-gradient(circle at 60% 54%, rgba(196, 38, 186, .08), transparent 32%),
+        linear-gradient(105deg, var(--hs-navy-950) 0%, var(--hs-navy-900) 47%, #031b3c 100%);
+    }
+
+    .hs-video-wrap,
+    .hs-video-wrap::before,
+    .hs-video-wrap::after {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hs-video-wrap {
+      z-index: 0;
+      overflow: hidden;
+      background: linear-gradient(120deg, #03162f, #061e42);
+    }
+
+    .hs-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      opacity: 1;
+      transform: translateZ(0);
+      pointer-events: none;
+      background: #03162f;
+    }
+
+    /* Capas sobre el video: mantienen el movimiento visible y protegen la lectura */
+    .hs-video-wrap::before {
+      content: "";
+      z-index: 1;
+      background:
+        linear-gradient(90deg,
+          rgba(2, 13, 32, .90) 0%,
+          rgba(3, 22, 47, .78) 31%,
+          rgba(3, 22, 47, .48) 52%,
+          rgba(3, 22, 47, .18) 76%,
+          rgba(3, 22, 47, .08) 100%);
+      pointer-events: none;
+    }
+
+    .hs-video-wrap::after {
+      content: "";
+      z-index: 2;
+      background:
+        linear-gradient(180deg,
+          rgba(0,0,0,.20) 0%,
+          rgba(0,0,0,.03) 20%,
+          rgba(0,0,0,.03) 70%,
+          rgba(2,13,32,.44) 100%);
+      pointer-events: none;
+    }
+
+    .hs-hero-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: .20;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(55,137,244,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(55,137,244,.08) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(90deg, transparent 0%, transparent 49%, #000 72%, #000 100%);
+    }
+
+    .hs-circuit {
+      position: absolute;
+      right: -45px;
+      top: 90px;
+      width: min(39vw, 720px);
+      height: 430px;
+      z-index: 1;
+      opacity: .52;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent 0 6%, rgba(34,131,255,.82) 6% 6.2%, transparent 6.2% 100%) 0 20% / 100% 1px no-repeat,
+        linear-gradient(90deg, transparent 0 18%, rgba(34,131,255,.7) 18% 18.2%, transparent 18.2% 100%) 0 45% / 100% 1px no-repeat,
+        linear-gradient(90deg, transparent 0 30%, rgba(34,131,255,.62) 30% 30.2%, transparent 30.2% 100%) 0 71% / 100% 1px no-repeat;
+      filter: drop-shadow(0 0 9px rgba(35,133,255,.65));
+    }
+
+    .hs-circuit::before,
+    .hs-circuit::after {
+      content: "";
+      position: absolute;
+      right: 30px;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(37,183,239,.85));
+      transform-origin: right center;
+    }
+
+    .hs-circuit::before {
+      top: 82px;
+      transform: rotate(-42deg);
+    }
+
+    .hs-circuit::after {
+      bottom: 78px;
+      transform: rotate(35deg);
+    }
+
+    /* Curva blanca inferior */
+    .hs-hero::after {
+      content: "";
+      position: absolute;
+      z-index: 4;
+      left: 50%;
+      bottom: -77px;
+      width: 112%;
+      height: 116px;
+      transform: translateX(-50%);
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      background: #fff;
+      pointer-events: none;
+    }
+
+    /* =========================================================
+       HEADER
+       ========================================================= */
+    .hs-header {
+      position: relative;
+      z-index: 10;
+      min-height: var(--hs-header-height);
+      display: flex;
+      align-items: center;
+    }
+
+    .hs-header-inner {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 315px minmax(520px, 1fr) auto;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hs-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      width: max-content;
+      white-space: nowrap;
+    }
+
+    .hs-logo-mark {
+      width: 66px;
+      height: 44px;
+      flex: 0 0 auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px rgba(25,132,232,.35));
+    }
+
+    .hs-logo-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .hs-logo-247 {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      color: var(--hs-blue);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hs-logo-clock {
+      width: 29px;
+      height: 29px;
+      display: inline-grid;
+      place-items: center;
+      border: 1.7px dashed rgba(255,255,255,.85);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .hs-nav {
+      justify-self: center;
+    }
+
+    .hs-nav-list {
+      display: flex;
+      align-items: center;
+      gap: 41px;
+      list-style: none;
+    }
+
+    .hs-nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 34px 0 22px;
+      color: rgba(255,255,255,.94);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+
+    .hs-nav-link:hover {
+      color: #fff;
+    }
+
+    .hs-nav-link.is-active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 13px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--hs-magenta), var(--hs-purple));
+      box-shadow: 0 0 18px rgba(197,50,189,.55);
+    }
+
+    .hs-chevron {
+      width: 9px;
+      height: 9px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+    }
+
+    .hs-header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+    }
+
+    .hs-icon-button {
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(150,103,236,.64);
+      border-radius: 50%;
+      background: rgba(3,22,47,.44);
+      color: #fff;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .hs-icon-button:hover {
+      transform: translateY(-2px);
+      background: rgba(18,51,93,.75);
+      border-color: rgba(42,151,255,.85);
+    }
+
+    .hs-header-button,
+    .hs-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      border: 0;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+
+    .hs-header-button {
+      min-height: 48px;
+      padding: 0 23px;
+      border-radius: 13px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 13px 26px rgba(0,0,0,.18);
+    }
+
+    .hs-header-button:hover,
+    .hs-cta:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.07);
+    }
+
+    .hs-header-button--blue {
+      background: linear-gradient(135deg, #0573d7, #0b8eea);
+    }
+
+    .hs-header-button--magenta {
+      background: linear-gradient(135deg, #8e168f, #bd27af);
+    }
+
+    .hs-mobile-toggle {
+      display: none;
+      width: 45px;
+      height: 45px;
+      border: 1px solid var(--hs-border);
+      border-radius: 12px;
+      background: rgba(4,24,51,.72);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .hs-mobile-toggle span {
+      display: block;
+      width: 21px;
+      height: 2px;
+      margin: 4px auto;
+      border-radius: 99px;
+      background: currentColor;
+      transition: transform .25s ease, opacity .25s ease;
+    }
+
+    /* =========================================================
+       HERO CONTENT
+       ========================================================= */
+    .hs-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 680px;
+      padding: 51px 0 142px;
+    }
+
+    .hs-eyebrow {
+      width: max-content;
+      max-width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 25px;
+      padding: 9px 18px;
+      border: 1px solid rgba(216,50,201,.75);
+      border-radius: 12px;
+      background: rgba(5,25,54,.55);
+      color: #f5f1fb;
+      font-size: 13px;
+      font-weight: 650;
+      box-shadow: inset 0 0 20px rgba(169,32,173,.08);
+      backdrop-filter: blur(9px);
+    }
+
+    .hs-eyebrow-icon {
+      color: var(--hs-magenta-2);
+    }
+
+    .hs-title {
+      max-width: 690px;
+      margin-bottom: 18px;
+      font-size: clamp(49px, 4.1vw, 72px);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      text-wrap: balance;
+    }
+
+    .hs-title-gradient {
+      color: transparent;
+      background: linear-gradient(90deg, #bd39b7 0%, #8c56de 48%, #3a83e9 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: drop-shadow(0 0 15px rgba(139,77,218,.18));
+    }
+
+    .hs-subtitle {
+      max-width: 620px;
+      margin-bottom: 20px;
+      color: rgba(255,255,255,.82);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .hs-benefits {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 25px;
+      list-style: none;
+    }
+
+    .hs-benefit {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,.91);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .hs-check {
+      width: 21px;
+      height: 21px;
+      flex: 0 0 auto;
+      display: inline-grid;
+      place-items: center;
+      border: 1.4px solid var(--hs-blue);
+      border-radius: 50%;
+      color: #5ab7ff;
+      box-shadow: inset 0 0 12px rgba(11,132,232,.10);
+    }
+
+    .hs-check--purple {
+      border-color: var(--hs-purple);
+      color: #b58aff;
+    }
+
+    .hs-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hs-cta {
+      min-height: 54px;
+      padding: 0 31px;
+      border-radius: 13px;
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    .hs-cta--primary {
+      min-width: 301px;
+      background: linear-gradient(135deg, #99199d 0%, #be2bb4 100%);
+      box-shadow: 0 18px 40px rgba(164,31,171,.28);
+    }
+
+    .hs-cta--outline {
+      min-width: 179px;
+      border: 1px solid #0788f2;
+      background: rgba(3,22,47,.45);
+      color: #d9ecff;
+      box-shadow: inset 0 0 18px rgba(11,132,232,.08);
+      backdrop-filter: blur(8px);
+    }
+
+    /* =========================================================
+       BENEFIT CARDS
+       ========================================================= */
+    .hs-solutions {
+      position: relative;
+      z-index: 6;
+      padding: 3px 0 70px;
+      color: #06133e;
+      background: #fff;
+    }
+
+    .hs-solutions-title {
+      margin-bottom: 23px;
+      text-align: center;
+      font-size: clamp(22px, 2vw, 29px);
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+
+    .hs-solution-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .hs-solution-card {
+      min-height: 105px;
+      display: flex;
+      align-items: center;
+      gap: 17px;
+      padding: 18px 22px;
+      border: 1px solid #dce1eb;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #fdfdff);
+      box-shadow: 0 12px 24px rgba(9,22,63,.045);
+    }
+
+    .hs-solution-icon {
+      width: 64px;
+      height: 64px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #fff;
+      box-shadow: 0 11px 22px rgba(20,45,120,.19);
+    }
+
+    .hs-solution-icon--magenta {
+      background: linear-gradient(145deg, #bd2aaf, #7e149c);
+    }
+
+    .hs-solution-icon--blue {
+      background: linear-gradient(145deg, #3f58db, #1733a8);
+    }
+
+    .hs-solution-icon--cyan {
+      background: linear-gradient(145deg, #2dc7da, #1597b8);
+    }
+
+    .hs-solution-icon--purple {
+      background: linear-gradient(145deg, #7565d7, #4a3cae);
+    }
+
+    .hs-solution-card h3 {
+      color: #091347;
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+    @media (max-width: 1480px) {
+      .hs-header-inner {
+        grid-template-columns: 275px minmax(470px, 1fr) auto;
+      }
+
+      .hs-nav-list {
+        gap: 27px;
+      }
+
+      .hs-header-actions {
+        gap: 10px;
+      }
+
+      .hs-header-button {
+        padding-inline: 17px;
+      }
+
+      .hs-title {
+        font-size: clamp(48px, 4.3vw, 64px);
+      }
+    }
+
+    @media (max-width: 1220px) {
+      .hs-container {
+        width: min(calc(100% - 40px), var(--hs-container));
+      }
+
+      .hs-header-inner {
+        grid-template-columns: 250px 1fr auto;
+      }
+
+      .hs-nav-list {
+        gap: 20px;
+      }
+
+      .hs-header-actions .hs-header-button--magenta,
+      .hs-header-actions .hs-icon-button:nth-of-type(2) {
+        display: none;
+      }
+
+      .hs-solution-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hs-hero {
+        min-height: 760px;
+      }
+
+      .hs-header {
+        min-height: 78px;
+      }
+
+      .hs-header-inner {
+        grid-template-columns: 1fr auto;
+      }
+
+      .hs-nav,
+      .hs-header-actions {
+        display: none;
+      }
+
+      .hs-mobile-toggle {
+        display: block;
+      }
+
+      .hs-nav.is-open {
+        position: absolute;
+        top: 73px;
+        left: 20px;
+        right: 20px;
+        display: block;
+        padding: 10px 20px 20px;
+        border: 1px solid var(--hs-border);
+        border-radius: 18px;
+        background: rgba(3,17,38,.97);
+        box-shadow: var(--hs-shadow);
+        backdrop-filter: blur(15px);
+      }
+
+      .hs-nav.is-open .hs-nav-list {
+        display: grid;
+        gap: 0;
+      }
+
+      .hs-nav.is-open .hs-nav-link {
+        width: 100%;
+        justify-content: space-between;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      .hs-nav.is-open .hs-nav-link.is-active::after {
+        display: none;
+      }
+
+      .hs-hero-content {
+        max-width: 630px;
+        padding-top: 64px;
+      }
+
+      .hs-video {
+        object-position: 62% center;
+      }
+
+      .hs-video-wrap::before {
+        background: linear-gradient(90deg,
+          rgba(2,13,32,.98) 0%,
+          rgba(3,22,47,.93) 43%,
+          rgba(3,22,47,.58) 68%,
+          rgba(3,22,47,.16) 100%);
+      }
+    }
+
+    @media (max-width: 767px) {
+      :root {
+        --hs-header-height: 74px;
+      }
+
+      .hs-container {
+        width: min(calc(100% - 32px), var(--hs-container));
+      }
+
+      .hs-hero {
+        min-height: 930px;
+      }
+
+      .hs-logo-mark {
+        width: 52px;
+        height: 36px;
+      }
+
+      .hs-logo-text {
+        font-size: 20px;
+      }
+
+      .hs-logo-247 {
+        font-size: 13px;
+      }
+
+      .hs-logo-clock {
+        width: 23px;
+        height: 23px;
+        font-size: 9px;
+      }
+
+      .hs-video {
+        object-position: center top;
+      }
+
+      .hs-video-wrap::before {
+        background:
+          linear-gradient(180deg,
+            rgba(2,13,32,.12) 0%,
+            rgba(2,13,32,.20) 30%,
+            rgba(2,13,32,.65) 49%,
+            rgba(2,13,32,.93) 69%,
+            rgba(2,13,32,1) 100%);
+      }
+
+      .hs-video-wrap::after {
+        background:
+          linear-gradient(180deg,
+            rgba(0,0,0,.10) 0%,
+            transparent 28%,
+            rgba(2,13,32,.34) 57%,
+            rgba(2,13,32,.76) 100%);
+      }
+
+      .hs-hero-grid,
+      .hs-circuit {
+        display: none;
+      }
+
+      .hs-hero-content {
+        max-width: none;
+        padding: 400px 0 130px;
+      }
+
+      .hs-eyebrow {
+        margin-bottom: 19px;
+        padding: 8px 13px;
+        font-size: 11px;
+      }
+
+      .hs-title {
+        max-width: 100%;
+        margin-bottom: 15px;
+        font-size: clamp(36px, 10.4vw, 48px);
+        line-height: 1.04;
+      }
+
+      .hs-subtitle {
+        margin-bottom: 18px;
+        font-size: 14px;
+      }
+
+      .hs-benefits {
+        gap: 9px;
+        margin-bottom: 23px;
+      }
+
+      .hs-benefit {
+        align-items: flex-start;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .hs-check {
+        width: 19px;
+        height: 19px;
+        margin-top: 1px;
+      }
+
+      .hs-cta-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .hs-cta,
+      .hs-cta--primary,
+      .hs-cta--outline {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .hs-hero::after {
+        bottom: -69px;
+        width: 140%;
+        height: 102px;
+      }
+
+      .hs-solutions {
+        padding-top: 4px;
+      }
+
+      .hs-solutions-title {
+        max-width: 330px;
+        margin-inline: auto;
+        margin-bottom: 19px;
+      }
+
+      .hs-solution-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hs-solution-card {
+        min-height: 90px;
+      }
+
+    }
+
+    @media (max-width: 420px) {
+      .hs-hero {
+        min-height: 900px;
+      }
+
+      .hs-hero-content {
+        padding-top: 360px;
+      }
+
+      .hs-title {
+        font-size: 35px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+
+      .hs-video {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="hs-shell">
+    <section class="hs-hero" id="inicio">
+      <!-- Video decorativo de fondo. El archivo cambia automáticamente según el ancho de pantalla. -->
+      <div class="hs-video-wrap" aria-hidden="true">
+        <video
+          class="hs-video"
+          id="hsHeroVideo"
+          muted
+          autoplay
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+          disablepictureinpicture>
+        </video>
+      </div>
+
+      <div class="hs-hero-grid"></div>
+      <div class="hs-circuit"></div>
+
+      <header class="hs-header">
+        <div class="hs-container hs-header-inner">
+          <a class="hs-logo" href="#inicio" aria-label="HASTECH 24/7 - Inicio">
+            <img src="https://tool.perseo.ec/wp-content/uploads/2026/07/HASTECH-ICO-blanco.webp" alt="HASTECH Logo" class="hs-logo-mark">
+
+            <span class="hs-logo-text">
+              HASTECH
+              <span class="hs-logo-247">
+                <span class="hs-logo-clock">↗</span>24/7
+              </span>
+            </span>
+          </a>
+
+          <nav class="hs-nav" id="hsNav" aria-label="Navegación principal">
+            <ul class="hs-nav-list">
+              <li><a class="hs-nav-link is-active" href="#inicio">Inicio</a></li>
+              <li>
+                <a class="hs-nav-link" href="#soluciones">
+                  Soluciones <span class="hs-chevron" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li>
+                <a class="hs-nav-link" href="#planes">
+                  Planes <span class="hs-chevron" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li><a class="hs-nav-link" href="#beneficios">Beneficios</a></li>
+              <li>
+                <a class="hs-nav-link" href="#recursos">
+                  Recursos <span class="hs-chevron" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li><a class="hs-nav-link" href="#contacto">Contacto</a></li>
+            </ul>
+          </nav>
+
+          <div class="hs-header-actions">
+            <a class="hs-icon-button" href="#contacto" aria-label="Contactar por WhatsApp">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L4 20l.9-4A8.4 8.4 0 1 1 20.5 11.7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M8.1 7.7c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.8 1.8c.1.3.1.5-.1.7l-.6.7c-.2.2-.1.4 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.2.6 0l.8-1c.2-.2.4-.2.7-.1l1.8.8c.3.1.4.3.4.5 0 .4-.2 1.3-.9 1.9-.7.6-1.6.8-2.5.6-1.1-.3-2.6-1-4.1-2.3-1.2-1.1-2-2.4-2.4-3.4-.3-.8-.4-1.6 0-2.3l.7-.6Z" fill="currentColor"/>
+              </svg>
+            </a>
+
+            <a class="hs-icon-button" href="#planes" aria-label="Ver carrito">
+              <svg width="25" height="25" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L20 8H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9.5" cy="19" r="1.3" fill="currentColor"/>
+                <circle cx="17.2" cy="19" r="1.3" fill="currentColor"/>
+              </svg>
+            </a>
+<a class="hs-header-button hs-header-button--magenta" href="#ingreso">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 5h8v14h-8M14 12H3m0 0 4-4m-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Ingresar al sistema
+            </a>
+          </div>
+
+          <button class="hs-mobile-toggle" id="hsMobileToggle" type="button" aria-label="Abrir menú" aria-controls="hsNav" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </header>
+
+      <div class="hs-container">
+        <div class="hs-hero-content">
+          <div class="hs-eyebrow">
+            <svg class="hs-eyebrow-icon" width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="16" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3.5 19c0-4 1.7-6 4.5-6s4.5 2 4.5 6M11.5 19c0-4 1.7-6 4.5-6s4.5 2 4.5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Distribuidores oficiales de Perseo
+          </div>
+
+          <h1 class="hs-title">
+            La contabilidad que<br>
+            hace <span class="hs-title-gradient">crecer</span> tu negocio
+          </h1>
+
+          <p class="hs-subtitle">
+            Controla, automatiza y visualiza tus finanzas en un solo sistema
+            contable inteligente, seguro y 100% en la nube.
+          </p>
+
+          <ul class="hs-benefits">
+            <li class="hs-benefit">
+              <span class="hs-check">✓</span>
+              Sistema contable líder en Ecuador
+            </li>
+            <li class="hs-benefit">
+              <span class="hs-check hs-check--purple">✓</span>
+              Usado por empresas en todo el país
+            </li>
+            <li class="hs-benefit">
+              <span class="hs-check hs-check--purple">✓</span>
+              Cumple con la normativa del SRI
+            </li>
+            <li class="hs-benefit">
+              <span class="hs-check hs-check--purple">✓</span>
+              Implementación inmediata
+            </li>
+            <li class="hs-benefit">
+              <span class="hs-check hs-check--purple">✓</span>
+              Soporte técnico especializado 24/7
+            </li>
+            <li class="hs-benefit">
+              <span class="hs-check">✓</span>
+              Sistema contable con Inteligencia Artificial
+            </li>
+          </ul>
+
+          <div class="hs-cta-row">
+            <a class="hs-cta hs-cta--primary" href="#prueba-gratis">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M14 4c3.2.4 5.6 2.8 6 6l-4 4-6-6 4-4Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="m10 8-4 1-2 2 5 1m7 2-1 4-2 2-1-5M8.5 15.5l-3 3M6 14l-2 2m6 1-2 3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              Prueba gratis por 15 días
+            </a>
+
+            <a class="hs-cta hs-cta--outline" href="#planes">
+              Ver planes
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hs-solutions" id="soluciones">
+      <div class="hs-container">
+        <h2 class="hs-solutions-title">Todo lo que tu negocio necesita en un solo sistema</h2>
+
+        <div class="hs-solution-grid">
+          <article class="hs-solution-card">
+            <div class="hs-solution-icon hs-solution-icon--magenta">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 3h8l4 4v14H7V3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M15 3v5h4M10 12h6M10 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Facturación<br>electrónica</h3>
+          </article>
+
+          <article class="hs-solution-card">
+            <div class="hs-solution-icon hs-solution-icon--blue">
+              <svg width="35" height="35" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="4" y="13" width="3" height="7" rx="1" stroke="currentColor" stroke-width="1.7"/>
+                <rect x="10.5" y="8" width="3" height="12" rx="1" stroke="currentColor" stroke-width="1.7"/>
+                <rect x="17" y="4" width="3" height="16" rx="1" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <h3>Contabilidad<br>en tiempo real</h3>
+          </article>
+
+          <article class="hs-solution-card">
+            <div class="hs-solution-icon hs-solution-icon--cyan">
+              <svg width="35" height="35" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="m4.4 7.7 7.6 4.2 7.6-4.2M12 12v9" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <h3>Inventario<br>y ventas</h3>
+          </article>
+
+          <article class="hs-solution-card">
+            <div class="hs-solution-icon hs-solution-icon--purple">
+              <svg width="35" height="35" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 14v-2a8 8 0 0 1 16 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M4 13h3v7H5.5A1.5 1.5 0 0 1 4 18.5V13Zm16 0h-3v7h1.5a1.5 1.5 0 0 0 1.5-1.5V13Z" stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <h3>Soporte 24/7<br>especializado</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      "use strict";
+
+      /*
+       * Video de fondo responsive:
+       * - Escritorio/tablet: hastech.mp4
+       * - Móvil (hasta 767 px): hastechmobile.mp4
+       */
+      const desktopVideo = "https://tool.perseo.ec/wp-content/uploads/2026/07/hastech.mp4";
+      const mobileVideo = "https://tool.perseo.ec/wp-content/uploads/2026/07/hastechmobile.mp4";
+      const mobileMedia = window.matchMedia("(max-width: 767px)");
+
+      const heroVideo = document.getElementById("hsHeroVideo");
+      const mobileToggle = document.getElementById("hsMobileToggle");
+      const nav = document.getElementById("hsNav");
+
+      let activeVideo = "";
+
+      function selectedVideo() {
+        return mobileMedia.matches ? mobileVideo : desktopVideo;
+      }
+
+      function playHeroVideo() {
+        const promise = heroVideo.play();
+
+        if (promise && typeof promise.catch === "function") {
+          promise.catch(() => {
+            /*
+             * Algunos navegadores integrados pueden retrasar el autoplay.
+             * Al estar muted + playsinline, normalmente se inicia sin interacción.
+             */
+          });
+        }
+      }
+
+      function loadResponsiveVideo() {
+        const nextVideo = selectedVideo();
+
+        if (activeVideo === nextVideo && heroVideo.currentSrc) {
+          playHeroVideo();
+          return;
+        }
+
+        activeVideo = nextVideo;
+        heroVideo.pause();
+        heroVideo.src = nextVideo;
+        heroVideo.muted = true;
+        heroVideo.defaultMuted = true;
+        heroVideo.volume = 0;
+        heroVideo.autoplay = true;
+        heroVideo.loop = true;
+        heroVideo.playsInline = true;
+        heroVideo.setAttribute("playsinline", "");
+        heroVideo.setAttribute("webkit-playsinline", "");
+        heroVideo.load();
+
+        heroVideo.addEventListener("canplay", playHeroVideo, { once: true });
+        playHeroVideo();
+      }
+
+      function toggleNavigation() {
+        const isOpen = nav.classList.toggle("is-open");
+        mobileToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+      }
+
+      mobileToggle.addEventListener("click", toggleNavigation);
+
+      nav.addEventListener("click", event => {
+        if (event.target.closest("a") && nav.classList.contains("is-open")) {
+          nav.classList.remove("is-open");
+          mobileToggle.setAttribute("aria-expanded", "false");
+          mobileToggle.setAttribute("aria-label", "Abrir menú");
+        }
+      });
+
+      if (typeof mobileMedia.addEventListener === "function") {
+        mobileMedia.addEventListener("change", loadResponsiveVideo);
+      } else {
+        mobileMedia.addListener(loadResponsiveVideo);
+      }
+
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) playHeroVideo();
+      });
+
+      window.addEventListener("pageshow", playHeroVideo);
+      window.addEventListener("load", playHeroVideo);
+
+      loadResponsiveVideo();
+    })();
+  </script>
+</body>
+</html>
