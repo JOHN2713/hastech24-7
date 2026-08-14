@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Facturito - Facturaci&oacute;n Electr&oacute;nica Ecuador | HASTECH 24/7</title>
   <style>
 /* HASTECH-REPLICATED-STYLES */
     :root {
@@ -2671,85 +2671,269 @@
         max-width: none;
       }
     }
-  </style>
+  
+    .facturito-page {
+      background: linear-gradient(180deg, #ede9fe 0%, #f5f3ff 40%, #ffffff 100%);
+      min-height: 100vh;
+    }
+
+    .facturito-hero {
+      padding: 64px 20px 120px;
+      text-align: center;
+    }
+
+    .facturito-hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .facturito-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #7c3aed;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, .12);
+      margin-bottom: 28px;
+    }
+
+    .facturito-hero-title {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      letter-spacing: -.03em;
+    }
+
+    .facturito-hero-title span {
+      color: #7c3aed;
+    }
+
+    .facturito-hero-subtitle {
+      font-size: 17px;
+      color: #64748b;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .facturito-plans {
+      padding: 0 20px 80px;
+      margin-top: -60px;
+    }
+
+    .facturito-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .facturito-card {
+      position: relative;
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px 28px;
+      box-shadow: 0 10px 40px rgba(15, 23, 42, .08);
+      border: 1px solid rgba(226, 232, 240, .8);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .facturito-card--popular {
+      border: 2px solid #7c3aed;
+      box-shadow: 0 16px 50px rgba(124, 58, 237, .18);
+    }
+
+    .facturito-popular-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #7c3aed;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 999px;
+      letter-spacing: .04em;
+    }
+
+    .facturito-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .facturito-card-desc {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .facturito-price {
+      margin-bottom: 24px;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .facturito-price-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .facturito-price-old {
+      font-size: 15px;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    .facturito-price-discount {
+      font-size: 11px;
+      font-weight: 700;
+      color: #b45309;
+      background: #fef3c7;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .facturito-price-main {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .facturito-price-currency {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .facturito-price-value {
+      font-size: 48px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1;
+    }
+
+    .facturito-price-value--free {
+      font-size: 42px;
+    }
+
+    .facturito-price-period {
+      font-size: 16px;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    .facturito-price-iva {
+      font-size: 12px;
+      color: #7c3aed;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    .facturito-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 20px;
+      background: #0f172a;
+      color: #fff;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      transition: transform .2s ease, filter .2s ease;
+    }
+
+    .facturito-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .facturito-button--popular {
+      background: #7c3aed;
+    }
+
+    .facturito-button svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .facturito-features {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .facturito-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    .facturito-check {
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: #16a34a;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .facturito-card--popular .facturito-check {
+      background: #ede9fe;
+      color: #7c3aed;
+    }
+
+    @media (max-width: 1024px) {
+      .facturito-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 720px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .facturito-hero {
+        padding: 44px 20px 100px;
+      }
+
+      .facturito-grid {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+      }
+    }
+</style>
 </head>
-  <body class="bg-[#ecf1fd] hs-page">
-    <!-- Estilo -->
-    <style>
-      html {
-        font-size: 14px;
-        font-family: "Inter", sans-serif;
-      }
-
-      @media (min-width: 1440px) {
-        html {
-          font-size: 18px;
-        }
-      }
-
-      a,
-      i {
-        margin: auto;
-      }
-      button {
-        font-weight: 600;
-      }
-
-      .card {
-        position: relative;
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 24px;
-      }
-
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        padding: 3px;
-        border-radius: inherit;
-
-        background: conic-gradient(
-          from var(--angle),
-          #1d6cff,
-          #8338ec,
-          #8338ec,
-          #ff00b3,
-          #ff00b3,
-          #ff6ff8,
-          #ff6ff8,
-          #1d6cff
-        );
-
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-
-        animation: rotateBorder 4s linear infinite;
-      }
-
-      @property --angle {
-        syntax: "<angle>";
-        initial-value: 0deg;
-        inherits: false;
-      }
-
-      @keyframes rotateBorder {
-        to {
-          --angle: 360deg;
-        }
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-
-    <!-- Header -->
+<body class="hs-page facturito-page">
+<!-- Header -->
     <header class="hs-header">
         <div class="hs-container hs-header-inner">
           <a class="hs-logo" href="index.html" aria-label="HASTECH 24/7 - Inicio">
@@ -2766,9 +2950,9 @@
           <nav class="hs-nav" id="hsNav" aria-label="Navegación principal">
             <ul class="hs-nav-list">
               <li><a class="hs-nav-link" href="index.html">Inicio</a></li>
-              <li><a class="hs-nav-link is-active" href="6.html">Plan Web</a></li>
+              <li><a class="hs-nav-link" href="6.html">Plan Web</a></li>
               <li><a class="hs-nav-link" href="8.html">Planes PC</a></li>
-              <li><a class="hs-nav-link" href="9.html">Facturito</a></li>
+              <li><a class="hs-nav-link is-active" href="9.html">Facturito</a></li>
               <li><a class="hs-nav-link" href="#contacto">Contacto</a></li>
             </ul>
           </nav>
@@ -2799,203 +2983,93 @@
         </div>
       </header>
 
-    <div class="hs-page-spacer"></div>
+<div class="hs-page-spacer"></div>
 
-    <!-- Título -->
-    <section class="mt-5">
-      <div class="text-xl flex mx-auto w-fit gap-1">
-        <span class="text-slate-800 font-semibold">HASTECH</span>
-        <h1
-          class="font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent w-fit"
-        >
-          24/7
-        </h1>
+<section class="facturito-hero">
+  <div class="facturito-hero-inner">
+    <span class="facturito-hero-badge">&#10037; Sin costos ocultos &middot; Cancela cuando quieras</span>
+    <h1 class="facturito-hero-title">Facturaci&oacute;n Electr&oacute;nica en Ecuador para tu <span>negocio</span></h1>
+    <p class="facturito-hero-subtitle">Emite comprobantes electr&oacute;nicos autorizados por el SRI en segundos. Cancela cuando quieras. Todos los planes son anuales.</p>
+  </div>
+</section>
+
+<section class="facturito-plans">
+  <div class="facturito-grid">
+    <div class="facturito-card">
+      <h3 class="facturito-card-title">Facturito Gratis</h3>
+      <p class="facturito-card-desc">Para empezar sin riesgo</p>
+      <div class="facturito-price">
+        <span class="facturito-price-value facturito-price-value--free">Gratis</span>
       </div>
-      <div class="text-6xl flex mx-auto w-fit gap-3">
-        <span class="text-slate-800 font-bold">PLANES</span>
-        <h1
-          class="font-bold bg-gradient-to-r from-blue-700 via-purple-700 to-fuchsia-500 bg-clip-text text-transparent w-fit"
-        >
-          PERSEO WEB
-        </h1>
-      </div>
-      <div class="mx-auto w-fit font-semibold text-lg text-slate-500">
-        El plan ideal para cada etapa de tu negocio
-      </div>
+      <a href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20Facturito%20Gratis." target="_blank" rel="noopener noreferrer" class="facturito-button">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
+        Contactar con un asesor
+      </a>
+      <ul class="facturito-features">
+        <li><span class="facturito-check">&#10003;</span> Hasta 30 facturas al a&ntilde;o</li>
+        <li><span class="facturito-check">&#10003;</span> Ventas</li>
+        <li><span class="facturito-check">&#10003;</span> Compras</li>
+        <li><span class="facturito-check">&#10003;</span> Administraci&oacute;n</li>
+      </ul>
+    </div>
 
-      <!-- Nav1 -->
-    </section>
-    <section class="mt-5">
-      <nav
-        class="w-fit mx-auto bg-white p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100"
-      >
-        <button
-          id="nav-options-1"
-          class="bg-blue-700 text-white py-2 px-4 flex m-auto rounded-full"
-        >
-          <i class="icon mr-1" data-icon="case"></i><span>Soy Empresa</span>
-        </button>
-        <button id="nav-options-2" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="user"></i><span>Soy Contador</span>
-        </button>
-        <button id="nav-options-3" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="calculator"></i
-          ><span>Contafácil</span>
-        </button>
-        <button id="nav-options-4" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="chart"></i><span>Comparación</span>
-        </button>
-        <button id="nav-options-5" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="shield"></i><span>Beneficios</span>
-        </button>
-        <button id="nav-options-6" class="py-2 px-4 flex m-auto">
-          <i class="icon mr-1" data-icon="cube"></i><span>Adicionales</span>
-        </button>
-      </nav>
-      <nav
-        class="w-fit mx-auto bg-white p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100 mt-5"
-      >
-        <button
-          id="nav-plan-1"
-          class="bg-blue-700 text-white rounded-full py-2 px-4 flex m-auto"
-        >
-          <span>Mensual</span>
-        </button>
-        <button id="nav-plan-2" class="py-2 px-4 flex m-auto">
-          <span>Anual</span>
-        </button>
-      </nav>
-    </section>
-
-    <!-- Tarjetas -->
-    <section>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-fit mx-auto mt-5">
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-purple-700 bg-gradient-to-b from-purple-100 to-purple-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Prueba</span
-            >
-            <span class="font-bold text-xl text-purple-700 mx-auto"
-              >15 días gratis!</span
-            >
-            <button
-              class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
-            >
-              PROBAR AHORA
-            </button>
-            <hr class="border-gray-300 my-2" />
-            <info class="info" data-info="prueba"></info>
-          </div>
+    <div class="facturito-card">
+      <h3 class="facturito-card-title">Facturito B&aacute;sico</h3>
+      <p class="facturito-card-desc">Para peque&ntilde;os negocios</p>
+      <div class="facturito-price">
+        <div class="facturito-price-top">
+          <span class="facturito-price-old">$22.20</span>
+          <span class="facturito-price-discount">10%</span>
         </div>
-
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Facturación</span
-            >
-            <span class="font-bold text-3xl text-black mx-auto">$17.99</span>
-            <span class="text-slate-500 font-semibold text-xs mx-auto"
-              >Más Iva / Mensual</span
-            >
-            <a
-              href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Facturaci%C3%B3n%20%28%2417.99%29."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-              <span class="text-md">Contactar con un asesor</span>
-            </a>
-
-            <info class="info" data-info="facturacion"> hiii</info>
-          </div>
-        </div>
-
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Servicios</span
-            >
-            <span class="font-bold text-3xl text-black mx-auto">$29.99</span>
-            <span class="text-slate-500 font-semibold text-xs mx-auto"
-              >Más Iva / Mensual</span
-            >
-            <a
-              href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Servicios%20%28%2429.99%29."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-              <span class="text-md">Contactar con un asesor</span>
-            </a>
-
-            <info class="info" data-info="servicios"> hiii</info>
-          </div>
-        </div>
-
-        <div class="bg-transparent relative p-2">
-          <div class="card h-full shadow-lg shadow-indigo-300">
-            <div class="flex flex-col gap-1">
-              <div
-                class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-br from-blue-600 via-purple-700 to-fuchsia-500 "
-              >
-                <i class="icon text-white" data-icon="doc"></i>
-              </div>
-              <span class="font-semibold text-lg mx-auto text-slate-900"
-                >Comercial</span
-              >
-              <span class="font-bold text-3xl text-black mx-auto">$41.99</span>
-              <span class="text-slate-500 font-semibold text-xs mx-auto"
-                >Más Iva / Mensual</span
-              >
-              <a
-                href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Comercial%20%28%2441.99%29."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-                <span class="text-md">Contactar con un asesor</span>
-              </a>
-
-              <info class="info" data-info="comercial"> hiii</info>
-            </div>
-          </div>
-          <div
-            class="rounded-full px-3 py-2 bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
-          >
-            <i class="icon text-white" data-icon="star"></i>
-            <span class="text-xs text-white font-semibold pt-[0.16rem]"
-              >MÁS VENDIDO</span
-            >
-          </div>
+        <div class="facturito-price-main">
+          <span class="facturito-price-currency">$</span>
+          <span class="facturito-price-value">19.99</span>
+          <span class="facturito-price-period">/a&ntilde;o</span>
+          <span class="facturito-price-iva">+IVA</span>
         </div>
       </div>
-    </section>
+      <a href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20Facturito%20B%C3%A1sico." target="_blank" rel="noopener noreferrer" class="facturito-button">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
+        Contactar con un asesor
+      </a>
+      <ul class="facturito-features">
+        <li><span class="facturito-check">&#10003;</span> 120 documentos al a&ntilde;o</li>
+        <li><span class="facturito-check">&#10003;</span> Ventas</li>
+        <li><span class="facturito-check">&#10003;</span> Compras</li>
+        <li><span class="facturito-check">&#10003;</span> Administraci&oacute;n</li>
+      </ul>
+    </div>
 
-    <!-- Footer -->
+    <div class="facturito-card facturito-card--popular">
+      <span class="facturito-popular-badge">M&Aacute;S POPULAR</span>
+      <h3 class="facturito-card-title">Facturito Pro</h3>
+      <p class="facturito-card-desc">Sin l&iacute;mites para tu negocio</p>
+      <div class="facturito-price">
+        <div class="facturito-price-top">
+          <span class="facturito-price-old">$44.40</span>
+          <span class="facturito-price-discount">10%</span>
+        </div>
+        <div class="facturito-price-main">
+          <span class="facturito-price-currency">$</span>
+          <span class="facturito-price-value">39.99</span>
+          <span class="facturito-price-period">/a&ntilde;o</span>
+          <span class="facturito-price-iva">+IVA</span>
+        </div>
+      </div>
+      <a href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20Facturito%20Pro." target="_blank" rel="noopener noreferrer" class="facturito-button facturito-button--popular">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
+        Contactar con un asesor
+      </a>
+      <ul class="facturito-features">
+        <li><span class="facturito-check">&#10003;</span> Sin l&iacute;mite de documentos</li>
+        <li><span class="facturito-check">&#10003;</span> Ventas</li>
+        <li><span class="facturito-check">&#10003;</span> Compras</li>
+        <li><span class="facturito-check">&#10003;</span> Administraci&oacute;n</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- Footer -->
     <footer class="hs-footer" id="contacto">
     <div class="hs-container">
       <div class="hs-footer-top">
@@ -3149,157 +3223,185 @@
       </div>
     </div>
   </footer>
-    <script>
-      const icons = {
-        whatsapp: `<svg fill="currentColor" class="w-6 h-6" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" style="--darkreader-inline-fill: var(--darkreader-background-000000, #000000);" data-darkreader-inline-fill=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>whatsapp</title> <path d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z"></path> </g></svg>`,
-        cart: `<svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.41442 6H3.75V4.5H6.58558L7.33558 7.5H18.935L17.2321 15.1627L16.5 15.75H8.25L7.51786 15.1627L6.02 8.42233L5.41442 6ZM7.68496 9L8.85163 14.25H15.8984L17.065 9H7.68496ZM10.5 18C10.5 18.8284 9.82843 19.5 9 19.5C8.17157 19.5 7.5 18.8284 7.5 18C7.5 17.1716 8.17157 16.5 9 16.5C9.82843 16.5 10.5 17.1716 10.5 18ZM15 19.5C15.8284 19.5 16.5 18.8284 16.5 18C16.5 17.1716 15.8284 16.5 15 16.5C14.1716 16.5 13.5 17.1716 13.5 18C13.5 18.8284 14.1716 19.5 15 19.5Z" style="--darkreader-inline-fill: var(--darkreader-background-080341, #060234);" data-darkreader-inline-fill=""></path> </g></svg>`,
-        arrowRight: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20"><title xmlns="">arrow-right-end-on-rectangle-20-solid</title><g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"><path d="M17 4.25A2.25 2.25 0 0 0 14.75 2h-5.5A2.25 2.25 0 0 0 7 4.25v2a.75.75 0 0 0 1.5 0v-2a.75.75 0 0 1 .75-.75h5.5a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-5.5a.75.75 0 0 1-.75-.75v-2a.75.75 0 0 0-1.5 0v2A2.25 2.25 0 0 0 9.25 18h5.5A2.25 2.25 0 0 0 17 15.75z"/><path d="M1 10a.75.75 0 0 1 .75-.75h9.546l-1.048-.943a.75.75 0 1 1 1.004-1.114l2.5 2.25a.75.75 0 0 1 0 1.114l-2.5 2.25a.75.75 0 1 1-1.004-1.114l1.048-.943H1.75A.75.75 0 0 1 1 10"/></g></svg>`,
-        play: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">play</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986z"/></svg>`,
-        star: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">star-16-solid</title><path fill="currentColor" fill-rule="evenodd" d="M8 1.75a.75.75 0 0 1 .692.462l1.41 3.393l3.664.293a.75.75 0 0 1 .428 1.317l-2.791 2.39l.853 3.575a.75.75 0 0 1-1.12.814L7.998 12.08l-3.135 1.915a.75.75 0 0 1-1.12-.814l.852-3.574l-2.79-2.39a.75.75 0 0 1 .427-1.318l3.663-.293l1.41-3.393A.75.75 0 0 1 8 1.75" clip-rule="evenodd"/></svg>`,
-        doc: `<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"><title xmlns="">document-text</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9"/></svg>`,
-        check: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">check-16-solid</title><path fill="currentColor" fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353l4.493-6.74a.75.75 0 0 1 1.04-.207" clip-rule="evenodd"/></svg>`,
-        info: `<svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><title xmlns="">question-mark-circle</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 7.519c1.172-1.025 3.071-1.025 4.243 0c1.171 1.025 1.171 2.687 0 3.712q-.308.268-.67.442c-.746.361-1.452.999-1.452 1.827v.75M21 12a9 9 0 1 1-18 0a9 9 0 0 1 18 0m-9 5.25h.008v.008H12z"/></svg>`,
-        case: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">briefcase</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18c-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48 48 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A24 24 0 0 1 12 15.75a24 24 0 0 1-7.577-1.22a2 2 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48 48 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a49 49 0 0 0-7.5 0M12 12.75h.008v.008H12z"/></svg>`,
-        user: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">user</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 6a3.75 3.75 0 1 1-7.5 0a3.75 3.75 0 0 1 7.5 0M4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.9 17.9 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632"/></svg>`,
-        calculator: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">calculator</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25zm0 2.25h.008v.008H8.25zm0 2.25h.008v.008H8.25zm0 2.25h.008v.008H8.25zm2.498-6.75h.007v.008h-.007zm0 2.25h.007v.008h-.007zm0 2.25h.007v.008h-.007zm0 2.25h.007v.008h-.007zm2.504-6.75h.008v.008h-.008zm0 2.25h.008v.008h-.008zm0 2.25h.008v.008h-.008zm0 2.25h.008v.008h-.008zm2.498-6.75h.008v.008h-.008zm0 2.25h.008v.008h-.008zM8.25 6h7.5v2.25h-7.5zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A49 49 0 0 0 12 2.25"/></svg>`,
-        chart: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">chart-bar-square</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25"/></svg>`,
-        shield: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">shield-check</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15L15 9.75m-3-7.036A11.96 11.96 0 0 1 3.598 6A12 12 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623c5.176-1.332 9-6.03 9-11.622c0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285"/></svg>`,
-        cube: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">cube</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/></svg>`,
-        cloud: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">cloud-arrow-down</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9.75v6.75m0 0l-3-3m3 3l3-3m-8.25 6a4.5 4.5 0 0 1-1.41-8.775a5.25 5.25 0 0 1 10.233-2.33a3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5z"/></svg>`,
-        rocket: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">rocket-launch</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.59 14.37q.159.666.16 1.38a6 6 0 0 1-6 6v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.9 14.9 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.9 14.9 0 0 0-2.58 5.84m2.699 2.7q-.155.032-.311.06a15 15 0 0 1-2.448-2.448l.06-.312m-2.24 2.39a4.49 4.49 0 0 0-1.757 4.306q.341.054.696.054a4.5 4.5 0 0 0 3.61-1.812M16.5 9a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0"/></svg>`,
-        headset: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><title xmlns="">headset</title><path fill="currentColor" d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/></svg>`,
-      };
 
-      document.querySelectorAll(".info").forEach((info) => {
-        const name = info.dataset.info;
-        const items = [
-          {
-            item: "Facturación electrónica ilimitada",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "Consulta automática solo con CI/RUC",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "1 usuario simultáneo",
-            descripcion: "",
-            planes: ["prueba"],
-          },
-          {
-            item: "Usuarios ilimitados",
-            descripcion: "1",
-            planes: ["facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "Establecimientos / bodegas ilimitadas",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "comercial"],
-          },
-          {
-            item: "App PerseoMóvil",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "E-commerce gratis (enlazada al sistema)",
-            descripcion: "1",
-            planes: ["prueba"],
-          },
-          {
-            item: "E-commerce (enlazada al sistema)",
-            descripcion: "1",
-            planes: ["comercial"],
-          },
-          {
-            item: "Productos, Compras e Inventarios",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "comercial"],
-          },
-          {
-            item: "Contabilidad Integrada",
-            descripcion: "1",
-            planes: ["prueba", "servicios", "comercial"],
-          },
-          {
-            item: "Integración contable",
-            descripcion: "1",
-            planes: ["prueba", "comercial"],
-          },
-          {
-            item: "Integración contable para tu declaración y balances",
-            descripcion: "1",
-            planes: ["servicios"],
-          },
-          {
-            item: "Nómina ilimitada",
-            descripcion: "1",
-            planes: ["prueba", "servicios", "comercial"],
-          },
-          {
-            item: "+30 Gráficos Gerenciales",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "API para desarrolladores",
-            descripcion: "1",
-            planes: ["prueba", "facturacion", "servicios", "comercial"],
-          },
-          {
-            item: "Producción e Importaciones",
-            descripcion: "1",
-            planes: ["prueba", "comercial"],
-          },
-          {
-            item: "Cuentas por Cobrar y Pagar",
-            descripcion: "1",
-            planes: ["facturacion", "servicios"],
-          },
-          {
-            item: "Restaurantes + App de Restaurantes",
-            descripcion: "",
-            planes: ["facturacion"],
-          },
-          {
-            item: "Reembolso de gastos",
-            descripcion: "",
-            planes: ["comercial"],
-          },
-        ];
 
-        const planes = {
-          prueba: items.filter((x) => x.planes.includes("prueba")),
-          facturacion: items.filter((x) => x.planes.includes("facturacion")),
-          servicios: items.filter((x) => x.planes.includes("servicios")),
-          comercial: items.filter((x) => x.planes.includes("comercial")),
-        };
 
-        if (planes[name]) {
-          const infoHTML = planes[name]
-            .map(
-              ({ item, descripcion }) => `
-            <div class="flex gap-1 items-center w-fit mr-auto text-xs font-semibold text-slate-700">
-                <i class="icon text-purple-900" data-icon="check"></i>
-                <span>${item}</span>
-                ${descripcion ? '<i class="icon text-slate-600" data-icon="info"></i>' : ""}
-            </div>
-        `,
-            )
-            .join("");
 
-          info.innerHTML = infoHTML;
+  
+  <!-- DEMO MODAL -->
+  <div class="hs-demo-modal" id="hsDemoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="hsDemoModalTitle">
+    <div class="hs-demo-modal-overlay hs-demo-close"></div>
+    <div class="hs-demo-modal-content">
+      <button class="hs-demo-modal-close hs-demo-close" type="button" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="hs-demo-modal-body">
+        <h2 class="hs-demo-modal-title" id="hsDemoModalTitle">Agendar una demo</h2>
+        <p class="hs-demo-modal-subtitle">Completa tus datos y elige una fecha tentativa. Te contactaremos para confirmar.</p>
+        <form class="hs-demo-form" id="hsDemoForm" novalidate>
+          <div class="hs-demo-field">
+            <label for="hsDemoName">Nombre completo <span>*</span></label>
+            <input type="text" id="hsDemoName" name="name" placeholder="Tu nombre" required>
+            <span class="hs-demo-error">Ingresa tu nombre completo</span>
+          </div>
+          <div class="hs-demo-field">
+            <label for="hsDemoEmail">Correo electr&oacute;nico <span>*</span></label>
+            <input type="email" id="hsDemoEmail" name="email" placeholder="correo@empresa.com" required>
+            <span class="hs-demo-error">Ingresa un correo electr&oacute;nico v&aacute;lido</span>
+          </div>
+          <div class="hs-demo-field">
+            <label for="hsDemoPhone">Celular <span>*</span></label>
+            <input type="tel" id="hsDemoPhone" name="phone" placeholder="09XXXXXXXX" required maxlength="10">
+            <span class="hs-demo-error">Ingresa un celular ecuatoriano v&aacute;lido (10 d&iacute;gitos)</span>
+          </div>
+          <div class="hs-demo-field">
+            <label for="hsDemoDate">Fecha tentativa <span>*</span></label>
+            <input type="date" id="hsDemoDate" name="date" required>
+            <span class="hs-demo-error">Selecciona una fecha v&aacute;lida</span>
+          </div>
+          <button class="hs-demo-submit" type="submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Agendar demo
+          </button>
+        </form>
+        <div class="hs-demo-success" id="hsDemoSuccess">
+          <div class="hs-demo-success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>&#161;Demo solicitada!</h3>
+          <p>Gracias por tu inter&eacute;s. Nos pondremos en contacto contigo pronto para confirmar la fecha y hora.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const demoModal = document.getElementById("hsDemoModal");
+      const demoForm = document.getElementById("hsDemoForm");
+      const demoSuccess = document.getElementById("hsDemoSuccess");
+      const demoOpenButtons = document.querySelectorAll(".hs-demo-open");
+      const demoCloseButtons = document.querySelectorAll(".hs-demo-close");
+
+      const nameInput = document.getElementById("hsDemoName");
+      const emailInput = document.getElementById("hsDemoEmail");
+      const phoneInput = document.getElementById("hsDemoPhone");
+      const dateInput = document.getElementById("hsDemoDate");
+
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().split("T")[0];
+
+      function openDemoModal() {
+        demoModal.classList.add("is-open");
+        demoModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        nameInput.focus();
+      }
+
+      function closeDemoModal() {
+        demoModal.classList.remove("is-open");
+        demoModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      demoOpenButtons.forEach(btn => btn.addEventListener("click", openDemoModal));
+      demoCloseButtons.forEach(btn => btn.addEventListener("click", closeDemoModal));
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && demoModal.classList.contains("is-open")) {
+          closeDemoModal();
         }
       });
 
-      document.querySelectorAll(".icon").forEach((icon) => {
-        const name = icon.dataset.icon;
-        if (icons[name]) {
-          icon.innerHTML = icons[name];
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function validatePhone(phone) {
+        const re = /^09\d{8}$/;
+        return re.test(phone.replace(/\s/g, ""));
+      }
+
+      function setInvalid(input, isInvalid) {
+        input.classList.toggle("is-invalid", isInvalid);
+      }
+
+      function validateField(input) {
+        const value = input.value.trim();
+        let isValid = true;
+
+        if (input === nameInput) {
+          isValid = value.length >= 3;
+        } else if (input === emailInput) {
+          isValid = validateEmail(value);
+        } else if (input === phoneInput) {
+          isValid = validatePhone(value);
+        } else if (input === dateInput) {
+          const selectedDate = new Date(value + "T00:00:00");
+          const tomorrowDate = new Date(tomorrow.toDateString());
+          isValid = value !== "" && selectedDate >= tomorrowDate;
+        }
+
+        setInvalid(input, !isValid);
+        return isValid;
+      }
+
+      [nameInput, emailInput, phoneInput, dateInput].forEach(input => {
+        input.addEventListener("blur", () => {
+          if (input.value.trim() !== "") validateField(input);
+        });
+        input.addEventListener("input", () => {
+          if (input.classList.contains("is-invalid")) validateField(input);
+        });
+      });
+
+      phoneInput.addEventListener("input", () => {
+        phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 10);
+        if (phoneInput.classList.contains("is-invalid")) validateField(phoneInput);
+      });
+
+      demoForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const isNameValid = validateField(nameInput);
+        const isEmailValid = validateField(emailInput);
+        const isPhoneValid = validateField(phoneInput);
+        const isDateValid = validateField(dateInput);
+
+        if (isNameValid && isEmailValid && isPhoneValid && isDateValid) {
+          demoForm.style.display = "none";
+          demoSuccess.classList.add("is-visible");
+
+          console.log("Demo solicitada:", {
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            date: dateInput.value
+          });
+
+          setTimeout(() => {
+            closeDemoModal();
+            setTimeout(() => {
+              demoForm.reset();
+              demoForm.style.display = "";
+              demoSuccess.classList.remove("is-visible");
+              [nameInput, emailInput, phoneInput, dateInput].forEach(input => setInvalid(input, false));
+            }, 250);
+          }, 3000);
         }
       });
-    </script>
-  </body>
+    })();
+  </script>
+</body>
 </html>
