@@ -2747,6 +2747,99 @@
           transform: rotate(360deg);
         }
       }
+      /* Tabs de planes */
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .empresa-mensual,
+      .empresa-anual {
+        display: none;
+      }
+      .empresa-mensual.active,
+      .empresa-anual.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .nav-btn {
+        transition: all 0.2s ease;
+      }
+      .nav-btn.active {
+        background: #1d4ed8;
+        color: #fff;
+      }
+
+      .plan-price-old {
+        text-decoration: line-through;
+        color: #94a3b8;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .plan-discount {
+        background: #fef3c7;
+        color: #b45309;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.25rem 0.5rem;
+        border-radius: 9999px;
+      }
+      .plan-savings {
+        background: #f0fdf4;
+        color: #16a34a;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.25rem 0.5rem;
+        border-radius: 9999px;
+        display: inline-block;
+      }
+      .plan-popular {
+        border: 2px solid #2563eb;
+      }
+
+      .benefit-header {
+        background: linear-gradient(90deg, #1d4ed8, #1e40af);
+      }
+      .benefit-number {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #dbeafe;
+        color: #1d4ed8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.875rem;
+        flex-shrink: 0;
+      }
+
+      .feature-pill {
+        background: #fff;
+        border: 1px solid #bbf7d0;
+        border-radius: 12px;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .feature-pill .icon {
+        flex-shrink: 0;
+      }
     </style>
 
     <!-- Header -->
@@ -2831,169 +2924,747 @@
       >
         <button
           id="nav-options-1"
-          class="bg-blue-700 text-white py-2 px-4 flex m-auto rounded-full"
+          data-tab="tab-empresa"
+          class="nav-btn active py-2 px-4 flex m-auto rounded-full"
         >
           <i class="icon mr-1" data-icon="case"></i><span>Soy Empresa</span>
         </button>
-        <button id="nav-options-2" class="py-2 px-4 flex m-auto">
+        <button
+          id="nav-options-2"
+          data-tab="tab-contador"
+          class="nav-btn py-2 px-4 flex m-auto"
+        >
           <i class="icon mr-1" data-icon="user"></i><span>Soy Contador</span>
         </button>
-        <button id="nav-options-3" class="py-2 px-4 flex m-auto">
+        <button
+          id="nav-options-3"
+          data-tab="tab-contafacil"
+          class="nav-btn py-2 px-4 flex m-auto"
+        >
           <i class="icon mr-1" data-icon="calculator"></i
           ><span>Contafácil</span>
         </button>
-        <button id="nav-options-4" class="py-2 px-4 flex m-auto">
+        <button
+          id="nav-options-4"
+          data-tab="tab-comparacion"
+          class="nav-btn py-2 px-4 flex m-auto"
+        >
           <i class="icon mr-1" data-icon="chart"></i><span>Comparación</span>
         </button>
-        <button id="nav-options-5" class="py-2 px-4 flex m-auto">
+        <button
+          id="nav-options-5"
+          data-tab="tab-beneficios"
+          class="nav-btn py-2 px-4 flex m-auto"
+        >
           <i class="icon mr-1" data-icon="shield"></i><span>Beneficios</span>
         </button>
-        <button id="nav-options-6" class="py-2 px-4 flex m-auto">
+        <button
+          id="nav-options-6"
+          data-tab="tab-adicionales"
+          class="nav-btn py-2 px-4 flex m-auto"
+        >
           <i class="icon mr-1" data-icon="cube"></i><span>Adicionales</span>
         </button>
       </nav>
       <nav
+        id="plan-switch"
         class="w-fit mx-auto bg-white p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100 mt-5"
       >
         <button
           id="nav-plan-1"
-          class="bg-blue-700 text-white rounded-full py-2 px-4 flex m-auto"
+          class="nav-btn py-2 px-4 flex m-auto rounded-full"
         >
           <span>Mensual</span>
         </button>
-        <button id="nav-plan-2" class="py-2 px-4 flex m-auto">
+        <button
+          id="nav-plan-2"
+          class="nav-btn active py-2 px-4 flex m-auto rounded-full"
+        >
           <span>Anual</span>
+          <span
+            class="ml-1 text-[10px] bg-blue-400 text-white px-1.5 py-0.5 rounded-full"
+            >OFERTA</span
+          >
         </button>
       </nav>
     </section>
 
     <!-- Tarjetas -->
-    <section>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-fit mx-auto mt-5">
-        <div class="bg-transparent p-2">
+    <section id="plans-content" class="pb-10">
+      <!-- Soy Empresa -->
+      <div id="tab-empresa" class="tab-content active">
+        <div class="empresa-mensual">
           <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-fit mx-auto mt-5"
           >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-purple-700 bg-gradient-to-b from-purple-100 to-purple-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Prueba</span
-            >
-            <span class="font-bold text-xl text-purple-700 mx-auto"
-              >15 días gratis!</span
-            >
-            <button
-              class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
-            >
-              PROBAR AHORA
-            </button>
-            <hr class="border-gray-300 my-2" />
-            <info class="info" data-info="prueba"></info>
-          </div>
-        </div>
-
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Facturación</span
-            >
-            <span class="font-bold text-3xl text-black mx-auto">$17.99</span>
-            <span class="text-slate-500 font-semibold text-xs mx-auto"
-              >Más Iva / Mensual</span
-            >
-            <a
-              href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Facturaci%C3%B3n%20%28%2417.99%29."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-              <span class="text-md">Contactar con un asesor</span>
-            </a>
-
-            <info class="info" data-info="facturacion"> hiii</info>
-          </div>
-        </div>
-
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Servicios</span
-            >
-            <span class="font-bold text-3xl text-black mx-auto">$29.99</span>
-            <span class="text-slate-500 font-semibold text-xs mx-auto"
-              >Más Iva / Mensual</span
-            >
-            <a
-              href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Servicios%20%28%2429.99%29."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-              <span class="text-md">Contactar con un asesor</span>
-            </a>
-
-            <info class="info" data-info="servicios"> hiii</info>
-          </div>
-        </div>
-
-        <div class="bg-transparent relative p-2">
-          <div class="card h-full shadow-lg shadow-indigo-300">
-            <div class="flex flex-col gap-1">
+            <!-- Prueba mensual -->
+            <div class="bg-transparent p-2">
               <div
-                class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-br from-blue-600 via-purple-700 to-fuchsia-500 "
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
               >
-                <i class="icon text-white" data-icon="doc"></i>
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-purple-700 bg-gradient-to-b from-purple-100 to-purple-300"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Prueba</span
+                >
+                <span class="font-bold text-xl text-purple-700 mx-auto"
+                  >15 días gratis!</span
+                >
+                <button
+                  class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
+                >
+                  PROBAR AHORA
+                </button>
+                <hr class="border-gray-300 my-2" />
+                <info class="info" data-info="prueba"></info>
               </div>
-              <span class="font-semibold text-lg mx-auto text-slate-900"
-                >Comercial</span
-              >
-              <span class="font-bold text-3xl text-black mx-auto">$41.99</span>
-              <span class="text-slate-500 font-semibold text-xs mx-auto"
-                >Más Iva / Mensual</span
-              >
-              <a
-                href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Comercial%20%28%2441.99%29."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-                <span class="text-md">Contactar con un asesor</span>
-              </a>
+            </div>
 
-              <info class="info" data-info="comercial"> hiii</info>
+            <!-- Facturación mensual -->
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Facturación</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$17.99</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Mensual</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Facturaci%C3%B3n%20%28%2417.99%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="facturacion"></info>
+              </div>
+            </div>
+
+            <!-- Servicios mensual -->
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Servicios</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$29.99</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Mensual</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Servicios%20%28%2429.99%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="servicios"></info>
+              </div>
+            </div>
+
+            <!-- Comercial mensual -->
+            <div class="bg-transparent relative p-2">
+              <div class="card h-full shadow-lg shadow-indigo-300">
+                <div class="flex flex-col gap-1">
+                  <div
+                    class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-br from-blue-600 via-purple-700 to-fuchsia-500"
+                  >
+                    <i class="icon text-white" data-icon="doc"></i>
+                  </div>
+                  <span class="font-semibold text-lg mx-auto text-slate-900"
+                    >Comercial</span
+                  >
+                  <span class="font-bold text-3xl text-black mx-auto">$41.99</span>
+                  <span class="text-slate-500 font-semibold text-xs mx-auto"
+                    >Más Iva / Mensual</span
+                  >
+                  <a
+                    href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Comercial%20%28%2441.99%29."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                      />
+                      <path
+                        d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                      />
+                    </svg>
+                    <span class="text-md">Contactar con un asesor</span>
+                  </a>
+                  <info class="info" data-info="comercial"></info>
+                </div>
+              </div>
+              <div
+                class="rounded-full px-3 py-2 bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+              >
+                <i class="icon text-white" data-icon="star"></i>
+                <span class="text-xs text-white font-semibold pt-[0.16rem]"
+                  >MÁS VENDIDO</span
+                >
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="empresa-anual active">
           <div
-            class="rounded-full px-3 py-2 bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 w-fit mx-auto mt-5"
           >
-            <i class="icon text-white" data-icon="star"></i>
-            <span class="text-xs text-white font-semibold pt-[0.16rem]"
-              >MÁS VENDIDO</span
-            >
+            <!-- Prueba anual -->
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-purple-700 bg-gradient-to-b from-purple-100 to-purple-300"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Prueba</span
+                >
+                <span class="font-bold text-xl text-purple-700 mx-auto"
+                  >15 días gratis!</span
+                >
+                <button
+                  class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
+                >
+                  PROBAR AHORA
+                </button>
+                <hr class="border-gray-300 my-2" />
+                <info class="info" data-info="prueba"></info>
+              </div>
+            </div>
+
+            <!-- Facturación anual -->
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Facturación</span
+                >
+                <div class="flex items-center justify-center gap-2">
+                  <span class="plan-price-old">$278.00</span>
+                  <span class="plan-discount">10%</span>
+                </div>
+                <span class="font-bold text-3xl text-black mx-auto">$249.90</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Anual</span
+                >
+                <span class="plan-savings mx-auto">Mensual ×12: $333.60</span>
+                <span class="plan-savings mx-auto text-green-600 bg-green-50"
+                  >Ahorras $83.70/año</span
+                >
+                <button
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="cart"></span>
+                  <span>Agregar al carrito</span>
+                </button>
+                <info class="info" data-info="facturacion"></info>
+              </div>
+            </div>
+
+            <!-- Servicios anual -->
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-blue-900 bg-gradient-to-b from-blue-100 to-blue-300"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Servicios</span
+                >
+                <div class="flex items-center justify-center gap-2">
+                  <span class="plan-price-old">$366.00</span>
+                  <span class="plan-discount">10%</span>
+                </div>
+                <span class="font-bold text-3xl text-black mx-auto">$329.00</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Anual</span
+                >
+                <span class="plan-savings mx-auto">Mensual ×12: $439.20</span>
+                <span class="plan-savings mx-auto text-green-600 bg-green-50"
+                  >Ahorras $110.20/año</span
+                >
+                <button
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="cart"></span>
+                  <span>Agregar al carrito</span>
+                </button>
+                <info class="info" data-info="servicios"></info>
+              </div>
+            </div>
+
+            <!-- Comercial anual -->
+            <div class="bg-transparent relative p-2">
+              <div class="card h-full shadow-lg shadow-indigo-300 plan-popular">
+                <div class="flex flex-col gap-1">
+                  <div
+                    class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-br from-blue-600 via-purple-700 to-fuchsia-500"
+                  >
+                    <i class="icon text-white" data-icon="doc"></i>
+                  </div>
+                  <span class="font-semibold text-lg mx-auto text-slate-900"
+                    >Comercial</span
+                  >
+                  <div class="flex items-center justify-center gap-2">
+                    <span class="plan-price-old">$480.00</span>
+                    <span class="plan-discount">10%</span>
+                  </div>
+                  <span class="font-bold text-3xl text-black mx-auto">$431.99</span>
+                  <span class="text-slate-500 font-semibold text-xs mx-auto"
+                    >Más Iva / Anual</span
+                  >
+                  <span class="plan-savings mx-auto">Mensual ×12: $560.40</span>
+                  <span class="plan-savings mx-auto text-green-600 bg-green-50"
+                    >Ahorras $128.41/año</span
+                  >
+                  <button
+                    class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                  >
+                    <span class="icon" data-icon="cart"></span>
+                    <span>Agregar al carrito</span>
+                  </button>
+                  <info class="info" data-info="comercial"></info>
+                </div>
+              </div>
+              <div
+                class="rounded-full px-3 py-2 bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+              >
+                <i class="icon text-white" data-icon="star"></i>
+                <span class="text-xs text-white font-semibold pt-[0.16rem]"
+                  >MÁS VENDIDO</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Soy Contador -->
+      <div id="tab-contador" class="tab-content">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-3 w-fit mx-auto mt-5 max-w-4xl"
+        >
+          <!-- Contador Servicios -->
+          <div class="bg-transparent p-2">
+            <div
+              class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+            >
+              <div
+                class="mx-auto w-12 h-12 p-3 rounded-full bg-slate-800 text-white"
+              >
+                <span class="icon" data-icon="user"></span>
+              </div>
+              <span class="font-semibold text-lg mx-auto text-slate-900"
+                >Soy Contador Servicios</span
+              >
+              <span class="font-bold text-3xl text-black mx-auto">$187.99</span>
+              <span class="text-slate-500 font-semibold text-xs mx-auto"
+                >Más IVA / Anual</span
+              >
+              <span class="plan-savings mx-auto">Mensual ×12: $215.88</span>
+              <span class="plan-savings mx-auto text-green-600 bg-green-50"
+                >Ahorras $27.89/año</span
+              >
+              <button
+                class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+              >
+                <span class="icon" data-icon="cart"></span>
+                <span>Agregar al carrito</span>
+              </button>
+              <info class="info" data-info="contador-servicios"></info>
+            </div>
+          </div>
+          <!-- Contador Comercial -->
+          <div class="bg-transparent relative p-2">
+            <div class="card h-full shadow-lg shadow-indigo-300 plan-popular">
+              <div class="flex flex-col gap-1">
+                <div
+                  class="mx-auto w-12 h-12 p-3 rounded-full bg-blue-600 text-white"
+                >
+                  <span class="icon" data-icon="user"></span>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Soy Contador Comercial</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$259.99</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más IVA / Anual</span
+                >
+                <span class="plan-savings mx-auto">Mensual ×12: $311.88</span>
+                <span class="plan-savings mx-auto text-green-600 bg-green-50"
+                  >Ahorras $51.89/año</span
+                >
+                <button
+                  class="bg-blue-600 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="cart"></span>
+                  <span>Agregar al carrito</span>
+                </button>
+                <info class="info" data-info="contador-comercial"></info>
+              </div>
+            </div>
+            <div
+              class="rounded-full px-3 py-2 bg-blue-600 absolute -top-1 right-4 flex gap-1 shadow-md shadow-indigo-400"
+            >
+              <i class="icon text-white" data-icon="star"></i>
+              <span class="text-xs text-white font-semibold pt-[0.16rem]"
+                >MÁS COMPLETO</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contafácil -->
+      <div id="tab-contafacil" class="tab-content">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-3 w-fit mx-auto mt-5 max-w-5xl"
+        >
+          <!-- Inicial -->
+          <div class="bg-transparent p-2">
+            <div
+              class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+            >
+              <span class="font-semibold text-xl mx-auto text-slate-900"
+                >Inicial 4 empresas</span
+              >
+              <span class="plan-price-old mx-auto">$33.00</span>
+              <span class="font-bold text-4xl text-blue-600 mx-auto">$30</span>
+              <span class="text-slate-500 font-semibold text-xs mx-auto"
+                >Más IVA / Anual</span
+              >
+              <button
+                class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+              >
+                <span class="icon" data-icon="cart"></span>
+                <span>Agregar al carrito</span>
+              </button>
+            </div>
+          </div>
+          <!-- Pro -->
+          <div class="bg-transparent p-2">
+            <div
+              class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-1 h-full"
+            >
+              <span class="font-semibold text-xl mx-auto text-slate-900"
+                >Pro 10 empresas</span
+              >
+              <span class="plan-price-old mx-auto">$55.60</span>
+              <span class="font-bold text-4xl text-blue-600 mx-auto">$50</span>
+              <span class="text-slate-500 font-semibold text-xs mx-auto"
+                >Más IVA / Anual</span
+              >
+              <button
+                class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+              >
+                <span class="icon" data-icon="cart"></span>
+                <span>Agregar al carrito</span>
+              </button>
+            </div>
+          </div>
+          <!-- Ilimitadas -->
+          <div class="bg-transparent relative p-2">
+            <div class="card h-full shadow-lg shadow-indigo-300 plan-popular">
+              <div class="flex flex-col gap-1">
+                <span class="font-semibold text-xl mx-auto text-slate-900"
+                  >Ilimitadas empresas</span
+                >
+                <span class="plan-price-old mx-auto">$76.70</span>
+                <span class="font-bold text-4xl text-blue-600 mx-auto">$69</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más IVA / Anual</span
+                >
+                <button
+                  class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="cart"></span>
+                  <span>Agregar al carrito</span>
+                </button>
+              </div>
+            </div>
+            <div
+              class="rounded-full px-3 py-2 bg-blue-600 absolute -top-1 right-4 flex gap-1 shadow-md shadow-indigo-400"
+            >
+              <i class="icon text-white" data-icon="star"></i>
+              <span class="text-xs text-white font-semibold pt-[0.16rem]"
+                >MÁS POPULAR</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-5xl mx-auto mt-10 px-4">
+          <h3 class="text-blue-600 text-xl font-bold text-center mb-5">
+            Todos nuestros planes incluyen
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm">Multiempresa</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >Usuarios ilimitados</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >Creación de usuarios con RUC o Cédula</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >ATS en minutos</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >Carga y Descarga masiva XML, ZIP, TXT, XLSX</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >Registro de gastos personales</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >Anexo de gastos personales</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >Diarios contables automáticos</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm"
+                >Anexo transaccional</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+            <div class="feature-pill">
+              <span class="icon text-blue-600" data-icon="check"></span
+              ><span class="text-slate-800 font-medium text-sm">Libro diario</span
+              ><span class="icon text-slate-400 ml-auto" data-icon="info"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparación -->
+      <div id="tab-comparacion" class="tab-content">
+        <div class="max-w-4xl mx-auto mt-10 px-4 text-center">
+          <p class="text-slate-600 text-lg">Comparación de planes próximamente.</p>
+        </div>
+      </div>
+
+      <!-- Beneficios -->
+      <div id="tab-beneficios" class="tab-content">
+        <div class="benefit-header text-white p-6 mb-6">
+          <div class="max-w-6xl mx-auto flex items-center gap-3">
+            <span class="icon text-2xl" data-icon="shield"></span>
+            <div>
+              <h3 class="text-xl font-bold">Beneficios Incluidos</h3>
+              <p class="text-sm opacity-90">Sin costo adicional en cada plan</p>
+            </div>
+          </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 pb-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">1</span>
+              <p class="text-slate-700 text-sm">
+                Usuarios ilimitados, suma a todo tu equipo sin restricciones y
+                trabaja de forma colaborativa.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">2</span>
+              <p class="text-slate-700 text-sm">
+                App móvil sin límites, gestiona tu negocio desde el celular, con
+                acceso para todos los usuarios que necesites.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">3</span>
+              <p class="text-slate-700 text-sm">
+                Actualizaciones Automáticas periódicas y continuas por cambios SRI.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">4</span>
+              <p class="text-slate-700 text-sm">
+                Acceso desde cualquier dispositivo, ingresa a tu sistema desde
+                computadora, tablet o smartphone, estés donde estés.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">5</span>
+              <p class="text-slate-700 text-sm">
+                Sucursales ilimitadas, administra todas tus sucursales desde una
+                sola plataforma, sin complicaciones.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">6</span>
+              <p class="text-slate-700 text-sm">
+                Tienda online incluida, lleva tu negocio al canal digital con una
+                tienda en línea integrada.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">7</span>
+              <p class="text-slate-700 text-sm">
+                Contabilidad integrada, conecta tu operación comercial con tu
+                contabilidad en un solo sistema.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">8</span>
+              <p class="text-slate-700 text-sm">
+                Nómina ilimitada, gestiona el personal y los procesos de nómina
+                sin límites de crecimiento.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">9</span>
+              <p class="text-slate-700 text-sm">
+                Sin necesidad de servidor físico, opera en la nube sin invertir
+                en infraestructura local.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">10</span>
+              <p class="text-slate-700 text-sm">
+                Respaldos automáticos, mantén tu información protegida con copias
+                de seguridad automáticas.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">11</span>
+              <p class="text-slate-700 text-sm">
+                Reportes gráficos inteligentes, visualiza indicadores clave con
+                reportes dinámicos y fáciles de interpretar.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">12</span>
+              <p class="text-slate-700 text-sm">
+                Navegación intuitiva, disfruta de una experiencia ágil, simple y
+                fácil de usar.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">13</span>
+              <p class="text-slate-700 text-sm">
+                Conectividad vía API, integra Perseo Web con otras herramientas y
+                automatiza tus procesos.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">14</span>
+              <p class="text-slate-700 text-sm">
+                IA integrada, aprovecha funciones impulsadas por IA para trabajar
+                con mayor eficiencia.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">15</span>
+              <p class="text-slate-700 text-sm">
+                Videos tutoriales ilimitados por módulo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adicionales -->
+      <div id="tab-adicionales" class="tab-content">
+        <div class="max-w-4xl mx-auto mt-10 px-4 text-center">
+          <p class="text-slate-600 text-lg">Adicionales próximamente.</p>
+        </div>
+      </div>
     </section>
+
+    <!-- Footer -->
 
     <!-- Footer -->
     <footer class="hs-footer" id="contacto">
@@ -3300,6 +3971,172 @@
           icon.innerHTML = icons[name];
         }
       });
+      // Renderizar bloques info para planes de contador
+      document
+        .querySelectorAll(
+          '.info[data-info="contador-servicios"], .info[data-info="contador-comercial"]',
+        )
+        .forEach((info) => {
+          const name = info.dataset.info;
+          const contadorItems = [
+            {
+              item: "Facturación electrónica ilimitada",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "Consulta automática solo con CI/RUC",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "Usuarios ilimitados",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "Integración contable",
+              descripcion: "1",
+              planes: ["contador-servicios"],
+            },
+            {
+              item: "Nómina ilimitada",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "Contabilidad Integrada",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "App PerseoMóvil",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "+30 Gráficos Gerenciales",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "API para desarrolladores",
+              descripcion: "1",
+              planes: ["contador-servicios", "contador-comercial"],
+            },
+            {
+              item: "Cuentas por Cobrar y Pagar",
+              descripcion: "1",
+              planes: ["contador-servicios"],
+            },
+            {
+              item: "Productos, Compras e Inventarios",
+              descripcion: "1",
+              planes: ["contador-comercial"],
+            },
+            {
+              item: "Establecimientos / bodegas ilimitadas",
+              descripcion: "1",
+              planes: ["contador-comercial"],
+            },
+            {
+              item: "Producción e Importaciones",
+              descripcion: "1",
+              planes: ["contador-comercial"],
+            },
+            {
+              item: "Reembolso de gastos",
+              descripcion: "",
+              planes: ["contador-comercial"],
+            },
+          ];
+
+          const planes = {
+            "contador-servicios": contadorItems.filter((x) =>
+              x.planes.includes("contador-servicios"),
+            ),
+            "contador-comercial": contadorItems.filter((x) =>
+              x.planes.includes("contador-comercial"),
+            ),
+          };
+
+          if (planes[name]) {
+            const infoHTML = planes[name]
+              .map(
+                ({ item, descripcion }) => `
+            <div class="flex gap-1 items-center w-fit mr-auto text-xs font-semibold text-slate-700">
+                <i class="icon text-purple-900" data-icon="check"></i>
+                <span>${item}</span>
+                ${descripcion ? '<i class="icon text-slate-600" data-icon="info"></i>' : ""}
+            </div>
+        `,
+              )
+              .join("");
+
+            info.innerHTML = infoHTML;
+          }
+        });
+
+      // Renderizado de iconos
+      function renderIcons() {
+        document.querySelectorAll(".icon").forEach((icon) => {
+          const name = icon.dataset.icon;
+          if (icons[name]) {
+            icon.innerHTML = icons[name];
+          }
+        });
+      }
+
+      // Tabs de navegación principal
+      const navButtons = document.querySelectorAll('[id^="nav-options-"]');
+      const tabContents = document.querySelectorAll(".tab-content");
+      const planSwitch = document.getElementById("plan-switch");
+      const planButtons = document.querySelectorAll('[id^="nav-plan-"]');
+      const empresaMensual = document.querySelector(".empresa-mensual");
+      const empresaAnual = document.querySelector(".empresa-anual");
+
+      function showTab(tabId) {
+        tabContents.forEach((t) => t.classList.remove("active"));
+        const target = document.getElementById(tabId);
+        if (target) target.classList.add("active");
+
+        navButtons.forEach((b) => b.classList.remove("active"));
+        const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
+        if (activeBtn) activeBtn.classList.add("active");
+
+        if (planSwitch) {
+          planSwitch.style.display = tabId === "tab-empresa" ? "flex" : "none";
+        }
+
+        renderIcons();
+      }
+
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tabId = btn.dataset.tab;
+          if (tabId) showTab(tabId);
+        });
+      });
+
+      planButtons.forEach((btn, idx) => {
+        btn.addEventListener("click", () => {
+          planButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          if (empresaMensual && empresaAnual) {
+            if (idx === 0) {
+              empresaMensual.classList.add("active");
+              empresaAnual.classList.remove("active");
+            } else {
+              empresaMensual.classList.remove("active");
+              empresaAnual.classList.add("active");
+            }
+          }
+          renderIcons();
+        });
+      });
+
+      // Estado inicial: empresa / anual
+      showTab("tab-empresa");
     </script>
   </body>
 </html>

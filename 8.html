@@ -2748,6 +2748,90 @@
           transform: rotate(360deg);
         }
       }
+      /* Tabs de planes PC */
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .tipo-suscripcion,
+      .tipo-compra {
+        display: none;
+      }
+      .tipo-suscripcion.active,
+      .tipo-compra.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .suscripcion-mensual,
+      .suscripcion-anual {
+        display: none;
+      }
+      .suscripcion-mensual.active,
+      .suscripcion-anual.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .nav-btn {
+        transition: all 0.2s ease;
+      }
+      .nav-btn.active {
+        background: #ea580c;
+        color: #fff;
+      }
+
+      .plan-popular {
+        border: 2px solid #ea580c;
+      }
+
+      .benefit-header-pc {
+        background: linear-gradient(90deg, #ea580c, #c2410c);
+      }
+      .benefit-number {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #ffedd5;
+        color: #ea580c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.875rem;
+        flex-shrink: 0;
+      }
+
+      .req-card {
+        display: flex;
+        flex-direction: column;
+      }
+      .req-header {
+        min-height: 90px;
+      }
+      .req-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .req-item .icon {
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
     </style>
 
     <!-- Header -->
@@ -2819,8 +2903,6 @@
         Información detallada sobre nuestro sistema de gestión empresarial
       </div>
 
-      <div class="border rounded-full border-white p-2 mx-auto w-fit text-xs text-white font-semibold mt-3">Validez: 31-12-2025</div>
-
       <!-- Nav1 -->
     </section>
     <section class="mt-[-1.5rem]">
@@ -2829,164 +2911,883 @@
       >
         <button
           id="nav-options-1"
-          class="text-orange-600 pt-2 px-4 flex flex-col mx-auto rounded-full"
+          data-tab="tab-servidor"
+          class="nav-btn active text-orange-600 pt-2 px-4 flex flex-col mx-auto rounded-full"
         >
-        <div class="flex gap-1">
-          <i class="icon" data-icon="case"></i><span>Servidor Propio</span>
-
-        </div>
-
-        <hr class="border-orange-600 border mt-2" />
+          <div class="flex gap-1">
+            <i class="icon" data-icon="case"></i><span>Servidor Propio</span>
+          </div>
+          <hr class="border-orange-600 border mt-2 w-full" />
         </button>
-        <button id=" nav-options-2" class="pt-2 px-4 flex mb-2 mx-auto">
+        <button
+          id="nav-options-2"
+          data-tab="tab-comparacion"
+          class="nav-btn pt-2 px-4 flex mb-2 mx-auto"
+        >
           <i class="icon mr-1" data-icon="scale"></i><span>Comparación</span>
         </button>
-        <button id=" nav-options-4" class="pt-2 px-4 flex mb-2 mx-auto">
+        <button
+          id="nav-options-3"
+          data-tab="tab-requisitos"
+          class="nav-btn pt-2 px-4 flex mb-2 mx-auto"
+        >
           <i class="icon mr-1" data-icon="monitor"></i><span>Requisitos</span>
         </button>
-        <button id=" nav-options-5" class="pt-2 px-4 flex mb-2 mx-auto">
+        <button
+          id="nav-options-4"
+          data-tab="tab-beneficios"
+          class="nav-btn pt-2 px-4 flex mb-2 mx-auto"
+        >
           <i class="icon mr-1" data-icon="shield"></i><span>Beneficios</span>
         </button>
-        <button id=" nav-options-6" class="pt-2 px-4 flex mb-2 mx-auto">
+        <button
+          id="nav-options-5"
+          data-tab="tab-adicionales"
+          class="nav-btn pt-2 px-4 flex mb-2 mx-auto"
+        >
           <i class="icon mr-1" data-icon="cube"></i><span>Adicionales</span>
         </button>
       </nav>
+
+      <!-- Suscripción / Compra switch -->
       <nav
+        id="tipo-switch"
         class="w-fit mx-auto bg-slate-200 p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100"
       >
         <button
-          id="nav-options-1"
-          class="bg-slate-800 text-white py-2 px-4 flex m-auto rounded-full"
+          id="nav-tipo-1"
+          class="nav-btn py-2 px-4 flex m-auto rounded-full active"
         >
-          <!-- <i class="icon mr-1" data-icon="case"></i> -->
           <span>Suscripción</span>
         </button>
-        <button id="nav-options-2" class="py-2 px-4 flex m-auto">
-          <!-- <i class="icon mr-1" data-icon="user"> -->
-
-          </i><span>Compra</span>
+        <button id="nav-tipo-2" class="nav-btn py-2 px-4 flex m-auto">
+          <span>Compra</span>
         </button>
-        
       </nav>
+
+      <!-- Mensual/Anual switch (solo suscripción) -->
       <nav
+        id="plan-switch"
         class="w-fit mx-auto bg-white p-2 rounded-full text-slate-700 flex shadow-md shadow-indigo-100 mt-5"
       >
         <button
           id="nav-plan-1"
-          class="py-2 px-4 flex m-auto"
+          class="nav-btn py-2 px-4 flex m-auto rounded-full active"
         >
           <span>Mensual</span>
         </button>
-        <button id="nav-plan-2" class="py-2 px-4 bg-slate-800 text-white rounded-full  flex m-auto">
+        <button id="nav-plan-2" class="nav-btn py-2 px-4 flex m-auto">
           <span>Anual</span>
         </button>
       </nav>
     </section>
 
     <!-- Tarjetas -->
-    <section>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-fit mx-auto mt-5">
-
-
-        <div class="bg-transparent p-2">
+    <section id="plans-content" class="pb-10">
+      <!-- Servidor Propio -->
+      <div id="tab-servidor" class="tab-content active">
+        <!-- Suscripción Mensual -->
+        <div class="tipo-suscripcion suscripcion-mensual active">
           <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-fit mx-auto mt-5"
           >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Facturación</span
-            >
-            <span class="font-bold text-3xl text-black mx-auto">$310</span>
-            <span class="text-slate-500 font-semibold text-xs mx-auto"
-              >Más Iva / Mensual</span
-            >
-            <a
-              href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Facturaci%C3%B3n%20%28%24310%29."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-              <span class="text-md">Contactar con un asesor</span>
-            </a>
-
-            <info class="info" data-info="facturacion"> hiii</info>
-          </div>
-        </div>
-
-        <div class="bg-transparent p-2">
-          <div
-            class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
-          >
-            <div
-              class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
-            >
-              <i class="icon mr-1" data-icon="doc"></i>
-            </div>
-            <span class="font-semibold text-lg mx-auto text-slate-900"
-              >Control</span
-            >
-            <span class="font-bold text-3xl text-black mx-auto">$560</span>
-            <span class="text-slate-500 font-semibold text-xs mx-auto"
-              >Más Iva / Mensual</span
-            >
-            <a
-              href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Control%20%28%24560%29."
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-              <span class="text-md">Contactar con un asesor</span>
-            </a>
-
-            <info class="info" data-info="control"> hiii</info>
-          </div>
-        </div>
-
-        <div class="bg-transparent relative p-2">
-          <div class="card h-full shadow-lg shadow-orange-300">
-            <div class="flex flex-col gap-1 ">
+            <div class="bg-transparent p-2">
               <div
-                class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-b from-orange-400 to-orange-600 "
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
               >
-                <i class="icon text-white" data-icon="doc"></i>
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Facturación</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$33</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Mensual</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Facturaci%C3%B3n%20Suscripci%C3%B3n%20Mensual%20%28%2433%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="facturacion"></info>
               </div>
-              <span class="font-semibold text-lg mx-auto text-slate-900"
-                >Comercial</span
-              >
-              <span class="font-bold text-3xl text-black mx-auto">$660</span>
-              <span class="text-slate-500 font-semibold text-xs mx-auto"
-                >Más Iva / Mensual</span
-              >
-              <a
-                href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Comercial%20%28%24660%29."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/><path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"/></svg>
-                <span class="text-md">Contactar con un asesor</span>
-              </a>
+            </div>
 
-              <info class="info" data-info="comercial"> hiii</info>
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Control</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$63</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Mensual</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Control%20Suscripci%C3%B3n%20Mensual%20%28%2463%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="control"></info>
+              </div>
+            </div>
+
+            <div class="bg-transparent relative p-2">
+              <div class="card h-full shadow-lg shadow-orange-300 plan-popular">
+                <div class="flex flex-col gap-1">
+                  <div
+                    class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-b from-orange-400 to-orange-600"
+                  >
+                    <i class="icon text-white" data-icon="doc"></i>
+                  </div>
+                  <span class="font-semibold text-lg mx-auto text-slate-900"
+                    >Comercial</span
+                  >
+                  <span class="font-bold text-3xl text-black mx-auto">$83</span>
+                  <span class="text-slate-500 font-semibold text-xs mx-auto"
+                    >Más Iva / Mensual</span
+                  >
+                  <a
+                    href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Comercial%20Suscripci%C3%B3n%20Mensual%20%28%2483%29."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                      />
+                      <path
+                        d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                      />
+                    </svg>
+                    <span class="text-md">Contactar con un asesor</span>
+                  </a>
+                  <info class="info" data-info="comercial"></info>
+                </div>
+              </div>
+              <div
+                class="rounded-full px-3 py-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+              >
+                <i class="icon text-white" data-icon="star"></i>
+                <span class="text-xs text-white font-semibold pt-[0.16rem]"
+                  >EL MÁS VENDIDO</span
+                >
+              </div>
             </div>
           </div>
+        </div>
+
+        <!-- Suscripción Anual -->
+        <div class="tipo-suscripcion suscripcion-anual">
           <div
-            class="rounded-full px-3 py-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-fit mx-auto mt-5"
           >
-            <i class="icon text-white" data-icon="star"></i>
-            <span class="text-xs text-white font-semibold pt-[0.16rem]"
-              >MÁS VENDIDO</span
-            >
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Facturación</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$356</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Anual</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Facturaci%C3%B3n%20Suscripci%C3%B3n%20Anual%20%28%24356%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="facturacion"></info>
+              </div>
+            </div>
+
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Control</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$680</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Anual</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Control%20Suscripci%C3%B3n%20Anual%20%28%24680%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="control"></info>
+              </div>
+            </div>
+
+            <div class="bg-transparent relative p-2">
+              <div class="card h-full shadow-lg shadow-orange-300 plan-popular">
+                <div class="flex flex-col gap-1">
+                  <div
+                    class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-b from-orange-400 to-orange-600"
+                  >
+                    <i class="icon text-white" data-icon="doc"></i>
+                  </div>
+                  <span class="font-semibold text-lg mx-auto text-slate-900"
+                    >Comercial</span
+                  >
+                  <span class="font-bold text-3xl text-black mx-auto">$900</span>
+                  <span class="text-slate-500 font-semibold text-xs mx-auto"
+                    >Más Iva / Anual</span
+                  >
+                  <a
+                    href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Comercial%20Suscripci%C3%B3n%20Anual%20%28%24900%29."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                      />
+                      <path
+                        d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                      />
+                    </svg>
+                    <span class="text-md">Contactar con un asesor</span>
+                  </a>
+                  <info class="info" data-info="comercial"></info>
+                </div>
+              </div>
+              <div
+                class="rounded-full px-3 py-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+              >
+                <i class="icon text-white" data-icon="star"></i>
+                <span class="text-xs text-white font-semibold pt-[0.16rem]"
+                  >EL MÁS VENDIDO</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compra -->
+        <div class="tipo-compra">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 w-fit mx-auto mt-5"
+          >
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Facturación</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$700</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Único Pago</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Facturaci%C3%B3n%20Compra%20%28%24700%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="facturacion"></info>
+              </div>
+            </div>
+
+            <div class="bg-transparent p-2">
+              <div
+                class="bg-white p-6 rounded-3xl shadow-md shadow-indigo-200 flex flex-col gap-2 h-full"
+              >
+                <div
+                  class="mx-auto w-10 h-10 p-2 rounded-full text-white bg-gradient-to-b from-slate-500 to-slate-800"
+                >
+                  <i class="icon mr-1" data-icon="doc"></i>
+                </div>
+                <span class="font-semibold text-lg mx-auto text-slate-900"
+                  >Control</span
+                >
+                <span class="font-bold text-3xl text-black mx-auto">$1400</span>
+                <span class="text-slate-500 font-semibold text-xs mx-auto"
+                  >Más Iva / Único Pago</span
+                >
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Control%20Compra%20%28%241400%29."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                    />
+                    <path
+                      d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                    />
+                  </svg>
+                  <span class="text-md">Contactar con un asesor</span>
+                </a>
+                <info class="info" data-info="control"></info>
+              </div>
+            </div>
+
+            <div class="bg-transparent relative p-2">
+              <div class="card h-full shadow-lg shadow-orange-300 plan-popular">
+                <div class="flex flex-col gap-1">
+                  <div
+                    class="mx-auto w-10 h-10 p-2 rounded-full bg-gradient-to-b from-orange-400 to-orange-600"
+                  >
+                    <i class="icon text-white" data-icon="doc"></i>
+                  </div>
+                  <span class="font-semibold text-lg mx-auto text-slate-900"
+                    >Comercial</span
+                  >
+                  <span class="font-bold text-3xl text-black mx-auto">$2500</span>
+                  <span class="text-slate-500 font-semibold text-xs mx-auto"
+                    >Más Iva / Único Pago</span
+                  >
+                  <a
+                    href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20PC%20Comercial%20Compra%20%28%242500%29."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-gradient-to-r from-orange-600 via-orange-500 to-orange-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"
+                      />
+                      <path
+                        d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Zm-3-4.3c.1.2.3.4.5.6.3.3.6.5.8.6.4.2.7-.1 1-.3.2-.2.4-.3.6-.2.2 0 .4.2.6.3.2.2.5.5.7.8.2.2.3.5.3.7 0 .3-.3.5-.5.7-.5.3-1 .4-1.6.2-.6-.2-1.2-.5-1.8-1a6 6 0 0 1-1.5-1.6 5 5 0 0 1-.8-1.9c0-.5.2-1 .6-1.3.2-.2.5-.2.7-.1.2.1.4.4.5.6.2.3.3.6.4.8.1.2.1.4 0 .5-.1.2-.3.3-.4.4-.2.1-.2.2-.2.2Z"
+                      />
+                    </svg>
+                    <span class="text-md">Contactar con un asesor</span>
+                  </a>
+                  <info class="info" data-info="comercial"></info>
+                </div>
+              </div>
+              <div
+                class="rounded-full px-3 py-2 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 absolute top-0 right-4 flex gap-1 shadow-md shadow-indigo-400 animate-bounce"
+              >
+                <i class="icon text-white" data-icon="star"></i>
+                <span class="text-xs text-white font-semibold pt-[0.16rem]"
+                  >EL MÁS VENDIDO</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Comparación -->
+      <div id="tab-comparacion" class="tab-content">
+        <div class="max-w-4xl mx-auto mt-10 px-4 text-center">
+          <p class="text-slate-600 text-lg">Comparación de planes próximamente.</p>
+        </div>
+      </div>
+
+      <!-- Requisitos -->
+      <div id="tab-requisitos" class="tab-content">
+        <div class="max-w-6xl mx-auto mt-5 px-4 pb-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Micro -->
+            <div class="req-card overflow-hidden rounded-3xl bg-white shadow-md">
+              <div class="req-header bg-orange-600 text-white p-5">
+                <h3 class="font-bold text-lg uppercase">Micro / Pequeñas empresas</h3>
+                <p class="text-xs opacity-90 mt-1">
+                  Hasta 550 transacciones diarias, hasta 10 estaciones
+                </p>
+              </div>
+              <div class="p-5 space-y-4">
+                <div>
+                  <h4 class="text-slate-500 font-bold text-xs uppercase mb-2">
+                    Requisitos mínimos
+                  </h4>
+                  <ul class="space-y-2">
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Sistema operativo: Windows 10 Pro o Windows 11 Pro</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Protección de software: Antivirus de preferencia ESET NOD32</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">CPU: Intel Core i5, AMD Ryzen 5 de 6 núcleos. Soporte multihilo</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">RAM: 16GB DDR4</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Almacenamiento: 1TB en SSD</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Alimentación de energía: UPS con capacidad de 30 minutos</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-slate-500 font-bold text-xs uppercase mb-2">
+                    Recomendados
+                  </h4>
+                  <ul class="space-y-2">
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Sistema operativo: Windows Server 2019 o superior</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Protección de software: Antivirus de preferencia ESET NOD32</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">CPU: Intel Core i7, AMD Ryzen 7 de 6 núcleos. Soporte multihilo</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">RAM: 16GB DDR4</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Almacenamiento: 2TB en SSD NVMe</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Alimentación y energía: UPS con capacidad de 30 minutos</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Medianas -->
+            <div class="req-card overflow-hidden rounded-3xl bg-white shadow-md">
+              <div class="req-header bg-orange-700 text-white p-5">
+                <h3 class="font-bold text-lg uppercase">Medianas empresas</h3>
+                <p class="text-xs opacity-90 mt-1">
+                  Hasta 1600 transacciones diarias, con hasta 25 estaciones
+                </p>
+              </div>
+              <div class="p-5 space-y-4">
+                <div>
+                  <h4 class="text-slate-500 font-bold text-xs uppercase mb-2">
+                    Requisitos mínimos
+                  </h4>
+                  <ul class="space-y-2">
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Sistema operativo: Windows Server 2019</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Protección de software: Antivirus de preferencia ESET NOD32</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">CPU: Intel i7, AMD Ryzen 7 de 8 núcleos. Soporte multihilo</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">RAM: 16GB DDR4</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Almacenamiento: 2TB en SSD</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Alimentación y energía: UPS con capacidad de 30 minutos</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-slate-500 font-bold text-xs uppercase mb-2">
+                    Recomendados
+                  </h4>
+                  <ul class="space-y-2">
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Sistema operativo: Windows Server 2019</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Protección de software: Antivirus de preferencia ESET NOD32</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">CPU: Intel Xeon Gold, AMD EPYC 12 núcleos. Soporte multihilo</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">RAM: 32GB DDR4</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Almacenamiento: 4TB en SSD NVMe</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Alimentación y energía: UPS con capacidad de 30 minutos</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grandes -->
+            <div class="req-card overflow-hidden rounded-3xl bg-white shadow-md">
+              <div class="req-header bg-orange-800 text-white p-5">
+                <h3 class="font-bold text-lg uppercase">Grandes empresas</h3>
+                <p class="text-xs opacity-90 mt-1">
+                  Más de 2700 transacciones diarias, más de 25 estaciones
+                </p>
+              </div>
+              <div class="p-5 space-y-4">
+                <div>
+                  <h4 class="text-slate-500 font-bold text-xs uppercase mb-2">
+                    Requisitos mínimos
+                  </h4>
+                  <ul class="space-y-2">
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Sistema operativo: Windows Server 2022 o superior</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Protección de software: Antivirus de preferencia ESET NOD32</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">CPU: Intel Xeon Gold, AMD EPYC 16 núcleos. Soporte multihilo</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">RAM: 64GB DDR4</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Almacenamiento: 4TB en SSD</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-orange-600" data-icon="checkOrange"></span>
+                      <span class="text-sm text-slate-700">Alimentación y energía: UPS con capacidad de 30 minutos</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 class="text-slate-500 font-bold text-xs uppercase mb-2">
+                    Recomendados
+                  </h4>
+                  <ul class="space-y-2">
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Sistema operativo: Windows Server 2022 o superior</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Protección de software: Antivirus de preferencia ESET NOD32</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">CPU: Intel Xeon Gold, AMD EPYC 20 núcleos. Soporte multihilo</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">RAM: 96GB DDR4 o DDR5</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Almacenamiento: 4TB en SSD NVME</span>
+                    </li>
+                    <li class="req-item">
+                      <span class="icon text-green-600" data-icon="checkGreen"></span>
+                      <span class="text-sm text-slate-700">Alimentación y energía: UPS con capacidad de 30 minutos</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beneficios -->
+      <div id="tab-beneficios" class="tab-content">
+        <div class="benefit-header-pc text-white p-6 mb-6">
+          <div class="max-w-6xl mx-auto flex items-center gap-3">
+            <span class="icon text-2xl" data-icon="shield"></span>
+            <div>
+              <h3 class="text-xl font-bold">Beneficios Incluidos</h3>
+              <p class="text-sm opacity-90">En las versiones PERSEO PC y PERSEO PRIME</p>
+            </div>
+          </div>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 pb-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">1</span>
+              <p class="text-slate-700 text-sm">
+                Sistema Contable Multiempresa ilimitado.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">2</span>
+              <p class="text-slate-700 text-sm">
+                Sistema Contable Multitarifas y Multibodega.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">3</span>
+              <p class="text-slate-700 text-sm">
+                Emisión ilimitada de Facturación Electrónica, NC, ND, Guía de
+                Remisión, Liquidación de Compra y Retenciones.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">4</span>
+              <p class="text-slate-700 text-sm">
+                Actualizaciones Automáticas periódicas y continuas por cambios SRI
+                y mejoras del sistema, sin intervención de técnicos.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">5</span>
+              <p class="text-slate-700 text-sm">
+                Capacitaciones en vivo y grabadas en Meet del manejo del Sistema y
+                su parametrización.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">6</span>
+              <p class="text-slate-700 text-sm">
+                Seguridad de toda la Información con respaldos automáticos directos
+                a la Nube a Dropbox sin costos adicionales.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">7</span>
+              <p class="text-slate-700 text-sm">
+                Digitando solo la Cédula o RUC crea Clientes y Proveedores, con
+                Nombre y Dirección Ahorrando tiempo en tus procesos.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">8</span>
+              <p class="text-slate-700 text-sm">
+                Inteligencia Artificial Integrada apóyate en la IA para mejorar tu
+                productividad en el trabajo.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">9</span>
+              <p class="text-slate-700 text-sm">
+                Videos Tutoriales con acceso ilimitado en nuestra Web de cada
+                módulo para su capacitación y retroalimentación continua.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">10</span>
+              <p class="text-slate-700 text-sm">
+                Adapta tus reportes a las necesidades de tu negocio y visualiza la
+                información que realmente importa.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">11</span>
+              <p class="text-slate-700 text-sm">
+                Establece flujos de aprobación para mantener el control en tus
+                procesos de venta.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">12</span>
+              <p class="text-slate-700 text-sm">
+                Facturación por lotes, emite múltiples comprobantes de forma masiva
+                y ahorra tiempo operativo.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">13</span>
+              <p class="text-slate-700 text-sm">
+                Alta capacidad transaccional, opera con agilidad incluso en
+                negocios con gran volumen de movimientos diarios.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">14</span>
+              <p class="text-slate-700 text-sm">
+                Modalidad de renta o compra, elige el esquema que mejor se adapte a
+                tu presupuesto y modelo de negocio.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">15</span>
+              <p class="text-slate-700 text-sm">
+                Pago único de inversión, accede al sistema con una inversión única,
+                sin complicaciones innecesarias.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">16</span>
+              <p class="text-slate-700 text-sm">
+                Conecta Perseo PC con otros sistemas mediante API.
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl p-4 shadow-md flex gap-3 items-start">
+              <span class="benefit-number">17</span>
+              <p class="text-slate-700 text-sm">
+                Facturación electrónica ilimitada para emitir todos los comprobantes
+                que tu negocio requiera.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adicionales -->
+      <div id="tab-adicionales" class="tab-content">
+        <div class="max-w-4xl mx-auto mt-10 px-4 text-center">
+          <p class="text-slate-600 text-lg">Adicionales próximamente.</p>
+        </div>
+      </div>
     </section>
+
+    <!-- Footer -->
 
     <!-- Footer -->
     <footer class="hs-footer" id="contacto">
@@ -3269,6 +4070,97 @@
           icon.innerHTML = icons[name];
         }
       });
+      // Renderizado de iconos
+      function renderIcons() {
+        document.querySelectorAll(".icon").forEach((icon) => {
+          const name = icon.dataset.icon;
+          if (icons[name]) {
+            icon.innerHTML = icons[name];
+          }
+        });
+      }
+
+      // Tabs de navegación principal
+      const navButtons = document.querySelectorAll('[id^="nav-options-"]');
+      const tabContents = document.querySelectorAll(".tab-content");
+      const tipoSwitch = document.getElementById("tipo-switch");
+      const planSwitch = document.getElementById("plan-switch");
+      const tipoButtons = document.querySelectorAll('[id^="nav-tipo-"]');
+      const planButtons = document.querySelectorAll('[id^="nav-plan-"]');
+      const tipoSuscripcion = document.querySelectorAll(".tipo-suscripcion");
+      const tipoCompra = document.querySelector(".tipo-compra");
+      const suscripcionMensual = document.querySelector(".suscripcion-mensual");
+      const suscripcionAnual = document.querySelector(".suscripcion-anual");
+
+      function showTab(tabId) {
+        tabContents.forEach((t) => t.classList.remove("active"));
+        const target = document.getElementById(tabId);
+        if (target) target.classList.add("active");
+
+        navButtons.forEach((b) => b.classList.remove("active"));
+        const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
+        if (activeBtn) activeBtn.classList.add("active");
+
+        if (tipoSwitch) {
+          tipoSwitch.style.display =
+            tabId === "tab-servidor" ? "flex" : "none";
+        }
+        if (planSwitch) {
+          planSwitch.style.display =
+            tabId === "tab-servidor" ? "flex" : "none";
+        }
+
+        renderIcons();
+      }
+
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const tabId = btn.dataset.tab;
+          if (tabId) showTab(tabId);
+        });
+      });
+
+      tipoButtons.forEach((btn, idx) => {
+        btn.addEventListener("click", () => {
+          tipoButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          if (idx === 0) {
+            tipoSuscripcion.forEach((el) => el.classList.add("active"));
+            if (tipoCompra) tipoCompra.classList.remove("active");
+            if (planSwitch) planSwitch.style.display = "flex";
+            if (suscripcionMensual) suscripcionMensual.classList.add("active");
+            if (suscripcionAnual) suscripcionAnual.classList.remove("active");
+            planButtons.forEach((b, i) =>
+              b.classList.toggle("active", i === 0),
+            );
+          } else {
+            tipoSuscripcion.forEach((el) => el.classList.remove("active"));
+            if (tipoCompra) tipoCompra.classList.add("active");
+            if (planSwitch) planSwitch.style.display = "none";
+          }
+          renderIcons();
+        });
+      });
+
+      planButtons.forEach((btn, idx) => {
+        btn.addEventListener("click", () => {
+          planButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          if (suscripcionMensual && suscripcionAnual) {
+            if (idx === 0) {
+              suscripcionMensual.classList.add("active");
+              suscripcionAnual.classList.remove("active");
+            } else {
+              suscripcionMensual.classList.remove("active");
+              suscripcionAnual.classList.add("active");
+            }
+          }
+          renderIcons();
+        });
+      });
+
+      // Estado inicial: servidor propio / suscripción / mensual
+      showTab("tab-servidor");
     </script>
   </body>
 </html>
