@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>Planes Perseo Web | HASTECH 24/7</title>
   <style>
 /* HASTECH-REPLICATED-STYLES */
     :root {
@@ -2671,6 +2671,935 @@
         max-width: none;
       }
     }
+  
+    /* =========================================================
+       HASTECH 24/7 · MEJORAS UI
+       Animaciones fade-in, tooltips informativos, tarjetas de
+       recomendación, contacto, FAQ y WhatsApp flotante.
+       ========================================================= */
+    :root {
+      --hs-accent: #0b84e8;
+      --hs-accent-2: #7d45d7;
+      --hs-accent-3: #c532bd;
+      --hs-ink: #0f172a;
+      --hs-ink-2: #334155;
+      --hs-ink-soft: #64748b;
+      --hs-surface: #f5f8fd;
+      --hs-line: #e3e9f4;
+      --hs-card-shadow: 0 18px 44px rgba(15, 23, 42, .09);
+      --hs-ease: cubic-bezier(.22, .61, .36, 1);
+      --hs-wa: #25d366;
+      --hs-wa-dark: #128c7e;
+    }
+
+    /* ---------- Animaciones base ---------- */
+    @keyframes hsFadeUp {
+      from { opacity: 0; transform: translate3d(0, 24px, 0); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    @keyframes hsFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes hsWaRing {
+      0%   { box-shadow: 0 16px 38px rgba(18, 140, 126, .44), 0 0 0 0 rgba(37, 211, 102, .55); }
+      70%  { box-shadow: 0 16px 38px rgba(18, 140, 126, .44), 0 0 0 20px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 16px 38px rgba(18, 140, 126, .44), 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    @keyframes hsFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-7px); }
+    }
+
+    /* Fade-in al hacer scroll (se aplica desde JS) */
+    .hs-reveal {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+      transition:
+        opacity .8s var(--hs-ease) var(--hs-reveal-delay, 0ms),
+        transform .8s var(--hs-ease) var(--hs-reveal-delay, 0ms);
+    }
+
+    .hs-reveal--left  { transform: translate3d(-32px, 0, 0); }
+    .hs-reveal--right { transform: translate3d(32px, 0, 0); }
+    .hs-reveal--zoom  { transform: scale(.94); }
+    .hs-reveal--fade  { transform: none; }
+
+    .hs-reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Entrada del hero al cargar la página */
+    .hs-hero-content > * { animation: hsFadeUp .9s var(--hs-ease) both; }
+    .hs-hero-content > *:nth-child(1) { animation-delay: .06s; }
+    .hs-hero-content > *:nth-child(2) { animation-delay: .16s; }
+    .hs-hero-content > *:nth-child(3) { animation-delay: .26s; }
+    .hs-hero-content > *:nth-child(4) { animation-delay: .36s; }
+    .hs-hero-content > *:nth-child(5) { animation-delay: .46s; }
+
+    .facturito-hero-badge,
+    .facturito-hero-title,
+    .facturito-hero-subtitle { animation: hsFadeUp .9s var(--hs-ease) both; }
+    .facturito-hero-title    { animation-delay: .12s; }
+    .facturito-hero-subtitle { animation-delay: .24s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hs-reveal,
+      .hs-hero-content > *,
+      .facturito-hero-badge,
+      .facturito-hero-title,
+      .facturito-hero-subtitle {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .hs-wa-float,
+      .hs-wa-float__icon { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ---------- Pulido general ---------- */
+    ::selection {
+      background: rgba(125, 69, 215, .22);
+      color: inherit;
+    }
+
+    :where(a, button, input, select, textarea, summary):focus-visible {
+      outline: 2px solid var(--hs-accent);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    @media (min-width: 1024px) {
+      html::-webkit-scrollbar { width: 11px; }
+      html::-webkit-scrollbar-track { background: #eaf0f9; }
+      html::-webkit-scrollbar-thumb {
+        border: 2px solid #eaf0f9;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--hs-accent), var(--hs-accent-2));
+      }
+      html::-webkit-scrollbar-thumb:hover { filter: brightness(1.12); }
+    }
+
+    /* Subrayado animado del menú */
+    .hs-nav-link:not(.is-active)::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      bottom: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--hs-cyan), var(--hs-magenta-2));
+      transition: left .28s var(--hs-ease), right .28s var(--hs-ease);
+    }
+
+    .hs-nav-link:not(.is-active):hover::after { left: 0; right: 0; }
+
+    /* Elevación suave de tarjetas */
+    .hs-plan,
+    .hs-benefit-card,
+    .hs-solution-card,
+    .hs-benefit-item,
+    .facturito-card {
+      transition: transform .38s var(--hs-ease), box-shadow .38s var(--hs-ease);
+    }
+
+    .hs-plan:hover,
+    .hs-benefit-card:hover,
+    .hs-solution-card:hover,
+    .hs-benefit-item:hover,
+    .facturito-card:hover { transform: translateY(-6px); }
+
+    .facturito-card:hover { box-shadow: 0 24px 60px rgba(124, 58, 237, .20); }
+
+    .hs-page .rounded-3xl.shadow-md,
+    .hs-page .card,
+    .hs-page .feature-pill {
+      transition: transform .38s var(--hs-ease), box-shadow .38s var(--hs-ease);
+    }
+
+    .hs-page .rounded-3xl.shadow-md:hover,
+    .hs-page .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 52px rgba(30, 41, 59, .16);
+    }
+
+    .hs-page .feature-pill:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(30, 41, 59, .10);
+    }
+
+    .hs-page button:not(.nav-btn),
+    .hs-page a[href^="https://wa.me"] {
+      transition: transform .25s var(--hs-ease), filter .25s var(--hs-ease), box-shadow .25s var(--hs-ease);
+    }
+
+    .hs-page button:not(.nav-btn):hover,
+    .hs-page a[href^="https://wa.me"]:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    /* Enlaces del pie con desplazamiento suave */
+    .hs-footer-column-list a { transition: color .2s ease, transform .25s var(--hs-ease); }
+    .hs-footer-column-list a:hover { transform: translateX(4px); }
+
+    /* Barras de navegación por pestañas: desplazables en móvil */
+    .hs-page > section > nav {
+      max-width: calc(100vw - 24px);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .hs-page > section > nav::-webkit-scrollbar { display: none; }
+
+    .hs-page > section > nav > button {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
+    .hs-page .text-6xl {
+      font-size: clamp(2rem, 7vw, 3.75rem);
+      line-height: 1.06;
+    }
+
+    /* ---------- Tooltips de los iconos de información ---------- */
+    .hs-tip {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      background: none;
+      line-height: 0;
+      color: #94a3b8;
+      cursor: help;
+      transition: color .2s ease, transform .2s ease;
+    }
+
+    .hs-tip:hover,
+    .hs-tip:focus-visible {
+      color: var(--hs-accent);
+      transform: translateY(-1px);
+    }
+
+    .hs-tip__bubble {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 11px);
+      z-index: 80;
+      width: max-content;
+      max-width: min(280px, 72vw);
+      padding: 11px 13px;
+      border-radius: 12px;
+      background: #0b1526;
+      color: #e8eefb;
+      font-size: 11.5px;
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: left;
+      letter-spacing: .005em;
+      box-shadow: 0 18px 44px rgba(2, 13, 32, .38);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate(calc(-50% + var(--hs-tip-shift, 0px)), 8px);
+      transition: opacity .22s var(--hs-ease), transform .22s var(--hs-ease), visibility .22s;
+    }
+
+    .hs-tip__bubble::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: calc(50% - var(--hs-tip-shift, 0px));
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #0b1526;
+    }
+
+    .hs-tip:hover .hs-tip__bubble,
+    .hs-tip:focus-visible .hs-tip__bubble {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(calc(-50% + var(--hs-tip-shift, 0px)), 0);
+    }
+
+    /* ---------- Sección: para quién es recomendable cada plan ---------- */
+    .hs-fit {
+      padding: 84px 20px 80px;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(11, 132, 232, .07), transparent 46%),
+        radial-gradient(circle at 92% 12%, rgba(197, 50, 189, .07), transparent 44%),
+        var(--hs-surface);
+      color: var(--hs-ink);
+    }
+
+    .hs-fit-inner { max-width: 1240px; margin: 0 auto; }
+
+    .hs-fit-head {
+      max-width: 760px;
+      margin: 0 auto 46px;
+      text-align: center;
+    }
+
+    .hs-fit-eyebrow,
+    .hs-contact-eyebrow,
+    .hs-faq-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: rgba(11, 132, 232, .10);
+      color: var(--hs-accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+
+    .hs-fit-title,
+    .hs-contact-title,
+    .hs-faq-title {
+      font-size: clamp(27px, 3.5vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -.025em;
+      color: var(--hs-ink);
+    }
+
+    .hs-fit-title em,
+    .hs-contact-title em,
+    .hs-faq-title em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--hs-accent), var(--hs-accent-2), var(--hs-accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hs-fit-lead,
+    .hs-faq-lead {
+      margin-top: 14px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--hs-ink-soft);
+    }
+
+    .hs-fit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hs-fit-card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 26px 26px;
+      border: 1px solid var(--hs-line);
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: var(--hs-card-shadow);
+      transition: transform .38s var(--hs-ease), box-shadow .38s var(--hs-ease), border-color .38s var(--hs-ease);
+    }
+
+    .hs-fit-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--hs-fit-c, var(--hs-accent)), var(--hs-accent-2));
+    }
+
+    .hs-fit-card:hover {
+      transform: translateY(-8px);
+      border-color: color-mix(in srgb, var(--hs-fit-c, var(--hs-accent)) 40%, #fff);
+      box-shadow: 0 26px 60px rgba(15, 23, 42, .15);
+    }
+
+    .hs-fit-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(140deg, var(--hs-fit-c, var(--hs-accent)), var(--hs-accent-2));
+      box-shadow: 0 10px 24px color-mix(in srgb, var(--hs-fit-c, var(--hs-accent)) 32%, transparent);
+    }
+
+    .hs-fit-icon svg { width: 24px; height: 24px; }
+
+    .hs-fit-tag {
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 10px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--hs-fit-c, var(--hs-accent)) 12%, #fff);
+      color: var(--hs-fit-c, var(--hs-accent));
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .hs-fit-name {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--hs-ink);
+      letter-spacing: -.02em;
+    }
+
+    .hs-fit-desc {
+      margin: 8px 0 16px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--hs-ink-soft);
+    }
+
+    .hs-fit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 18px;
+    }
+
+    .hs-fit-list li {
+      position: relative;
+      padding-left: 25px;
+      font-size: 13px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--hs-ink-2);
+    }
+
+    .hs-fit-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--hs-fit-c, var(--hs-accent));
+    }
+
+    .hs-fit-list li::after {
+      content: "";
+      position: absolute;
+      left: 4.5px;
+      top: 7px;
+      width: 6px;
+      height: 3px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .hs-fit-foot {
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px dashed var(--hs-line);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--hs-ink-soft);
+    }
+
+    .hs-fit-foot strong { color: var(--hs-fit-c, var(--hs-accent)); }
+
+    .hs-fit-note {
+      max-width: 940px;
+      margin: 34px auto 0;
+      padding: 20px 24px;
+      border: 1px dashed color-mix(in srgb, var(--hs-accent) 35%, #fff);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .72);
+      font-size: 13.5px;
+      line-height: 1.65;
+      text-align: center;
+      color: var(--hs-ink-2);
+    }
+
+    .hs-fit-note strong { color: var(--hs-ink); }
+
+    .hs-fit-note a {
+      color: var(--hs-accent);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Acentos por página, respetando la paleta de cada sección */
+    .hs-fit--pc {
+      --hs-accent: #ea580c;
+      --hs-accent-2: #c2410c;
+      --hs-accent-3: #f97316;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(234, 88, 12, .09), transparent 46%),
+        radial-gradient(circle at 92% 12%, rgba(194, 65, 12, .08), transparent 44%),
+        #fdf6f1;
+    }
+
+    .hs-fit--facturito {
+      --hs-accent: #7c3aed;
+      --hs-accent-2: #8b5cf6;
+      --hs-accent-3: #a855f7;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(124, 58, 237, .10), transparent 46%),
+        radial-gradient(circle at 92% 12%, rgba(168, 85, 247, .09), transparent 44%),
+        #faf8ff;
+    }
+
+    /* ---------- Sección de contacto ---------- */
+    .hs-contact {
+      padding: 88px 20px;
+      background:
+        radial-gradient(circle at 82% 8%, rgba(37, 183, 239, .10), transparent 42%),
+        radial-gradient(circle at 6% 88%, rgba(168, 32, 173, .10), transparent 40%),
+        linear-gradient(160deg, var(--hs-navy-950, #020d20) 0%, var(--hs-navy-900, #03162f) 58%, #06224a 100%);
+      color: #fff;
+    }
+
+    .hs-contact-inner {
+      display: grid;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+      gap: 46px;
+      align-items: start;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .hs-contact-eyebrow {
+      background: rgba(37, 183, 239, .16);
+      color: #7fd4ff;
+    }
+
+    .hs-contact-title { color: #fff; }
+
+    .hs-contact-lead {
+      margin-top: 16px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--hs-muted, #cbd6e8);
+    }
+
+    .hs-contact-data {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .hs-contact-data li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 16px;
+      border: 1px solid var(--hs-border, rgba(255, 255, 255, .16));
+      border-radius: 15px;
+      background: rgba(255, 255, 255, .05);
+      font-size: 14px;
+      font-weight: 600;
+      color: #eaf1fb;
+      transition: transform .3s var(--hs-ease), background .3s var(--hs-ease), border-color .3s var(--hs-ease);
+    }
+
+    .hs-contact-data li:hover {
+      transform: translateX(5px);
+      background: rgba(255, 255, 255, .09);
+      border-color: rgba(42, 151, 255, .55);
+    }
+
+    .hs-contact-data svg {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+      color: var(--hs-cyan, #25b7ef);
+    }
+
+    .hs-contact-data span { color: var(--hs-muted, #cbd6e8); font-weight: 500; font-size: 12.5px; display: block; }
+
+    .hs-contact-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hs-contact-badges span {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .06);
+      font-size: 12px;
+      font-weight: 600;
+      color: #d9e5f7;
+    }
+
+    .hs-contact-form {
+      padding: 34px 32px;
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: 0 30px 80px rgba(0, 8, 30, .40);
+      color: var(--hs-ink);
+    }
+
+    .hs-contact-form-title {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      color: var(--hs-ink);
+    }
+
+    .hs-contact-form-sub {
+      margin: 7px 0 22px;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--hs-ink-soft);
+    }
+
+    .hs-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .hs-field { display: flex; flex-direction: column; gap: 7px; }
+    .hs-field--full { grid-column: 1 / -1; }
+
+    .hs-field label {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--hs-ink-2);
+    }
+
+    .hs-field label b { color: #e11d48; font-weight: 700; }
+
+    .hs-field input,
+    .hs-field select,
+    .hs-field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--hs-line);
+      border-radius: 12px;
+      background: #f8fafd;
+      color: var(--hs-ink);
+      font-size: 14px;
+      transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .hs-field textarea { resize: vertical; min-height: 104px; }
+
+    .hs-field input::placeholder,
+    .hs-field textarea::placeholder { color: #a6b3c7; }
+
+    .hs-field input:focus,
+    .hs-field select:focus,
+    .hs-field textarea:focus {
+      outline: none;
+      background: #fff;
+      border-color: var(--hs-accent);
+      box-shadow: 0 0 0 4px rgba(11, 132, 232, .14);
+    }
+
+    .hs-field input.is-invalid,
+    .hs-field select.is-invalid,
+    .hs-field textarea.is-invalid {
+      border-color: #e11d48;
+      background: #fff5f7;
+    }
+
+    .hs-field-error {
+      display: none;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #e11d48;
+    }
+
+    .hs-field input.is-invalid ~ .hs-field-error,
+    .hs-field select.is-invalid ~ .hs-field-error { display: block; }
+
+    .hs-contact-submit {
+      width: 100%;
+      margin-top: 20px;
+      padding: 15px 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(120deg, var(--hs-accent), var(--hs-accent-2) 55%, var(--hs-accent-3));
+      background-size: 180% 100%;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(11, 132, 232, .28);
+      transition: transform .25s var(--hs-ease), box-shadow .25s var(--hs-ease), background-position .5s var(--hs-ease);
+    }
+
+    .hs-contact-submit:hover {
+      transform: translateY(-2px);
+      background-position: 100% 0;
+      box-shadow: 0 20px 44px rgba(125, 69, 215, .34);
+    }
+
+    .hs-contact-submit svg { width: 19px; height: 19px; }
+
+    .hs-contact-note {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: center;
+      color: var(--hs-ink-soft);
+    }
+
+    .hs-contact-note a { color: var(--hs-accent); font-weight: 600; }
+
+    .hs-contact-success {
+      display: none;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 18px;
+      padding: 15px 17px;
+      border: 1px solid #bbf7d0;
+      border-radius: 14px;
+      background: #f0fdf4;
+      color: #15803d;
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.55;
+      animation: hsFadeUp .5s var(--hs-ease) both;
+    }
+
+    .hs-contact-success.is-visible { display: flex; }
+    .hs-contact-success svg { width: 20px; height: 20px; flex: 0 0 auto; }
+
+    /* ---------- FAQ ---------- */
+    .hs-faq {
+      padding: 84px 20px;
+      background: #fff;
+      color: var(--hs-ink);
+    }
+
+    .hs-faq-inner { max-width: 1140px; margin: 0 auto; }
+
+    .hs-faq-head {
+      max-width: 720px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .hs-faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+
+    .hs-faq-item {
+      border: 1px solid var(--hs-line);
+      border-radius: 18px;
+      background: #fbfcff;
+      overflow: hidden;
+      transition: border-color .3s var(--hs-ease), box-shadow .3s var(--hs-ease), background .3s var(--hs-ease);
+    }
+
+    .hs-faq-item:hover { border-color: rgba(11, 132, 232, .45); }
+
+    .hs-faq-item[open] {
+      background: #fff;
+      border-color: rgba(11, 132, 232, .45);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, .09);
+    }
+
+    .hs-faq-item summary {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 19px 20px;
+      list-style: none;
+      cursor: pointer;
+      font-size: 14.5px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--hs-ink);
+    }
+
+    .hs-faq-item summary::-webkit-details-marker { display: none; }
+
+    .hs-faq-plus {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 auto;
+      margin-left: auto;
+      position: relative;
+      border-radius: 50%;
+      background: rgba(11, 132, 232, .12);
+      transition: background .3s var(--hs-ease), transform .3s var(--hs-ease);
+    }
+
+    .hs-faq-plus::before,
+    .hs-faq-plus::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 11px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--hs-accent);
+      transform: translate(-50%, -50%);
+      transition: transform .3s var(--hs-ease), background .3s var(--hs-ease);
+    }
+
+    .hs-faq-plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+
+    .hs-faq-item[open] .hs-faq-plus {
+      background: linear-gradient(135deg, var(--hs-accent), var(--hs-accent-2));
+      transform: rotate(180deg);
+    }
+
+    .hs-faq-item[open] .hs-faq-plus::before,
+    .hs-faq-item[open] .hs-faq-plus::after { background: #fff; }
+    .hs-faq-item[open] .hs-faq-plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+
+    .hs-faq-num {
+      width: 27px;
+      height: 27px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: linear-gradient(140deg, var(--hs-accent), var(--hs-accent-2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .hs-faq-answer {
+      padding: 0 20px 20px 61px;
+      font-size: 13.5px;
+      line-height: 1.72;
+      color: var(--hs-ink-soft);
+      animation: hsFadeUp .4s var(--hs-ease) both;
+    }
+
+    .hs-faq-answer strong { color: var(--hs-ink-2); }
+
+    .hs-faq-cta {
+      margin-top: 34px;
+      padding: 24px 26px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border-radius: 20px;
+      background: linear-gradient(120deg, rgba(11, 132, 232, .09), rgba(197, 50, 189, .09));
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--hs-ink-2);
+      text-align: center;
+    }
+
+    .hs-faq-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 12px;
+      background: linear-gradient(120deg, var(--hs-accent), var(--hs-accent-2));
+      color: #fff;
+      font-weight: 700;
+      font-size: 13.5px;
+      transition: transform .25s var(--hs-ease), filter .25s var(--hs-ease);
+    }
+
+    .hs-faq-cta a.hs-faq-cta--wa { background: linear-gradient(120deg, var(--hs-wa), var(--hs-wa-dark)); }
+    .hs-faq-cta a:hover { transform: translateY(-2px); filter: brightness(1.07); }
+    .hs-faq-cta a svg { width: 17px; height: 17px; }
+
+    /* ---------- WhatsApp flotante ---------- */
+    .hs-wa-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 940;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      height: 60px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--hs-wa), var(--hs-wa-dark));
+      color: #fff;
+      box-shadow: 0 16px 38px rgba(18, 140, 126, .44);
+      animation: hsWaRing 2.6s ease-out infinite;
+      transition: transform .32s var(--hs-ease), gap .32s var(--hs-ease);
+    }
+
+    .hs-wa-float__icon {
+      width: 30px;
+      height: 30px;
+      flex: 0 0 auto;
+      animation: hsFloat 3.4s ease-in-out infinite;
+    }
+
+    .hs-wa-float__label {
+      max-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0;
+      transition: max-width .38s var(--hs-ease), opacity .28s var(--hs-ease);
+    }
+
+    .hs-wa-float:hover {
+      transform: translateY(-3px) scale(1.03);
+      gap: 11px;
+    }
+
+    .hs-wa-float:hover .hs-wa-float__label,
+    .hs-wa-float:focus-visible .hs-wa-float__label {
+      max-width: 190px;
+      opacity: 1;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+      .hs-contact-inner { grid-template-columns: 1fr; gap: 34px; }
+      .hs-faq-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hs-fit, .hs-contact, .hs-faq { padding-left: 16px; padding-right: 16px; }
+      .hs-fit { padding-top: 62px; padding-bottom: 58px; }
+      .hs-contact, .hs-faq { padding-top: 62px; padding-bottom: 62px; }
+      .hs-contact-form { padding: 26px 20px; }
+      .hs-contact-grid { grid-template-columns: 1fr; }
+      .hs-faq-answer { padding-left: 20px; }
+      .hs-faq-item summary { padding: 16px; font-size: 13.5px; }
+      .hs-wa-float { right: 16px; bottom: 16px; height: 56px; padding: 0 15px; }
+      .hs-wa-float__icon { width: 27px; height: 27px; }
+    }
+
   </style>
 </head>
   <body class="bg-[#ecf1fd] hs-page">
@@ -2862,6 +3791,7 @@
               <li><a class="hs-nav-link is-active" href="6.html">Plan Web</a></li>
               <li><a class="hs-nav-link" href="8.html">Planes PC</a></li>
               <li><a class="hs-nav-link" href="9.html">Facturito</a></li>
+              <li><a class="hs-nav-link" href="#faq">FAQ</a></li>
               <li><a class="hs-nav-link" href="#contacto">Contacto</a></li>
             </ul>
           </nav>
@@ -3013,11 +3943,14 @@
                 <span class="font-bold text-xl text-purple-700 mx-auto"
                   >15 días gratis!</span
                 >
-                <button
-                  class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20quiero%20activar%20la%20prueba%20gratis%20de%2015%20d%C3%ADas%20de%20Perseo%20Web."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto inline-flex items-center justify-center gap-1"
                 >
                   PROBAR AHORA
-                </button>
+                </a>
                 <hr class="border-gray-300 my-2" />
                 <info class="info" data-info="prueba"></info>
               </div>
@@ -3182,11 +4115,14 @@
                 <span class="font-bold text-xl text-purple-700 mx-auto"
                   >15 días gratis!</span
                 >
-                <button
-                  class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto"
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20quiero%20activar%20la%20prueba%20gratis%20de%2015%20d%C3%ADas%20de%20Perseo%20Web."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold mx-auto inline-flex items-center justify-center gap-1"
                 >
                   PROBAR AHORA
-                </button>
+                </a>
                 <hr class="border-gray-300 my-2" />
                 <info class="info" data-info="prueba"></info>
               </div>
@@ -3217,12 +4153,15 @@
                 <span class="plan-savings mx-auto text-green-600 bg-green-50"
                   >Ahorras $83.70/año</span
                 >
-                <button
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Facturaci%C3%B3n%20Anual%20(%24249.90%20%2B%20IVA)."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
                 >
-                  <span class="icon" data-icon="cart"></span>
-                  <span>Agregar al carrito</span>
-                </button>
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
                 <info class="info" data-info="facturacion"></info>
               </div>
             </div>
@@ -3252,12 +4191,15 @@
                 <span class="plan-savings mx-auto text-green-600 bg-green-50"
                   >Ahorras $110.20/año</span
                 >
-                <button
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Servicios%20Anual%20(%24329.00%20%2B%20IVA)."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
                 >
-                  <span class="icon" data-icon="cart"></span>
-                  <span>Agregar al carrito</span>
-                </button>
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
                 <info class="info" data-info="servicios"></info>
               </div>
             </div>
@@ -3286,12 +4228,15 @@
                   <span class="plan-savings mx-auto text-green-600 bg-green-50"
                     >Ahorras $128.41/año</span
                   >
-                  <button
-                    class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
-                  >
-                    <span class="icon" data-icon="cart"></span>
-                    <span>Agregar al carrito</span>
-                  </button>
+                  <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Web%20Comercial%20Anual%20(%24431.99%20%2B%20IVA)."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-gradient-to-r from-blue-600 via-purple-700 to-fuchsia-500 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
                   <info class="info" data-info="comercial"></info>
                 </div>
               </div>
@@ -3334,12 +4279,15 @@
               <span class="plan-savings mx-auto text-green-600 bg-green-50"
                 >Ahorras $27.89/año</span
               >
-              <button
-                class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
-              >
-                <span class="icon" data-icon="cart"></span>
-                <span>Agregar al carrito</span>
-              </button>
+              <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Soy%20Contador%20Servicios%20(%24187.99%20%2B%20IVA%20%2F%20anual)."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
               <info class="info" data-info="contador-servicios"></info>
             </div>
           </div>
@@ -3363,12 +4311,15 @@
                 <span class="plan-savings mx-auto text-green-600 bg-green-50"
                   >Ahorras $51.89/año</span
                 >
-                <button
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Soy%20Contador%20Comercial%20(%24259.99%20%2B%20IVA%20%2F%20anual)."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="bg-blue-600 text-white py-2 px-4 rounded-full font-semibold flex gap-1 mx-auto items-center w-full justify-center"
                 >
-                  <span class="icon" data-icon="cart"></span>
-                  <span>Agregar al carrito</span>
-                </button>
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
                 <info class="info" data-info="contador-comercial"></info>
               </div>
             </div>
@@ -3402,12 +4353,15 @@
               <span class="text-slate-500 font-semibold text-xs mx-auto"
                 >Más IVA / Anual</span
               >
-              <button
-                class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
-              >
-                <span class="icon" data-icon="cart"></span>
-                <span>Agregar al carrito</span>
-              </button>
+              <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Contaf%C3%A1cil%20Inicial%204%20empresas%20(%2430%20%2B%20IVA%20%2F%20anual)."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
             </div>
           </div>
           <!-- Pro -->
@@ -3423,12 +4377,15 @@
               <span class="text-slate-500 font-semibold text-xs mx-auto"
                 >Más IVA / Anual</span
               >
-              <button
-                class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
-              >
-                <span class="icon" data-icon="cart"></span>
-                <span>Agregar al carrito</span>
-              </button>
+              <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Contaf%C3%A1cil%20Pro%2010%20empresas%20(%2450%20%2B%20IVA%20%2F%20anual)."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
+                >
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
             </div>
           </div>
           <!-- Ilimitadas -->
@@ -3443,12 +4400,15 @@
                 <span class="text-slate-500 font-semibold text-xs mx-auto"
                   >Más IVA / Anual</span
                 >
-                <button
+                <a
+                  href="https://wa.me/593963095699?text=Hola%2C%20estoy%20interesado%20en%20el%20Plan%20Contaf%C3%A1cil%20Ilimitadas%20empresas%20(%2469%20%2B%20IVA%20%2F%20anual)."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="bg-slate-900 text-white py-2 px-4 rounded-xl font-semibold flex gap-1 mx-auto items-center w-full justify-center"
                 >
-                  <span class="icon" data-icon="cart"></span>
-                  <span>Agregar al carrito</span>
-                </button>
+                  <span class="icon" data-icon="whatsapp"></span>
+                  <span>Contactar con un asesor</span>
+                </a>
               </div>
             </div>
             <div
@@ -3667,7 +4627,408 @@
     <!-- Footer -->
 
     <!-- Footer -->
-    <footer class="hs-footer" id="contacto">
+    
+  <!-- =========================================================
+       ¿PARA QUIÉN ES RECOMENDABLE CADA PLAN?
+       ========================================================= -->
+  <section class="hs-fit" id="recomendaciones">
+    <div class="hs-fit-inner">
+      <div class="hs-fit-head">
+        <span class="hs-fit-eyebrow">Recomendaciones</span>
+        <h2 class="hs-fit-title">¿Para quién es <em>recomendable</em> cada plan?</h2>
+        <p class="hs-fit-lead">
+          Todos los planes de Perseo Web incluyen facturación electrónica, usuarios ilimitados y soporte 24/7.
+          La diferencia está en el tipo de negocio y en los módulos que realmente vas a usar.
+        </p>
+      </div>
+
+      <div class="hs-fit-grid">
+        <article class="hs-fit-card" style="--hs-fit-c:#7d45d7">
+          <div class="hs-fit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15.59 14.37q.159.666.16 1.38a6 6 0 0 1-6 6v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.9 14.9 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8"/>
+            </svg>
+          </div>
+          <span class="hs-fit-tag">Prueba · 15 días gratis</span>
+          <h3 class="hs-fit-name">Perseo Web Prueba</h3>
+          <p class="hs-fit-desc">Recomendable si quieres evaluar el sistema completo con la información real de tu negocio antes de decidir.</p>
+          <ul class="hs-fit-list">
+            <li>Emprendedores que aún no emiten comprobantes electrónicos</li>
+            <li>Negocios que quieren comparar Perseo con su sistema actual</li>
+            <li>Equipos que necesitan validar sus procesos antes de migrar</li>
+          </ul>
+          <p class="hs-fit-foot"><strong>Ideal para:</strong> probar sin tarjeta de crédito ni compromiso durante 15 días.</p>
+        </article>
+
+        <article class="hs-fit-card" style="--hs-fit-c:#0b84e8">
+          <div class="hs-fit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 3h8l4 4v14H7V3Z"/>
+              <path d="M15 3v5h4M10 12h6M10 16h6"/>
+            </svg>
+          </div>
+          <span class="hs-fit-tag">Desde $17.99 / mes</span>
+          <h3 class="hs-fit-name">Plan Facturación</h3>
+          <p class="hs-fit-desc">Recomendable si vendes productos y lo que más necesitas es facturar rápido, controlar stock y cobrar.</p>
+          <ul class="hs-fit-list">
+            <li>Tiendas, minimarkets, ferreterías y distribuidoras pequeñas</li>
+            <li>Restaurantes y cafeterías: incluye módulo de mesas y su app</li>
+            <li>Negocios con uno o dos puntos de venta y cartera por cobrar</li>
+          </ul>
+          <p class="hs-fit-foot"><strong>Ideal para:</strong> comercios que priorizan facturación e inventario sin contabilidad interna.</p>
+        </article>
+
+        <article class="hs-fit-card" style="--hs-fit-c:#25b7ef">
+          <div class="hs-fit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.25 14.15v4.25c0 1.09-.79 2.03-1.87 2.18-2.09.28-4.22.42-6.38.42s-4.29-.14-6.38-.42c-1.08-.15-1.87-1.09-1.87-2.18v-4.25"/>
+              <path d="M3.75 14.15a2.18 2.18 0 0 1-.75-1.66V8.71c0-1.09.77-2.02 1.84-2.18a48 48 0 0 1 3.41-.39h7.5c1.15.09 2.29.22 3.41.39 1.07.16 1.84 1.09 1.84 2.18v3.78c0 .65-.28 1.24-.75 1.66"/>
+              <path d="M15.75 6.14V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.89"/>
+            </svg>
+          </div>
+          <span class="hs-fit-tag">Desde $329 / año</span>
+          <h3 class="hs-fit-name">Plan Servicios</h3>
+          <p class="hs-fit-desc">Recomendable si tu negocio factura servicios u honorarios y necesita contabilidad y nómina, pero no inventario.</p>
+          <ul class="hs-fit-list">
+            <li>Consultoras, estudios jurídicos, agencias y constructoras</li>
+            <li>Clínicas, consultorios y centros médicos</li>
+            <li>Empresas que presentan balances, anexos y roles de pago</li>
+          </ul>
+          <p class="hs-fit-foot"><strong>Ideal para:</strong> empresas de servicios con contabilidad y nómina integradas.</p>
+        </article>
+
+        <article class="hs-fit-card" style="--hs-fit-c:#c532bd">
+          <div class="hs-fit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/>
+            </svg>
+          </div>
+          <span class="hs-fit-tag">El más vendido · Desde $431.99 / año</span>
+          <h3 class="hs-fit-name">Plan Comercial</h3>
+          <p class="hs-fit-desc">Recomendable si manejas inventario, producción y contabilidad al mismo tiempo y quieres todo en un solo sistema.</p>
+          <ul class="hs-fit-list">
+            <li>Distribuidoras, importadoras y empresas con varias bodegas</li>
+            <li>Negocios con producción, ensamblaje o importaciones</li>
+            <li>Empresas que necesitan e-commerce, nómina y contabilidad juntas</li>
+          </ul>
+          <p class="hs-fit-foot"><strong>Ideal para:</strong> la operación completa de un negocio en crecimiento.</p>
+        </article>
+
+        <article class="hs-fit-card" style="--hs-fit-c:#1d4ed8">
+          <div class="hs-fit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0M4.5 20.12a7.5 7.5 0 0 1 15 0A17.9 17.9 0 0 1 12 21.75c-2.68 0-5.22-.58-7.5-1.63"/>
+            </svg>
+          </div>
+          <span class="hs-fit-tag">Desde $187.99 / año</span>
+          <h3 class="hs-fit-name">Planes Soy Contador</h3>
+          <p class="hs-fit-desc">Recomendable si llevas la contabilidad de varias empresas y necesitas trabajar con todo tu equipo desde un solo sistema.</p>
+          <ul class="hs-fit-list">
+            <li>Contadores independientes y estudios contables</li>
+            <li>Equipos que requieren usuarios ilimitados sin costo por persona</li>
+            <li>Quien necesita declaraciones, anexos y balances en minutos</li>
+          </ul>
+          <p class="hs-fit-foot"><strong>Ideal para:</strong> profesionales contables que atienden una cartera de clientes.</p>
+        </article>
+
+        <article class="hs-fit-card" style="--hs-fit-c:#a820ad">
+          <div class="hs-fit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M8.25 6h7.5v2.25h-7.5zM12 2.25c-1.9 0-3.76.11-5.59.32C5.31 2.7 4.5 3.65 4.5 4.76V19.5a2.25 2.25 0 0 0 2.25 2.25h10.5a2.25 2.25 0 0 0 2.25-2.25V4.76c0-1.11-.81-2.06-1.91-2.19A49 49 0 0 0 12 2.25"/>
+              <path d="M8.25 11.26h.01M12 11.26h.01M15.75 11.26h.01M8.25 14.26h.01M12 14.26h.01M15.75 14.26v3.75M8.25 17.26h.01M12 17.26h.01"/>
+            </svg>
+          </div>
+          <span class="hs-fit-tag">Desde $30 / año</span>
+          <h3 class="hs-fit-name">Planes Contafácil</h3>
+          <p class="hs-fit-desc">Recomendable si solo necesitas la parte contable y tributaria, pagando según el número de empresas que administras.</p>
+          <ul class="hs-fit-list">
+            <li>Contadores que inician con 4 empresas y crecen a 10 o ilimitadas</li>
+            <li>Quien necesita ATS, gastos personales y libro diario sin módulo comercial</li>
+            <li>Oficinas que buscan el menor costo por empresa administrada</li>
+          </ul>
+          <p class="hs-fit-foot"><strong>Ideal para:</strong> gestión contable multiempresa con la inversión más baja.</p>
+        </article>
+      </div>
+
+      <p class="hs-fit-note">
+        <strong>¿Aún tienes dudas?</strong> Cuéntanos cómo funciona tu negocio y un asesor revisa contigo el volumen de
+        facturación, las bodegas y los módulos que necesitas para recomendarte el plan exacto, sin costo ni compromiso.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CONTACTO · Solicita que un asesor te contacte
+       ========================================================= -->
+  <section class="hs-contact" id="contacto">
+    <div class="hs-contact-inner">
+      <div class="hs-contact-intro">
+        <span class="hs-contact-eyebrow">Contacto</span>
+
+        <h2 class="hs-contact-title">Hablemos de tu <em>negocio</em></h2>
+
+        <p class="hs-contact-lead">
+          Cuéntanos qué necesitas y un asesor de HASTECH 24/7 se comunica contigo para ayudarte
+          a elegir el plan correcto, cotizar módulos adicionales o resolver cualquier duda técnica
+          del sistema. La asesoría no tiene costo ni compromiso.
+        </p>
+
+        <ul class="hs-contact-data">
+          <li>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/>
+              <path d="M12.4 16.6c-1 0-1.9-.3-2.7-.8l-.2-.1-2.6.7.7-2.5-.2-.2A5.3 5.3 0 0 1 12.4 5.5c1.4 0 2.7.5 3.7 1.5a5.3 5.3 0 0 1 1.5 3.7c0 2.9-2.4 5.3-5.2 5.3v-.4Z"/>
+            </svg>
+            <div>
+              WhatsApp · 096 309 5699
+              <span>Atención inmediata de lunes a domingo</span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <div>
+              info@perseo.ec
+              <span>Cotizaciones, facturación y soporte comercial</span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 3"/>
+            </svg>
+            <div>
+              Soporte técnico 24/7
+              <span>Los 365 días del año, incluso feriados</span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+            <div>
+              Distribuidores oficiales de Perseo
+              <span>Implementación, migración y capacitación en Ecuador</span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="hs-contact-badges">
+          <span>Respuesta en menos de 24 horas</span>
+          <span>Asesoría sin costo</span>
+          <span>Implementación inmediata</span>
+          <span>Cumple con el SRI</span>
+        </div>
+      </div>
+
+      <form class="hs-contact-form" id="hsContactForm" novalidate>
+        <h3 class="hs-contact-form-title">Solicita que te contactemos</h3>
+        <p class="hs-contact-form-sub">
+          Completa el formulario y un asesor te escribirá para coordinar una llamada o una demostración del sistema.
+        </p>
+
+        <div class="hs-contact-grid">
+          <div class="hs-field">
+            <label for="hsContactName">Nombre y apellido <b>*</b></label>
+            <input type="text" id="hsContactName" name="nombre" placeholder="Ej. María Andrade" autocomplete="name" required>
+            <span class="hs-field-error">Ingresa tu nombre completo</span>
+          </div>
+
+          <div class="hs-field">
+            <label for="hsContactCompany">Empresa o negocio</label>
+            <input type="text" id="hsContactCompany" name="empresa" placeholder="Ej. Comercial Andrade S.A." autocomplete="organization">
+          </div>
+
+          <div class="hs-field">
+            <label for="hsContactEmail">Correo electrónico <b>*</b></label>
+            <input type="email" id="hsContactEmail" name="email" placeholder="correo@empresa.com" autocomplete="email" required>
+            <span class="hs-field-error">Ingresa un correo electrónico válido</span>
+          </div>
+
+          <div class="hs-field">
+            <label for="hsContactPhone">Celular / WhatsApp <b>*</b></label>
+            <input type="tel" id="hsContactPhone" name="celular" placeholder="09XXXXXXXX" maxlength="10" autocomplete="tel" required>
+            <span class="hs-field-error">Ingresa un celular ecuatoriano válido (10 dígitos)</span>
+          </div>
+
+          <div class="hs-field hs-field--full">
+            <label for="hsContactPlan">¿Sobre qué necesitas asesoría? <b>*</b></label>
+            <select id="hsContactPlan" name="interes" required>
+              <option value="">Selecciona una opción</option>
+              <option value="Perseo Web (sistema en la nube)">Perseo Web (sistema en la nube)</option>
+              <option value="Planes Soy Contador">Planes Soy Contador</option>
+              <option value="Contafácil (planes para contadores)">Contafácil (planes para contadores)</option>
+              <option value="Prueba gratis de 15 días">Prueba gratis de 15 días</option>
+              <option value="Perseo PC (instalado en tu servidor)">Perseo PC (instalado en tu servidor)</option>
+              <option value="Facturito (solo facturación electrónica)">Facturito (solo facturación electrónica)</option>
+              <option value="Soporte técnico o capacitación">Soporte técnico o capacitación</option>
+              <option value="Otro tema">Otro tema</option>
+            </select>
+            <span class="hs-field-error">Selecciona el tema de tu consulta</span>
+          </div>
+
+          <div class="hs-field hs-field--full">
+            <label for="hsContactMessage">Cuéntanos brevemente qué necesitas</label>
+            <textarea id="hsContactMessage" name="mensaje" rows="4" placeholder="Ej. Tengo una distribuidora con 2 bodegas y necesito facturación electrónica con control de inventario."></textarea>
+          </div>
+        </div>
+
+        <button class="hs-contact-submit" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 2 11 13"/>
+            <path d="M22 2 15 22l-4-9-9-4 20-7Z"/>
+          </svg>
+          Solicitar contacto
+        </button>
+
+        <p class="hs-contact-note">
+          Al enviar se abrirá WhatsApp con tu solicitud lista para un asesor.
+          También puedes escribirnos a <a href="mailto:info@perseo.ec">info@perseo.ec</a>.
+        </p>
+
+        <div class="hs-contact-success" id="hsContactSuccess" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6 9 17l-5-5"/>
+          </svg>
+          <span>¡Gracias! Recibimos tu solicitud. Un asesor de HASTECH 24/7 se comunicará contigo muy pronto.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FAQ · Preguntas frecuentes sobre el sistema
+       ========================================================= -->
+  <section class="hs-faq" id="faq">
+    <div class="hs-faq-inner">
+      <div class="hs-faq-head">
+        <span class="hs-faq-eyebrow">Preguntas frecuentes</span>
+        <h2 class="hs-faq-title">Todo lo que necesitas saber del <em>sistema</em></h2>
+        <p class="hs-faq-lead">
+          Resolvemos las dudas más comunes sobre Perseo, la facturación electrónica y el
+          funcionamiento del servicio. Si te queda alguna pregunta, escríbenos y te respondemos.
+        </p>
+      </div>
+
+      <div class="hs-faq-grid">
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">1</span>¿Qué diferencia hay entre Perseo Web, Perseo PC y Facturito?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            <strong>Perseo Web</strong> funciona 100% en la nube: entras desde cualquier navegador o desde la app móvil,
+            sin instalar nada y con pago mensual o anual. <strong>Perseo PC</strong> se instala en tu propio servidor o
+            computador, es ideal cuando manejas un volumen alto de transacciones o necesitas trabajar aun sin internet,
+            y se puede tomar por suscripción o por compra de licencia. <strong>Facturito</strong> es la opción más simple
+            y económica: solo facturación electrónica para quien recién empieza o emite pocos documentos al año.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">2</span>¿Los comprobantes están autorizados por el SRI?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            Sí. El sistema emite facturas, notas de crédito, notas de débito, comprobantes de retención y guías de
+            remisión bajo el esquema de comprobantes electrónicos del SRI. Cada documento se firma con tu certificado
+            digital, se envía en línea para su autorización y se remite automáticamente por correo al cliente con
+            su XML y su RIDE en PDF.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">3</span>¿Cuánto demora la implementación?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            La activación es inmediata: el mismo día que contratas dejamos tu empresa creada y configurada para emitir.
+            La puesta a punto completa —carga de productos, clientes, saldos iniciales y capacitación del equipo—
+            suele tomar entre 1 y 5 días laborables según el tamaño del negocio, y siempre te acompaña un asesor asignado.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">4</span>¿Necesito comprar un servidor o instalar programas?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            Con <strong>Perseo Web</strong> y <strong>Facturito</strong> no necesitas servidor ni instalación: todo corre
+            en la nube con respaldos automáticos incluidos. Con <strong>Perseo PC</strong> sí se instala en tus equipos y
+            requiere un servidor o computador con las características recomendadas, que encuentras detalladas en la
+            pestaña <em>Requisitos</em> de la página de Planes PC.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">5</span>¿Puedo migrar mi información actual?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            Sí. Migramos catálogo de productos, clientes, proveedores, saldos de inventario, cartera por cobrar y por
+            pagar y plan de cuentas desde archivos Excel o desde tu sistema anterior. Nuestro equipo revisa contigo la
+            información antes de subirla para que arranques con datos limpios y cuadrados.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">6</span>¿Qué pasa si el SRI cambia la normativa?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            Las actualizaciones por cambios normativos están incluidas en tu plan, sin costo adicional. Cuando el SRI
+            modifica un esquema, un anexo o un porcentaje de retención, el sistema se actualiza automáticamente en la
+            versión web y se te notifica la nueva versión en la versión PC.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">7</span>¿Se paga por cada usuario del sistema?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            No. Todos los planes pagados incluyen <strong>usuarios ilimitados</strong>: puedes crear cuentas para
+            vendedores, bodega, caja, gerencia y tu contador sin costo extra, cada una con permisos independientes por
+            módulo. En Perseo PC lo que se define por plan es el número de licencias instaladas (estaciones de trabajo).
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">8</span>¿Qué incluye el soporte y la capacitación?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            Soporte por WhatsApp, llamada y asistencia remota los 365 días del año, capacitación inicial para tu equipo
+            y acceso ilimitado a la videoteca de tutoriales por módulo. Ningún plan cobra el soporte aparte: ya está
+            incluido en el valor mensual o anual.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">9</span>¿Puedo probar el sistema antes de contratar?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            Sí. Tienes <strong>15 días de prueba gratuita</strong> con el sistema completo para que lo evalúes con la
+            información real de tu negocio, y además puedes agendar una demostración guiada con un asesor que te muestra
+            los módulos que te interesan. No se solicita tarjeta de crédito para probar.
+          </div>
+        </details>
+
+        <details class="hs-faq-item">
+          <summary><span class="hs-faq-num">10</span>¿Mi información está segura y respaldada?<span class="hs-faq-plus" aria-hidden="true"></span></summary>
+          <div class="hs-faq-answer">
+            La información viaja cifrada y se almacena en servidores con respaldos automáticos diarios. Cada usuario
+            accede solo a los módulos que le autorizas y el sistema registra la trazabilidad de quién creó, modificó o
+            anuló cada documento. Tus datos son tuyos: puedes exportarlos cuando lo necesites.
+          </div>
+        </details>
+      </div>
+
+      <div class="hs-faq-cta">
+        <span>¿No encuentras tu respuesta?</span>
+        <a href="#contacto">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          Escríbenos
+        </a>
+        <a class="hs-faq-cta--wa" href="https://wa.me/593963095699?text=Hola%2C%20tengo%20una%20consulta%20sobre%20el%20sistema%20contable%20Perseo." target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.6 6.3A6.6 6.6 0 0 0 12.4 4 6.5 6.5 0 0 0 6 10.5c0 1.2.3 2.3.9 3.3L5.4 19l5.3-1.4a6.5 6.5 0 0 0 1.7.3c3.6 0 6.5-2.9 6.5-6.4 0-1.7-.7-3.3-1.8-4.5-.2-.2-.4-.4-.5-.7Z"/>
+          </svg>
+          Hablar con un asesor
+        </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="hs-footer" id="pie">
     <div class="hs-container">
       <div class="hs-footer-top">
         <div class="hs-footer-brand">
@@ -3821,6 +5182,72 @@
     </div>
   </footer>
     <script>
+      /* Descripción real de cada característica: alimenta los iconos de información */
+      const HS_TIPS = {
+        "Facturación electrónica ilimitada":
+          "Emite facturas, notas de crédito, notas de débito, retenciones y guías de remisión sin tope mensual. Cada documento se firma, se autoriza en línea ante el SRI y se envía automáticamente al correo del cliente con su XML y su RIDE en PDF.",
+        "Consulta automática solo con CI/RUC":
+          "Al escribir la cédula o el RUC, el sistema completa por ti los nombres, la dirección y el correo del cliente tomando la información registrada en el SRI. Menos digitación y menos errores en la factura.",
+        "1 usuario simultáneo":
+          "Durante los 15 días de prueba puedes tener una sesión activa a la vez. Al contratar cualquier plan pagado los usuarios pasan a ser ilimitados, sin costo por persona.",
+        "Usuarios ilimitados":
+          "Crea todas las cuentas que necesites (ventas, caja, bodega, gerencia, contador) sin pagar por usuario, cada una con su perfil y sus permisos por módulo.",
+        "Establecimientos / bodegas ilimitadas":
+          "Registra todos los establecimientos, puntos de emisión y bodegas que necesites, con numeración y control de stock independiente para cada uno.",
+        "App PerseoMóvil":
+          "Aplicación para Android e iOS: factura, cobra, consulta precios y stock y revisa tus indicadores desde el celular, con la misma información del sistema web.",
+        "E-commerce gratis (enlazada al sistema)":
+          "Tienda en línea incluida y sincronizada con tu catálogo: lo que vendes por internet descuenta inventario y genera su comprobante electrónico automáticamente.",
+        "E-commerce (enlazada al sistema)":
+          "Tienda en línea integrada al sistema: productos, precios y stock siempre sincronizados, y cada pedido genera su factura electrónica sin volver a digitarla.",
+        "Productos, Compras e Inventarios":
+          "Kardex por producto, costo promedio, control de mínimos y máximos y registro de compras que actualiza el inventario y las cuentas por pagar en un solo paso.",
+        "Contabilidad Integrada":
+          "Cada venta, compra, cobro y pago genera automáticamente su asiento contable, así obtienes balances y estado de resultados sin volver a procesar la información.",
+        "Integración contable":
+          "Enlaza los módulos operativos con tu plan de cuentas para que toda la información comercial llegue lista y cuadrada a la contabilidad.",
+        "Integración contable para tu declaración y balances":
+          "Genera de forma automática la información para tus formularios del SRI, anexos y balances, lista para revisar y declarar dentro del plazo.",
+        "Nómina ilimitada":
+          "Roles de pago, décimos, vacaciones, fondos de reserva, préstamos, liquidaciones y archivos para el IESS, sin límite de empleados.",
+        "+30 Gráficos Gerenciales":
+          "Tableros con ventas por producto, cliente, vendedor y sucursal, cartera vencida, márgenes y flujo de caja, actualizados en tiempo real.",
+        "API para desarrolladores":
+          "Servicios REST documentados para conectar Perseo con tu página web, tu marketplace, tu ERP o cualquier aplicación propia.",
+        "Producción e Importaciones":
+          "Órdenes de producción con consumo de materia prima y costeo del producto terminado, además de liquidación de importaciones distribuyendo los gastos al costo.",
+        "Cuentas por Cobrar y Pagar":
+          "Estados de cuenta por cliente y proveedor, control de vencimientos, abonos parciales, retenciones y reportes de cartera para gestionar tus cobros.",
+        "Restaurantes + App de Restaurantes":
+          "Módulo de mesas, comandas y cocina, con app para tomar el pedido desde el celular o la tablet y facturar al cerrar la mesa.",
+        "Reembolso de gastos":
+          "Registro y liquidación de gastos de empleados o de terceros, con su respaldo tributario y la emisión del comprobante de reembolso."
+      };
+
+      /* Descripción de las características incluidas en los planes Contafácil */
+      const HS_TIPS_CONTAFACIL = {
+        "Multiempresa":
+          "Administra la contabilidad de varias empresas o clientes desde un solo acceso, cada una con su propio plan de cuentas y su información separada.",
+        "Usuarios ilimitados":
+          "Suma a todo tu equipo sin pagar por usuario, definiendo qué empresas y qué módulos puede ver cada persona.",
+        "Creación de usuarios con RUC o Cédula":
+          "Da de alta empresas y clientes ingresando solo el RUC o la cédula: los datos se completan automáticamente desde el SRI.",
+        "ATS en minutos":
+          "Genera el Anexo Transaccional Simplificado ya validado y listo para cargarlo en el DIMM, sin armarlo documento por documento.",
+        "Carga y Descarga masiva XML, ZIP, TXT, XLSX":
+          "Importa y exporta comprobantes en lote desde el SRI o desde tu contabilidad anterior, ahorrando horas de digitación.",
+        "Registro de gastos personales":
+          "Registra y clasifica los gastos deducibles de vivienda, salud, educación, alimentación y vestimenta de cada contribuyente.",
+        "Anexo de gastos personales":
+          "Arma el anexo de gastos personales aplicando los topes vigentes y lo deja listo para presentarlo al SRI.",
+        "Diarios contables automáticos":
+          "Cada comprobante genera su asiento según la configuración contable definida, sin digitación manual y sin descuadres.",
+        "Anexo transaccional":
+          "Consolida compras, ventas y retenciones del periodo en el formato exigido por el SRI, listo para su presentación.",
+        "Libro diario":
+          "Consulta y exporta el libro diario por rango de fechas, con el detalle de cada asiento y su documento fuente."
+      };
+
       const icons = {
         whatsapp: `<svg fill="currentColor" class="w-6 h-6" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" style="--darkreader-inline-fill: var(--darkreader-background-000000, #000000);" data-darkreader-inline-fill=""><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>whatsapp</title> <path d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z"></path> </g></svg>`,
         cart: `<svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.41442 6H3.75V4.5H6.58558L7.33558 7.5H18.935L17.2321 15.1627L16.5 15.75H8.25L7.51786 15.1627L6.02 8.42233L5.41442 6ZM7.68496 9L8.85163 14.25H15.8984L17.065 9H7.68496ZM10.5 18C10.5 18.8284 9.82843 19.5 9 19.5C8.17157 19.5 7.5 18.8284 7.5 18C7.5 17.1716 8.17157 16.5 9 16.5C9.82843 16.5 10.5 17.1716 10.5 18ZM15 19.5C15.8284 19.5 16.5 18.8284 16.5 18C16.5 17.1716 15.8284 16.5 15 16.5C14.1716 16.5 13.5 17.1716 13.5 18C13.5 18.8284 14.1716 19.5 15 19.5Z" style="--darkreader-inline-fill: var(--darkreader-background-080341, #060234);" data-darkreader-inline-fill=""></path> </g></svg>`,
@@ -3955,7 +5382,7 @@
             <div class="flex gap-1 items-center w-fit mr-auto text-xs font-semibold text-slate-700">
                 <i class="icon text-purple-900" data-icon="check"></i>
                 <span>${item}</span>
-                ${descripcion ? '<i class="icon text-slate-600" data-icon="info"></i>' : ""}
+                ${HS_TIPS[item] ? `<button type="button" class="hs-tip" aria-label="Ver el detalle de esta característica"><i class="icon" data-icon="info"></i><span class="hs-tip__bubble" role="tooltip">${HS_TIPS[item]}</span></button>` : ""}
             </div>
         `,
             )
@@ -4067,7 +5494,7 @@
             <div class="flex gap-1 items-center w-fit mr-auto text-xs font-semibold text-slate-700">
                 <i class="icon text-purple-900" data-icon="check"></i>
                 <span>${item}</span>
-                ${descripcion ? '<i class="icon text-slate-600" data-icon="info"></i>' : ""}
+                ${HS_TIPS[item] ? `<button type="button" class="hs-tip" aria-label="Ver el detalle de esta característica"><i class="icon" data-icon="info"></i><span class="hs-tip__bubble" role="tooltip">${HS_TIPS[item]}</span></button>` : ""}
             </div>
         `,
               )
@@ -4136,7 +5563,419 @@
       });
 
       // Estado inicial: empresa / anual
+
+      // Iconos de información de las características incluidas en Contafácil
+      document.querySelectorAll(".feature-pill").forEach((pill) => {
+        const label = pill.querySelector("span.text-slate-800");
+        const infoIcon = pill.querySelector('[data-icon="info"]');
+        if (!label || !infoIcon) return;
+
+        const detalle = HS_TIPS_CONTAFACIL[label.textContent.trim()];
+        if (!detalle) return;
+
+        const tip = document.createElement("button");
+        tip.type = "button";
+        tip.className = "hs-tip ml-auto";
+        tip.setAttribute("aria-label", "Ver el detalle de esta característica");
+        tip.innerHTML = '<span class="icon" data-icon="info"></span><span class="hs-tip__bubble" role="tooltip"></span>';
+        tip.querySelector(".hs-tip__bubble").textContent = detalle;
+        infoIcon.replaceWith(tip);
+      });
+
+      renderIcons();
+
       showTab("tab-empresa");
     </script>
-  </body>
+  
+  <!-- =========================================================
+       DEMO MODAL
+       ========================================================= -->
+  <div class="hs-demo-modal" id="hsDemoModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="hsDemoModalTitle">
+    <div class="hs-demo-modal-overlay hs-demo-close"></div>
+
+    <div class="hs-demo-modal-content">
+      <button class="hs-demo-modal-close hs-demo-close" type="button" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="hs-demo-modal-body">
+        <h2 class="hs-demo-modal-title" id="hsDemoModalTitle">Agendar una demo</h2>
+        <p class="hs-demo-modal-subtitle">Completa tus datos y elige una fecha tentativa. Te contactaremos para confirmar.</p>
+
+        <form class="hs-demo-form" id="hsDemoForm" novalidate>
+          <div class="hs-demo-field">
+            <label for="hsDemoName">Nombre completo <span>*</span></label>
+            <input type="text" id="hsDemoName" name="name" placeholder="Tu nombre" required>
+            <span class="hs-demo-error">Ingresa tu nombre completo</span>
+          </div>
+
+          <div class="hs-demo-field">
+            <label for="hsDemoEmail">Correo electrónico <span>*</span></label>
+            <input type="email" id="hsDemoEmail" name="email" placeholder="correo@empresa.com" required>
+            <span class="hs-demo-error">Ingresa un correo electrónico válido</span>
+          </div>
+
+          <div class="hs-demo-field">
+            <label for="hsDemoPhone">Celular <span>*</span></label>
+            <input type="tel" id="hsDemoPhone" name="phone" placeholder="09XXXXXXXX" required maxlength="10">
+            <span class="hs-demo-error">Ingresa un celular ecuatoriano válido (10 dígitos)</span>
+          </div>
+
+          <div class="hs-demo-field">
+            <label for="hsDemoDate">Fecha tentativa <span>*</span></label>
+            <input type="date" id="hsDemoDate" name="date" required>
+            <span class="hs-demo-error">Selecciona una fecha válida</span>
+          </div>
+
+          <button class="hs-demo-submit" type="submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Agendar demo
+          </button>
+        </form>
+
+        <div class="hs-demo-success" id="hsDemoSuccess">
+          <div class="hs-demo-success-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>¡Demo solicitada!</h3>
+          <p>Gracias por tu interés. Nos pondremos en contacto contigo pronto para confirmar la fecha y hora.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const demoModal = document.getElementById("hsDemoModal");
+      const demoForm = document.getElementById("hsDemoForm");
+      const demoSuccess = document.getElementById("hsDemoSuccess");
+      const demoOpenButtons = document.querySelectorAll(".hs-demo-open");
+      const demoCloseButtons = document.querySelectorAll(".hs-demo-close");
+
+      const nameInput = document.getElementById("hsDemoName");
+      const emailInput = document.getElementById("hsDemoEmail");
+      const phoneInput = document.getElementById("hsDemoPhone");
+      const dateInput = document.getElementById("hsDemoDate");
+
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().split("T")[0];
+
+      function openDemoModal() {
+        demoModal.classList.add("is-open");
+        demoModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        nameInput.focus();
+      }
+
+      function closeDemoModal() {
+        demoModal.classList.remove("is-open");
+        demoModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      demoOpenButtons.forEach(btn => btn.addEventListener("click", openDemoModal));
+      demoCloseButtons.forEach(btn => btn.addEventListener("click", closeDemoModal));
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && demoModal.classList.contains("is-open")) {
+          closeDemoModal();
+        }
+      });
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function validatePhone(phone) {
+        return /^09\d{8}$/.test(phone.replace(/\s/g, ""));
+      }
+
+      function setInvalid(input, isInvalid) {
+        input.classList.toggle("is-invalid", isInvalid);
+      }
+
+      function validateField(input) {
+        const value = input.value.trim();
+        let isValid = true;
+
+        if (input === nameInput) {
+          isValid = value.length >= 3;
+        } else if (input === emailInput) {
+          isValid = validateEmail(value);
+        } else if (input === phoneInput) {
+          isValid = validatePhone(value);
+        } else if (input === dateInput) {
+          const selectedDate = new Date(value + "T00:00:00");
+          const tomorrowDate = new Date(tomorrow.toDateString());
+          isValid = value !== "" && selectedDate >= tomorrowDate;
+        }
+
+        setInvalid(input, !isValid);
+        return isValid;
+      }
+
+      [nameInput, emailInput, phoneInput, dateInput].forEach(input => {
+        input.addEventListener("blur", () => {
+          if (input.value.trim() !== "") validateField(input);
+        });
+        input.addEventListener("input", () => {
+          if (input.classList.contains("is-invalid")) validateField(input);
+        });
+      });
+
+      phoneInput.addEventListener("input", () => {
+        phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 10);
+        if (phoneInput.classList.contains("is-invalid")) validateField(phoneInput);
+      });
+
+      demoForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const isNameValid = validateField(nameInput);
+        const isEmailValid = validateField(emailInput);
+        const isPhoneValid = validateField(phoneInput);
+        const isDateValid = validateField(dateInput);
+
+        if (isNameValid && isEmailValid && isPhoneValid && isDateValid) {
+          demoForm.style.display = "none";
+          demoSuccess.classList.add("is-visible");
+
+          setTimeout(() => {
+            closeDemoModal();
+            setTimeout(() => {
+              demoForm.reset();
+              demoForm.style.display = "";
+              demoSuccess.classList.remove("is-visible");
+              [nameInput, emailInput, phoneInput, dateInput].forEach(input => setInvalid(input, false));
+            }, 250);
+          }, 3000);
+        }
+      });
+    })();
+  </script>
+
+  <!-- =========================================================
+       BOTÓN FLOTANTE DE WHATSAPP
+       ========================================================= -->
+  <a class="hs-wa-float"
+     href="https://wa.me/593963095699?text=Hola%20HASTECH%2024%2F7%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20sistema%20contable%20Perseo."
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="Escríbenos por WhatsApp">
+    <svg class="hs-wa-float__icon" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z"></path>
+    </svg>
+    <span class="hs-wa-float__label">¿Hablamos?</span>
+  </a>
+
+  <!-- =========================================================
+       MEJORAS UI: fade-in al scroll, tooltips y formulario
+       ========================================================= -->
+  <script>
+    (() => {
+      "use strict";
+
+      const WA_NUMBER = "593963095699";
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* ---------------------------------------------------------
+         0. El cabezal fijo crece al envolverse en móvil: se mide
+            para que el contenido nunca quede oculto debajo.
+         --------------------------------------------------------- */
+      const fixedHeader = document.querySelector(".hs-page .hs-header");
+
+      if (fixedHeader) {
+        const syncHeaderHeight = () => {
+          const height = Math.ceil(fixedHeader.getBoundingClientRect().height);
+          if (height > 0) document.documentElement.style.setProperty("--hs-header-height", height + "px");
+        };
+
+        syncHeaderHeight();
+        window.addEventListener("resize", syncHeaderHeight);
+        window.addEventListener("load", syncHeaderHeight);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeaderHeight);
+      }
+
+      /* ---------------------------------------------------------
+         1. Fade-in progresivo al hacer scroll
+         --------------------------------------------------------- */
+      const REVEAL_RULES = [
+        { sel: ".hs-showcase-header, .hs-showcase-content > *", variant: "" },
+        { sel: ".hs-device", variant: "hs-reveal--zoom" },
+        { sel: ".hs-benefit-card, .hs-solution-card", variant: "" },
+        { sel: ".hs-solutions-title, .hs-plans-header, .hs-benefits-section-header", variant: "" },
+        { sel: ".hs-plan", variant: "" },
+        { sel: ".hs-plans-trust", variant: "hs-reveal--fade" },
+        { sel: ".hs-benefits-visual", variant: "hs-reveal--left" },
+        { sel: ".hs-benefit-item", variant: "hs-reveal--right" },
+        { sel: ".hs-benefits-cta", variant: "hs-reveal--zoom" },
+        { sel: ".hs-footer-top, .hs-footer-column, .hs-footer-bottom", variant: "" },
+        { sel: ".hs-fit-head, .hs-fit-card, .hs-fit-note", variant: "" },
+        { sel: ".hs-contact-intro, .hs-contact-form", variant: "" },
+        { sel: ".hs-faq-head, .hs-faq-item, .hs-faq-cta", variant: "" },
+        { sel: ".facturito-card", variant: "" },
+        { sel: "#plans-content .bg-transparent", variant: "" },
+        { sel: "#plans-content .feature-pill", variant: "hs-reveal--fade" },
+        { sel: "#plans-content .benefit-header, #plans-content .benefit-header-pc", variant: "hs-reveal--fade" },
+        { sel: "#plans-content .req-card", variant: "" },
+        { sel: "#plans-content .rounded-2xl.shadow-md", variant: "" }
+      ];
+
+      const revealed = [];
+
+      REVEAL_RULES.forEach(rule => {
+        document.querySelectorAll(rule.sel).forEach(el => {
+          if (el.classList.contains("hs-reveal") || el.closest(".hs-header")) return;
+          el.classList.add("hs-reveal");
+          if (rule.variant) el.classList.add(rule.variant);
+          revealed.push(el);
+        });
+      });
+
+      // Retardo escalonado entre hermanos para que entren en cascada
+      revealed.forEach(el => {
+        const parent = el.parentElement;
+        if (!parent) return;
+        const siblings = Array.prototype.filter.call(parent.children, child => child.classList.contains("hs-reveal"));
+        const index = siblings.indexOf(el);
+        if (index > 0) el.style.setProperty("--hs-reveal-delay", Math.min(index, 7) * 75 + "ms");
+      });
+
+      function revealAll() {
+        revealed.forEach(el => el.classList.add("is-visible"));
+      }
+
+      if (reduceMotion || !("IntersectionObserver" in window)) {
+        revealAll();
+      } else {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          });
+        }, { rootMargin: "0px 0px -7% 0px", threshold: 0.06 });
+
+        revealed.forEach(el => observer.observe(el));
+
+        // Salvaguarda: si algo quedara oculto tras 6 s, se muestra igual
+        window.setTimeout(() => {
+          revealed.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) el.classList.add("is-visible");
+          });
+        }, 6000);
+      }
+
+      /* ---------------------------------------------------------
+         2. Tooltips: reposiciona la burbuja si se sale de pantalla
+         --------------------------------------------------------- */
+      document.addEventListener("mouseover", event => {
+        const tip = event.target.closest ? event.target.closest(".hs-tip") : null;
+        if (!tip) return;
+        const bubble = tip.querySelector(".hs-tip__bubble");
+        if (!bubble) return;
+
+        bubble.style.setProperty("--hs-tip-shift", "0px");
+        const rect = bubble.getBoundingClientRect();
+        const pad = 14;
+        let shift = 0;
+
+        if (rect.left < pad) shift = pad - rect.left;
+        else if (rect.right > window.innerWidth - pad) shift = window.innerWidth - pad - rect.right;
+
+        bubble.style.setProperty("--hs-tip-shift", Math.round(shift) + "px");
+      }, true);
+
+      /* ---------------------------------------------------------
+         3. Formulario de contacto
+         --------------------------------------------------------- */
+      const form = document.getElementById("hsContactForm");
+      if (!form) return;
+
+      const success = document.getElementById("hsContactSuccess");
+      const nameEl = document.getElementById("hsContactName");
+      const companyEl = document.getElementById("hsContactCompany");
+      const emailEl = document.getElementById("hsContactEmail");
+      const phoneEl = document.getElementById("hsContactPhone");
+      const planEl = document.getElementById("hsContactPlan");
+      const messageEl = document.getElementById("hsContactMessage");
+
+      const isEmail = value => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+      const isPhone = value => /^0\d{9}$/.test(value.replace(/\D/g, ""));
+
+      function validate(field) {
+        const value = field.value.trim();
+        let valid = true;
+
+        if (field === nameEl) valid = value.length >= 3;
+        else if (field === emailEl) valid = isEmail(value);
+        else if (field === phoneEl) valid = isPhone(value);
+        else if (field === planEl) valid = value !== "";
+
+        field.classList.toggle("is-invalid", !valid);
+        return valid;
+      }
+
+      [nameEl, emailEl, phoneEl, planEl].forEach(field => {
+        field.addEventListener("blur", () => {
+          if (field.value.trim() !== "") validate(field);
+        });
+        field.addEventListener("change", () => {
+          if (field.classList.contains("is-invalid")) validate(field);
+        });
+        field.addEventListener("input", () => {
+          if (field.classList.contains("is-invalid")) validate(field);
+        });
+      });
+
+      phoneEl.addEventListener("input", () => {
+        phoneEl.value = phoneEl.value.replace(/\D/g, "").slice(0, 10);
+      });
+
+      form.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const checks = [nameEl, emailEl, phoneEl, planEl].map(validate);
+        if (checks.indexOf(false) !== -1) {
+          const firstInvalid = form.querySelector(".is-invalid");
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+
+        const lines = [
+          "Hola HASTECH 24/7, quiero que un asesor me contacte.",
+          "",
+          "Nombre: " + nameEl.value.trim(),
+          companyEl.value.trim() ? "Empresa: " + companyEl.value.trim() : "",
+          "Correo: " + emailEl.value.trim(),
+          "Celular: " + phoneEl.value.trim(),
+          "Me interesa: " + planEl.options[planEl.selectedIndex].text,
+          messageEl.value.trim() ? "Mensaje: " + messageEl.value.trim() : ""
+        ].filter(Boolean);
+
+        window.open(
+          "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(lines.join("\n")),
+          "_blank",
+          "noopener"
+        );
+
+        success.classList.add("is-visible");
+        form.reset();
+
+        window.setTimeout(() => success.classList.remove("is-visible"), 9000);
+      });
+    })();
+  </script>
+</body>
 </html>
